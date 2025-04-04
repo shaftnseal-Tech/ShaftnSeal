@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Analysis</title>
+</head>
+<body>
+    <h2>Pump Analysis</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if graph_url %}
+        <h3>Comparison Graph</h3>
+        <img src="data:image/png;base64,{{ graph_url }}" alt="SRC vs Theoretical Curve">
+    {% endif %}
+</body>
+</html>

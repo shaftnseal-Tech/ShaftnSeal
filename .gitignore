@@ -1,0 +1,54 @@
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+shaftweb_env/
+env/
+venv/
+
+# Django Migrations (optional, if you don't want to track them)
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# Django Secret Files
+.env
+
+# SQLite Database (optional, if used only for testing)
+*.sqlite3
+
+# Logs
+*.log
+
+# Media Files (optional if user-uploaded files are not needed in repo)
+media/
+
+# Static Files (if collected static files)
+staticfiles/
+
+# VS Code settings (optional)
+.vscode/
+
+# PyCharm settings (optional)
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node.js files (if you use npm or yarn for front-end)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# pytest
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
