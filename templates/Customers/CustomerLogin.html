@@ -17,7 +17,6 @@
     rel="stylesheet"
   />
 
-  
   <style>
     /* Global Styles */
     body {
@@ -614,38 +613,42 @@
 </head>
 
 <body>
-
+    
   <!-- Login Modal -->
   <div class="modal" id="login-form">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">X</span>
-        {% if form.username.errors %}
-        <div class="text-danger">{{ form.username.errors }}</div>
-      {% endif %}
-      {% if form.password.errors %}
-      <div class="text-danger">{{ form.password.errors }}</div>
-         {% endif %}
-        {% if errors %}
-    <div class="text-danger">{{ errors }}</div>
-       {% endif %}
+       
         <form class="form-container" method="post">
           {% csrf_token %}
+       
           <h2>Login</h2>
 
-          <!-- Email/Phone Field -->
-          <div class="form-group">
-            
-            {{ form.username }}  <!-- Django form field -->
-          
-          </div>
+         <!-- Email/Phone Field -->
+<div class="form-group">
+    {{ form.username }}
+    {% if form.username.errors %}
+        <div class="text-danger">
+            {% for error in form.username.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
 
-          <!-- Password Field -->
-          <div class="form-group">
-            
-            {{ form.password }}  <!-- Django form field -->
-           
-          </div>
+<!-- Password Field -->
+<div class="form-group">
+    {{ form.password }}
+    {% if form.password.errors %}
+        <div class="text-danger">
+            {% for error in form.password.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
 
         
 

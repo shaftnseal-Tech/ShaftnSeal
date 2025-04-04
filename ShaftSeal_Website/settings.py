@@ -12,7 +12,6 @@ DEBUG = True  # Change this to False for production!
 
 ALLOWED_HOSTS = ['*']  # Add your server's IP or domain here
 
-
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -26,7 +25,6 @@ INSTALLED_APPS = [
     "Products",
     "Energy_efficiency"
 ]
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -61,11 +59,10 @@ WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 # Database
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",  # Change to your production DB (e.g., PostgreSQL, MySQL)
-        "NAME": BASE_DIR / "db.sqlite3",         # Update for production (e.g., PostgreSQL DB path)
+        "ENGINE": "django.db.backends.sqlite3",  
+        "NAME": BASE_DIR / "db.sqlite3",         
     }
 }
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -97,7 +94,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Optional: Additional static files locations (if needed)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Adjust if you have custom static directories
+    os.path.join(BASE_DIR, 'static'),  
 ]
 
 # Media files (user uploads)

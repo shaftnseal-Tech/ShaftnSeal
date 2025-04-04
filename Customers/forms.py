@@ -37,7 +37,7 @@ class UserRegistrationForm(forms.ModelForm):
         email = self.cleaned_data.get('email')
         if CustomUser.objects.filter(email=email).exists():
             if not self.instance.pk:  # Allow editing existing users in Admin
-                raise forms.ValidationError("A user with this email already exists.")
+                self.add_error('email', "A user with this email already exists.")
         return email
 
     def clean(self):
@@ -46,7 +46,8 @@ class UserRegistrationForm(forms.ModelForm):
         confirm_password = cleaned_data.get('confirm_password')
 
         if password and confirm_password and password != confirm_password:
-            raise forms.ValidationError("Passwords do not match!")
+            self.add_error('confirm_password', "Passwords do not match!")
+
         return cleaned_data
 
     def save(self, commit=True):
@@ -86,18 +87,10 @@ class LoginForm(forms.Form):
         User = get_user_model()
         user = None
 
-        # Check if the input is an email or phone number
-        if username:
-            if username.isdigit() and len(username) == 10:  # Phone number login
-                try:
-                    user_obj = User.objects.get(phone_no=username)
-                    user = authenticate(username=user_obj.email, password=password)  # Authenticate using email
-                except User.DoesNotExist:
-                    raise forms.ValidationError("Invalid phone number or password.")
-            else:  # Email login
-                user = authenticate(username=username, password=password)
+        if username and password:
+            user = authenticate(username=username, password=password)
 
             if not user:
-                raise forms.ValidationError("Invalid login credentials.")
-
+                self.add_error('username', "Invalid login credentials.")
+        
         return cleaned_data
