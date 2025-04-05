@@ -119,6 +119,7 @@
 .hero-section {
   padding: 60px 20px;
   text-align: center;
+  background-color: #F2F2F2 !important;
 }
 
 .seal {
@@ -186,10 +187,7 @@
   cursor: pointer;
   color: #666;
   font-size: 1.4em;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+  
 }
 
 /* homepage image */
@@ -212,25 +210,28 @@
   top: 110%;
   left: 0;
   right: 0;
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
   padding: 30px;
   display: none;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  animation: dropdownFade 0.4s ease-in-out forwards;
+  /*box-shadow: 0 20px 40px #e5a84c;
+  */animation: dropdownFade 0.5s ease-in-out forwards;
   transform-origin: top center;
   z-index: 999;
+  -webkit-animation: dropdownFade 0.4s ease-in-out forwards;
 }
 
 @keyframes dropdownFade {
   0% {
     opacity: 0;
-    transform: scaleY(0.9);
-  }
+    transform: scaleY(1);
+  
+}
   100% {
     opacity: 1;
     transform: scaleY(1);
-  }
+  
+}
 }
 
 /* Cards Container */
@@ -260,8 +261,9 @@
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(240, 144, 144, 0.15);
+ 
 }
 
 .card:hover {
