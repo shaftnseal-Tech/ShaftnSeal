@@ -141,22 +141,35 @@ document.querySelectorAll(".card").forEach(card => {
   // Add toggle functionality for dropdown
   const searchInput = document.getElementById('search-input');
   const dropdown = document.getElementById('dropdown-container');
-
-  searchInput.addEventListener('focus', () => {
+  
+  // Show dropdown on focus or typing
+  const showDropdown = () => {
+    if (searchInput.value.trim() !== '' || document.activeElement === searchInput) {
       dropdown.classList.add('active');
-  });
-
-  searchInput.addEventListener('blur', () => {
-      setTimeout(() => dropdown.classList.remove('active'), 200);
-  });
-
+      dropdown.style.display = 'block'; // fallback if not using class-based display
+    }
+  };
+  
+  // Hide dropdown with delay (for click targets inside dropdown)
+  const hideDropdown = () => {
+    setTimeout(() => {
+      dropdown.classList.remove('active');
+      dropdown.style.display = 'none';
+    }, 200);
+  };
+  
+  searchInput.addEventListener('focus', showDropdown);
+  searchInput.addEventListener('input', showDropdown);
+  searchInput.addEventListener('blur', hideDropdown);
+  
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
-      if (!searchInput.contains(e.target)) {
-          dropdown.classList.remove('active');
-      }
+    if (!document.querySelector('.search-icon-container').contains(e.target)) {
+      dropdown.classList.remove('active');
+      dropdown.style.display = 'none';
+    }
   });
-
+  
 
      // Update current year automatically
      document.querySelector('.current-year').textContent = new Date().getFullYear();

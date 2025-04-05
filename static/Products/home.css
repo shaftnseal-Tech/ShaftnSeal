@@ -115,144 +115,110 @@
   flex: 1;
 }
 
+/* Hero Section */
 .hero-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 20px;
-  height: 100vh;
-  background-color: #d2d4d7 !important;
-  color: #ffffff;
-}
-
-.hero-section h1 {
-  font-size: 60px;
-  font-weight: bold;
-  color: #000000;
-}
-
-.hero-content {
+  padding: 60px 20px;
   text-align: center;
-  max-width: 800px;
-  margin-top: -550px;
 }
 
-/* .seal {
-  font-size: 40px;
-  font-weight: bold;
-  color: #ffff;
-  margin-left: 20px;
-} */
-
-.subtitle {
-  color: lightgray;
-  margin-top: 9px;
-  font-size: 18px;
+.seal {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
 }
 
-.description {
-  color: lightgray;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.learn-more-btn {
-  padding: 12px 25px;
-  /* background: linear-gradient(90deg, rgb(136, 132, 214) 0%, rgb(136, 136, 161) 35%, rgba(0,212,255,1) 100%);; */
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 15px;
-  font-size: 16px;
-  transition: background 0.3s;
-}
-
-.learn-more-btn:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-}
-
+/* Search Input */
 .search-icon-container {
   position: relative;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 400px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 #search-input {
   width: 100%;
-  max-width: 800px; /* Increased width on larger screens */
-  padding: 16px 24px;
-  border: 1px solid #ccc;
-  border-radius: 30px;
+  padding: 18px 24px;
+  border: 2px solid #ddd;
+  border-radius: 40px;
   outline: none;
-  font-size: 18px;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
-  margin: 0 auto;
-  display: block;
 }
 
-/* Focus effect */
 #search-input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
 }
 
-
+/* Search Icon */
 .search-icon {
   position: absolute;
-  right: 15px;
+  right: 25px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #888;
-  font-size: 1.2em;
+  color: #666;
+  font-size: 1.4em;
 }
 
+/* Dropdown Animation */
 .dropdown {
   position: absolute;
-  width: 100vh;
-  /*Puriscreenkiwidth*/top: 100%;
+  top: 110%;
   left: 0;
   right: 0;
-  background: #000000;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
   display: none;
-  z-index: 1000;
-  padding: 50px;
-  animation: fadeIn 0.3s ease-in-out;
-  animation: fadeIn 0.3s ease-in-out;
-  -webkit-animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: dropdownFade 0.4s ease-in-out forwards;
+  transform-origin: top center;
+  z-index: 999;
 }
 
+@keyframes dropdownFade {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Cards Container */
 .cards-container {
   display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
+/* Card Style */
 .card {
-  text-align: center;
-  border: none;
-  border-radius: 10px;
-  padding: 5px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 60px;
-  width: 150px;
-  margin-bottom: 10px;
-  margin: 7px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(145deg, #ffffff, #fcfdff);
-  transition: transform 0.3s, box-shadow 0.3s;
+  width: 160px;
+  padding: 10px 15px;
+  text-align: center;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card:hover {
@@ -277,6 +243,7 @@
   font-size: 14px;
   color: #666;
 }
+
 .btncard {
   text-align: center;
   border: none;
