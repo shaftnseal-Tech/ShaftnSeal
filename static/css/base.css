@@ -2,7 +2,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  /* background-color: #d5d7d7 !important; */
+  /* background-color: #f4f4f4; */
 }
 
 .navbar-cust {
@@ -143,6 +144,7 @@ body {
 /* footer  section start */
 
 .footer {
+   
   font-size: clamp(0.875rem, 2vw, 1rem);
   transition: all 0.3s ease;
 }

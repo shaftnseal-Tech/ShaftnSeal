@@ -190,3 +190,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
     
+
+
+
+  lottie.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '{% static "img/5.json" %}' // path to your Lottie JSON
+  });
+
