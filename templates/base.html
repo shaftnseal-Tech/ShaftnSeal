@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
+    <title>Shaft & Seal</title>
+    
      {% block css %}
      <link rel="stylesheet" href="{% static 'css/base.css' %}">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -15,27 +16,57 @@
         
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+
+    <nav class="navbar navbar-expand-lg navbar-cust">
         <div class="container position-relative">
-            <a class="navbar-brand" href="#"><img src=" {% static 'img/Logo.jpeg' %} " alt="Logo"></a>
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/Logo.jpeg' %}" alt="Logo">
+            </a>
+    
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav nav-center mx-auto">
-                    <li class="nav-item"><a class="nav-link" href=" {% url 'home' %} "><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %} "><i class="fas fa-info-circle"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'services' %} "><i class="fas fa-cogs"></i> Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'products' %} "><i class="fas fa-store"></i> Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href=" {% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">
+                            <i class="fas fa-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'services' %}">
+                            <i class="fas fa-cogs"></i> Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">
+                            <i class="fas fa-store"></i> Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
                 </ul>
+    
                 <div class="logout-btn" onclick="logout()">
-                    <a class="nav-link" href=" {% url 'logout' %} " ><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
+    
+    
     {% block body %}      
     {% endblock body %}
         

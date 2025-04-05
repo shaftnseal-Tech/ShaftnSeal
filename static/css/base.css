@@ -1,6 +1,6 @@
 
-.navbar {
-    background: linear-gradient(135deg, #2c3e50, #3498db);
+.navbar-cust {
+    background-color:#033043 !important;
     padding: 12px 0;
     position: relative;
 }
@@ -23,24 +23,32 @@
     padding: 10px 20px !important;
     border-radius: 5px;
 }
+.nav-item a:hover{
+    color: #fda521;
+}
 
-.nav-item a:hover,
+/* .nav-item a:hover,
 .nav-item a:focus {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
-}
+} */
 
 .logout-btn {
     position: absolute;
     right: 15px;
-    background: #e74c3c;
-    border-radius: 25px;
-    padding: 8px 25px !important;
-    margin-right: 20px;
+    border:none;
+    border-radius: 10px;
+    background-color: #fda521;
+    color: white;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+  
 }
 
 .logout-btn:hover {
-    background: #c0392b;
+    background-color: #fda521;
+    color: white;
+  
 }
 
 .navbar-toggler {
