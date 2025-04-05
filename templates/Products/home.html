@@ -2,8 +2,10 @@
 {% load static %}
 {% block css %} 
 {{ block.super }}
+  <link rel="stylesheet" href="{% static 'Products/home.css' %}"> 
+
 <style>
-  .Registrationbtn {
+ {% comment %} .Registrationbtn {
     background-color: transparent;
     color: aliceblue;
     border: none;
@@ -18,11 +20,25 @@
   ::placeholder {
     color: rgb(73, 72, 72);
     opacity: 1;
+  } 
+  .hero-section {
+    background-color: white !important;   {% endcomment %}
+
+    {% comment %} align-items: center;
+    justify-content: center; {% endcomment %}
   }
+  {% comment %} .hero-content{ 
+    margin-left:200px !important;
+    margin-top: 50px ;
+   } {% endcomment %}
+ 
 </style>
-{% endblock css %} {% block body %}
-<section class="hero-section">
-  <div class="hero-content">
+
+{% endblock css %}
+{% block body %}
+
+<section class="hero-section bg-white">
+  <div class="hero-content ">
     <h1 class="seal">Shaft & Seal</h1>
     <div class="search-icon-container">
       <input
@@ -30,6 +46,7 @@
         id="search-input"
         placeholder="What are you looking for...."
         aria-label="Search"
+
       />
       <i class="fas fa-search search-icon"></i>
       <div class="dropdown" id="dropdown-container">
