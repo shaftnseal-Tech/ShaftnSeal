@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'Spares/search.css' %}">
 {% endblock css %}
 
-{% block body %}
+{% block content %}
 <div class="modal-container" id="search-form">
     <div class="modal-box">
         <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
@@ -126,7 +126,7 @@
         </div>
     </div>
 </section>
-{% endblock body %}
+{% endblock  %}
 
 {% block js %}
 {{ block.super }}
