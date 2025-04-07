@@ -55,18 +55,49 @@
                             Contact
                         </a>
                     </li>
+                 /li>
+
                 </ul>
-    
+                
+                <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+                    <div class="d-flex justify-content-end mb-3 mb-lg-0">
+                      {% if user.id is  None %}
+                        <div class="widget-header">
+                            <small class="title text-white">Welcome guest!</small>
+
+                            <div> 
+                                <a href="{% url 'login' %}">Sign in</a> <span class="dark-transp"> | </span>
+                                <a href="{% url 'register' %}"> Register</a>
+                            </div>
+                        </div>
+                       {% else %}
+                       <div class="widget-header">
+                        <small class="title text-white">Welcome {{ user.first_name }} </small>
+
+                        <div> 
+                            <a href="#">Dashboard</a> <span class="dark-transp"> | </span>
+                            <a href="{% url 'logout' %}"> Logout </a>
+                        </div>
+                    </div>
+                       {% endif %}
+
+                    </div> <!-- widgets-wrap.// -->
+                </div> 
                 <div class="logout-btn" onclick="logout()">
                     <a class="nav-link" href="{% url 'logout' %}">
                         <i class="fas fa-sign-out-alt"></i> Logout
-                    </a>
+                    </a>              
+                    </div> 
+                </div> 
                 </div>
+                
             </div>
         </div>
     </nav>
     
     
+
+
     {% block body %}      
     {% endblock body %}
         

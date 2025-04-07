@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "Customers",
+    "accounts",
+    # "Customers",
     "Spares",
     "Products",
     "Energy_efficiency"
@@ -106,11 +109,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Authentication backends
-AUTHENTICATION_BACKENDS = [
-    'Customers.backends.EmailOrPhoneBackend',  # Custom backend first
-    'django.contrib.auth.backends.ModelBackend',  # Default Django backend
-]
+# AUTHENTICATION_BACKENDS = [
+#     'Customers.backends.EmailOrPhoneBackend',  # Custom backend first
+#     'django.contrib.auth.backends.ModelBackend',  # Default Django backend
+# ]
+
+AUTH_USER_MODEL = 'accounts.Account'
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+
+# AUTH_USER_MODEL = "Customers.CustomUser"
+# LOGIN_URL = '/Customer/login/'
 
 
-AUTH_USER_MODEL = "Customers.CustomUser"
-LOGIN_URL = '/Customer/login/'
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
