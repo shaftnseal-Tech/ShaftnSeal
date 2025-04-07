@@ -115,7 +115,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # ]
 
 AUTH_USER_MODEL = 'accounts.Account'
-AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailAuthBackend',
+      'django.contrib.auth.backends.ModelBackend',
+    ]
 
 # AUTH_USER_MODEL = "Customers.CustomUser"
 # LOGIN_URL = '/Customer/login/'

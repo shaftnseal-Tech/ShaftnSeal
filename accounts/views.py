@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from .forms import RegistrationForm
 from .models import Account
 from django.contrib import messages,auth
-# from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-# Create your views here.
+from django.contrib.auth.models import User
+from django.contrib import auth, messages
+
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -46,26 +47,23 @@ def register(request):
     return render(request, 'accounts/register.html', context)
 
 
-from django.contrib.auth.models import User
-from django.contrib import auth, messages
+
 
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
 
-        try:
-            user_obj = User.objects.get(email=email)
-            user = auth.authenticate(username=user_obj.username, password=password)
-            if user is not None:
-                auth.login(request, user)
-                messages.success(request, 'Login successful!')
-                return redirect('home')
-            else:
-                messages.error(request, 'Invalid credentials. Please try again.')
-        except User.DoesNotExist:
-            messages.error(request, 'No user found with this email.')
-    
+        user = auth.authenticate(request, email=email, password=password)
+
+        if user is None:
+            auth.login(request, user)
+            messages.success(request, 'Login successful!')
+            return redirect('home')
+        else:
+            messages.error(request, 'Invalid email or password.')
+            return redirect('login')
+
     return render(request, 'accounts/login.html')
 
 def logout(request):
