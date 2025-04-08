@@ -125,8 +125,9 @@ MESSAGE_TAGS = {
 }
 
 #SMTP Configuration
-# EMAIL_HOST='smtp.gmail.com'
-# EMAIL_HOST=587
-# EMAIL_HOST_USER='learnpriti23@gmail.com'
-# EMAIL_HOST_PASSWORD='priti@123'
-# EMAIL_USE_TLS=True
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER= 'pandapritirekha2@gmail.com'
+EMAIL_HOST_PASSWORD= 'ykns inoe vvll wdwj'
+EMAIL_USE_TLS= True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

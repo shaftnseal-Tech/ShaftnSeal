@@ -76,7 +76,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
 # Optional user profile model
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
     address_line_1 = models.CharField(max_length=100, blank=True)
     address_line_2 = models.CharField(max_length=100, blank=True)
     profile_picture = models.ImageField(upload_to='userprofile', blank=True)

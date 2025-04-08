@@ -18,3 +18,5 @@ class AccountAdmin(UserAdmin):
     ordering = ('email',)
 
 admin.site.register(Account, AccountAdmin)
+
+

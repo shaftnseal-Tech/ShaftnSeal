@@ -55,6 +55,7 @@ class ModelVariantPart(models.Model):
 
     def __str__(self):
         return f"Variant {self.variant} -> Part {self.part.part_no} - {self.part.name}"
+    
 class ModelPart(models.Model):
     model = models.ForeignKey(PumpModel, on_delete=models.CASCADE, related_name='common_parts')
     part = models.ForeignKey(Part, on_delete=models.CASCADE)
