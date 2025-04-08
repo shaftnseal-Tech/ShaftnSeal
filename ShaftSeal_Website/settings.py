@@ -22,8 +22,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "accounts",
-    # "Customers",
+    # "accounts",
+    "Customers",
     "Spares",
     "Products",
     "Energy_efficiency"
@@ -108,21 +108,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Authentication backends
+#
+# AUTH_USER_MODEL = 'accounts.Account'
 # AUTHENTICATION_BACKENDS = [
-#     'Customers.backends.EmailOrPhoneBackend',  # Custom backend first
-#     'django.contrib.auth.backends.ModelBackend',  # Default Django backend
-# ]
+#     'accounts.backends.EmailAuthBackend',
+#     'django.contrib.auth.backends.ModelBackend',
+#     ]
 
-AUTH_USER_MODEL = 'accounts.Account'
-AUTHENTICATION_BACKENDS = [
-    'accounts.backends.EmailAuthBackend',
-      'django.contrib.auth.backends.ModelBackend',
-    ]
+AUTH_USER_MODEL = "Customers.CustomUser"
+LOGIN_URL = '/Customer/login/'
 
-# AUTH_USER_MODEL = "Customers.CustomUser"
-# LOGIN_URL = '/Customer/login/'
-
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 MESSAGE_TAGS = {
     messages.ERROR: "danger",

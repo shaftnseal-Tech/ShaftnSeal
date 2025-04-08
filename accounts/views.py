@@ -48,16 +48,17 @@ def register(request):
 
 
 
-
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
 
-        user = auth.authenticate(request, email=email, password=password)
+        # Correct usage since USERNAME_FIELD = 'email'
+        user = auth.authenticate(request, username=email, password=password)
 
-        if user is None:
+        if user is not None:
             auth.login(request, user)
+            print("User logged in successfully")
             messages.success(request, 'Login successful!')
             return redirect('home')
         else:
@@ -65,6 +66,8 @@ def login(request):
             return redirect('login')
 
     return render(request, 'accounts/login.html')
+
+
 
 def logout(request):
     return 
