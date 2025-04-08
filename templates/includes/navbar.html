@@ -45,8 +45,7 @@
                 <div class="d-flex justify-content-end mb-3 mb-lg-0">
                   {% if user.id is  None %}
                     <div class="widget-header">
-                        <small class="title text-white">Welcome guest!</small>
-
+                        <small class="title text-white">Welcome {{user.first_name}} </small>
                         <div> 
                             <a href="{% url 'login' %}">Sign in</a> <span class="dark-transp"> | </span>
                             <a href="{% url 'register' %}"> Register</a>
@@ -54,7 +53,7 @@
                     </div>
                    {% else %}
                    <div class="widget-header">
-                    {% comment %} <small class="title text-white">Welcome {{ user.first_name }} </small> {% endcomment %}
+                    <small class="title text-white">Welcome {{ user.first_name }} </small> 
                     <small class="title text-white">Welcome user </small>
                     <div> 
                         <a href="#">Dashboard</a> <span class="dark-transp"> | </span>

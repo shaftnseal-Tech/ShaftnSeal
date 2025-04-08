@@ -45,7 +45,11 @@
       Your One-Stop Solution for Industrial Sealing & Pump Needs
     </p>
     <div >
-
+      
+      <p>Welcome, <strong>{{ user }} 
+        {{ user.last_name }}</strong></p>
+    <p>Email: {{ user}}</p>
+    {% comment %} <p>Authenticated: {{ user.is_authenticated }}</p> {% endcomment %}
     </div>
     <div class="search-icon-container">
       <input
