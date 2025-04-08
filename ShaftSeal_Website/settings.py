@@ -123,3 +123,10 @@ AUTHENTICATION_BACKENDS = [
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
+
+#SMTP Configuration
+# EMAIL_HOST='smtp.gmail.com'
+# EMAIL_HOST=587
+# EMAIL_HOST_USER='learnpriti23@gmail.com'
+# EMAIL_HOST_PASSWORD='priti@123'
+# EMAIL_USE_TLS=True
