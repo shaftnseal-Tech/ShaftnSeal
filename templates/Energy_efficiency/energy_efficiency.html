@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    {{ block.super}}
+    <link rel="stylesheet" href="{% static 'Energy_efficiency/home.css' %}">
+{% endblock css %}
+    
+
+{% block content %}
+<section class="hero-section">
+    <h1 class="seal" data-text='EnergyEfficiency'>Energy Efficiency
+              
+    </h1>   
+     <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Product 1 -->
+            <div class="col">
+                <div class="card">
+                   
+                     <a class="card2" href="Boilerpage.html">
+                        Boiler Feed Pump
+                     </a>
+                      
+                    
+                </div>
+            </div>
+    
+            <!-- Product 2 -->
+            <div class="col">
+                <div class="card">
+                
+                    <a class="card2">
+                        Condensate Extraction Pum </a>                      
+                   
+                </div>
+            </div>
+    
+            <!-- Product 3 -->
+            <div class="col">
+                <div class="card">
+                    
+                    <a class="card2">
+                        Cooling Tower Pump (ACW/MCW)  </a>                       
+                 
+                </div>
+            </div>
+    
+            <!-- Add more products here -->
+            <div class="col">
+                <div class="card ">
+                   
+                    <a class="card2">
+                        DM Water Pump     </a>                       
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+    

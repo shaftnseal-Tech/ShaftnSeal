@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="modal" id="registration-form">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('registration-form')">&times;</span>
+        <div class="form-container">
+            <h2 >Form</h2>
+            <form onsubmit="generateCustomerDetails(); return false;">
+                <div class="flex-group">
+                    <input type="text" id="customerName" placeholder="Customer Name" required>
+                    <input type="text" id="address" placeholder="Address" required>
+                </div>
+                <div class="flex-group">
+                    <input type="text" id="pincode" placeholder="PIN Code" maxlength="6" required>
+                    <input type="text" id="phoneNo" placeholder="Phone Number" maxlength="10" required>
+                </div>
+                <div class="flex-group">
+                 
+                </div>
+                <div class="flex-group">
+                    
+                </div>
+                <input type="email" id="email" placeholder="Email Address" required>
+                
+                <button type="submit" href="home.html" >Register</button>
+            </form>
+          
+        </div>
+    </div>
+</div>
+
+
+<section class="section-Contact">
+    <h1> 2 Running + 2 StandBy
+    </h1>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Product 1 -->
+            <div class="col">
+                <div class="cardimg">
+                    <img src="image/1R+1sb.png" class="card-img-top" alt="Product 1">
+                 </div> </div> </div>
+     </div>                              
+      <button onclick="showModal('registration-form')" class="regibtn">How your pump Running</button>
+
+    </div>
+    
+</section>
+  
+   
+   
+</section>
+{% endblock content %}
+    

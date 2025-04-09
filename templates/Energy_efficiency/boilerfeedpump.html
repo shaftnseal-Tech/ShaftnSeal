@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'Energy_efficiency/boiler-page.css' %}">
+{% endblock css %}
+    
+{% block content %}
+<section class="hero-section">
+    <h1 class="seal"> Boiler Feed water Pump Operating Philosophy
+    </h1>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Product 1 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-titleh5e">Product 1</h5>
+                    </div>
+                    <a class="btnboiler " href="Boiler1R+1SBpage.html">1R + 1SB</a>
+                </div>
+            </div>
+           
+    
+            <!-- Product 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-titleh5e">Product 1</h5>
+                    </div>
+                    <button class="btnboiler ">2R+2SB</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-titleh5e">Product 1</h5>
+                    </div>
+                    <button class="btnboiler ">MR + MR</button>
+                </div>
+            </div>
+            <!-- Add more products here -->
+    
+        </div>
+    </div>
+    
+</section>
+{% endblock content %}
+    

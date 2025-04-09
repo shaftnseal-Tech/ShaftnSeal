@@ -1,34 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Modal</title>
 
-  <!-- FontAwesome Icons -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- Bootstrap 5 -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <style>
-    /* Global Styles */
-    body {
-      margin: 0;
-      padding: 0;
-      background: #f0f2f5;
-      font-family: 'Arial', sans-serif;
-    }
-
-   
-    .navbar {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+body {
+    padding: 0;
+    margin: 0;
+  
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+        .navbar {
+            background: #033043;
             padding: 12px 0;
             position: relative;
         }
@@ -61,7 +41,7 @@
         .logout-btn {
             position: absolute;
             right: 15px;
-            background: #e74c3c;
+            background: #fda521;
             border-radius: 25px;
             padding: 8px 25px !important;
             margin-right: 20px;
@@ -155,7 +135,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 2rem;
-                background: linear-gradient(135deg, #2c3e50, #3498db);
+                background-color:white;
                 text-align: center;
             }
         
@@ -165,13 +145,13 @@
             }
         
             .seal {
-                color: white;
+                color: #033043;
                 font-size: 3rem;
                 margin-bottom: 2rem;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
             .subtitle{
-                color: white;
+               color: #033043;
                 font-size:20px;
                 margin-bottom: 2rem;
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -182,6 +162,7 @@
             .search-icon-container {
                 position: relative;
                 max-width: 800px;
+              
                 margin: 0 auto;
             }
         
@@ -189,6 +170,7 @@
                 width: 100%;
                 padding: 1.2rem 2rem;
                 border: none;
+                background-color: #ece6e6;
                 border-radius: 30px;
                 font-size: 1.1rem;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -213,7 +195,7 @@
             .dropdown {
                 position: absolute;
                 width: 100%;
-                background: linear-gradient(135deg, #d6dee6, #cae5f7);
+                background: linear-gradient(135deg, #63b3d8, #63a2be);
                 border-radius: 15px;
                 margin-top: 1rem;
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -246,8 +228,9 @@
         
             .card {
                 padding: 1.5rem;
-                background: linear-gradient(135deg, #6f92b6, #3498db);
-               height: 150px;
+                background: linear-gradient(135deg, #225e79, #214b5e);
+
+                height: 150px;
                 border-radius: 10px;
                 color: #ffff;
                 text-decoration: none;
@@ -391,7 +374,7 @@
             }
             
             .modal {
-                display: flex;
+                display: none;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -435,7 +418,7 @@
                     background-color: white;
                 }
                 .modalimg{
-                    display: flex;
+                    display: none;
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -575,7 +558,7 @@
                 margin-bottom: 20px;
                     }
      .button{
-             background: linear-gradient(135deg, #325785, #104669);
+             background:#fda521;
                         align-items:center;
                          height: 40px;
                        width:250px;
@@ -592,7 +575,7 @@
 
                     }
      .btnselect{
-                        background: linear-gradient(135deg, #72a0d8, #4a93c4);
+                        background: #fda521;
                         align-items:center;
                         color: white;
                         border: none;
@@ -605,73 +588,88 @@
      .cardimg{
         width: 70%;
         height: 50%;
+
      }
-     ::placeholder{
-       color: #ffffff;
-     }
-  </style>
-</head>
-
-<body>
-    
-  <!-- Login Modal -->
-  <div class="modal" id="login-form">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">X</span>
-       
-        <form class="form-container" method="post">
-          {% csrf_token %}
-       
-          <h2>Login</h2>
-
-         <!-- Email/Phone Field -->
-<div class="form-group">
-    {{ form.username }}
-    {% if form.username.errors %}
-        <div class="text-danger">
-            {% for error in form.username.errors %}
-                <p>{{ error }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
-
-<!-- Password Field -->
-<div class="form-group">
-    {{ form.password }}
-    {% if form.password.errors %}
-        <div class="text-danger">
-            {% for error in form.password.errors %}
-                <p>{{ error }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
-
-
-        
-
-          <button type="submit" class="btnsubmit">Login</button>
-
-          <div class="mainbtn">
-            <!-- Optional additional buttons/links -->
-            <a href="#" class="text-white">Forgot Password?</a>
-          </div>
-        </form>
-        <div> <label for="register-form">not registerd?</label>
-          <a style="color: rgb(10, 212, 155) " href="{% url 'register' %}"> Register</a></div>
-       
-      </div>
-    </div>
-  </div>
-
-  <!-- JS to close modal -->
-  <script>
-    function closeModal() {
-      document.getElementById("login-form").style.display = "none";
+     /* chatboat css style*/
+     .chat-container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        overflow: hidden;
     }
-  </script>
-
-</body>
-</html>
+    .chat-header {
+        background: #1f456b;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .chatbox {
+        height: 350px;
+        overflow-y: auto;
+        padding: 15px;
+        background: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+    }
+    .chat-message {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 15px;
+        max-width: 80%;
+    }
+    .chatbot-message {
+        align-self: flex-start;
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+    .user-message {
+        align-self: flex-end;
+        background-color: #cce5ff;
+        color: #004085;
+    }
+    .chat-input {
+        display: flex;
+        padding: 10px;
+        background: white;
+        border-top: 1px solid #ddd;
+    }
+    .chatbox-input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .btnchatbox {
+        background-color: #4c4ccf;
+        border: none;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    .chat-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .btnboiler{
+        background: #1c94c7;
+                        align-items:center;
+                         height: 40px;
+                       width:100%;
+                         border: none;
+                        
+                        color:white;
+                        font-size:15px;
+                         border-radius: 10px;
+                         box-shadow: 0 5px 15px rgba(255, 251, 251, 0.1);
+                         transition: transform 0.3s ease;
+                         cursor: pointer;
+                         text-decoration:none;
+                         margin-top: 10px;
+    }

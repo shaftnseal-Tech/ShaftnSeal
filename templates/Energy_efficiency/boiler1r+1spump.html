@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'Energy_efficiency/boiler1.css' %}">
+{% endblock css %}
+    
+
+{% block content %}
+<div id="detailModal" class="modal-container">
+    <div class="modal-box">
+        <span id="closeDetailModal" class="close">&times;</span>
+        <h2>Pump Name Plate Data</h2>
+        <input type="text" class="input-modal" placeholder="Enter Qnp">
+        <input type="text" class="input-modal" placeholder="Enter Hnp">
+        <input type="text" class="input-modal" placeholder="Enter Pump Efficiency">
+        <input type="text" class="input-modal" placeholder="Enter Speed">
+        <button id="savePumpData" class="btnfind">Save</button>
+    </div>
+</div>
+<div id="motormodal" class="modal-container">
+    <div class="modal-box">
+        <span id="closeDetailModal" class="close">&times;</span>
+        <h2>Moter  Plate Data </h2>
+        <input type="text" class="input-modal" placeholder="Enter Voltage">
+        <input type="text" class="input-modal" placeholder="Enter Power Factor">
+        <input type="text" class="input-modal" placeholder="Enter Power">
+        <input type="text" class="input-modal" placeholder="Enter N1">
+        <input type="text" class="input-modal" placeholder="Enter N2">
+      <button id="SaveDetail" class="btnfind">Save</button>
+    </div>
+</div>
+<div id="ActualdataModal" class="modal-container">
+    <div class="modal-box">
+        <span  class="modal">&times;</span>
+        <h2>Actual Plate Data </h2>
+        <input type="text" class="input-modal" placeholder="Enter Actual flow rate (Qact)">
+        <input type="text" class="input-modal" placeholder="Enter Pump discharge pressure">
+        <input type="text" class="input-modal" placeholder="Enter pumo suction pressure">
+        <button id="Actualsavebtn" class="btnfind">Save</button>
+    </div>
+</div>
+<div id="testcurvemodal" class="modal-container">
+    <div class="modal-box">
+        <span  class="close">&times;</span>
+        <h2>Test curve Data </h2>
+       
+         <input type="file" id="xmlFileInput" accept=".xml">
+        <button id="uploadXmlBtn" class="btnfind">Upload XML</button>
+
+        <input type="text" class="input-modal" placeholder="uplod Test Curve Data Xlxs">
+        <button id="testcurvesavebtn" class="btnfind">Save</button>
+    </div>
+</div>
+<div id="ElectricalModal" class="modal-container">
+    <div class="modal-box">
+        <span id="closeDetailModal" class="close">&times;</span>
+        <h2>Electrical Parameter</h2>
+        <input type="text" class="input-modal" placeholder="Enter Voltage">
+        <input type="text" class="input-modal" placeholder="Enter Power Factor">
+        <input type="text" class="input-modal" placeholder="Enter Power">
+        <input type="text" class="input-modal" placeholder="Enter Efficiency">
+      <button id="Electricalsavebtn" class="btnfind">Save</button>
+    </div>
+</div>
+<div id="CommercialdataModal" class="modal-container">
+    <div class="modal-box">
+        <span id="closeDetailModal" class="close">&times;</span>
+        <h2>Commercial Data </h2>
+        <input type="text" class="input-modal" placeholder="Enter no of hrs/years pump is Running">
+        <input type="text" class="input-modal" placeholder="Enter Cost of Electricity">
+
+        <button class="btnfind" onclick="navigateToNextPage()">Submit</button>
+    </div>
+</div>
+<div id="selectionModal" class="modal-container">
+    <div class="modalcontent">
+        <div class="container my-5">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="openPumpModal"  class="selectbtn"><h4>Pump Name Plate Data</h4></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="openmotormodal"  class="selectbtn"><h4>Motor Plate Data</h4></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="openActulModal"  class="selectbtn"><h4>Actual Plate Data </h4></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="opentestcueveModal"  class="selectbtn"><h4>Test curve Data </h4></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="openElectricalModal"  class="selectbtn"><h4>Electrical Parameter </h4></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <button id="opencommercialModal"  class="selectbtn"><h4>Commercial Data </h4></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<section class="hero-section">
+    <h1 class="seal"> 1 Running + 1 StandBy
+    </h1>
+    <div class="container my-5">
+        <img src="/image/1R+1sb.png" class="cardimg" alt="Product 1">
+            </div   > 
+            <div style="display: flex; justify-content: center; margin: 20px;">
+                <button class="button " id="backbtn"> Back</button>
+                <button  id="showModalBtn" class="button">How your pump Running</button>
+
+            </div>     
+             </section>
+    </section>
+   
+{% endblock content %}
+
+
+{% block js %}
+
+{% endblock js %}
+    

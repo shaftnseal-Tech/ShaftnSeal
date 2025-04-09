@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
-from .forms import RegistrationForm
-from .models import Account
+from .forms import RegistrationForm,UserProfileUpdateForm,UserUpdateForm
+from .models import Account,UserProfile
 from django.contrib import messages,auth
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
@@ -13,6 +13,8 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
+
+
 
 
 def register(request):
@@ -97,6 +99,7 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 
+
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
@@ -118,9 +121,37 @@ def activate(request,uidb64,token):
         messages.error(request,'Activation link is invalid!')
         return redirect('register')
 
+
+
+
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    context = {}
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            u_form = UserUpdateForm(request.POST, instance=request.user)
+           
+
+            if u_form.is_valid() :
+                u_form.save()
+               
+                messages.success(request, 'Profile updated successfully!')
+                return redirect('dashboard')
+            else:
+                messages.error(request, 'Error in updating profile!')
+                return redirect('dashboard')
+        else:
+            u_form = UserUpdateForm(instance=request.user)
+          
+
+        context = {
+            'u_form': u_form,
+           }
+
+    return render(request, 'accounts/dashboard.html', context)
+
+
 
 
 def forgotPassword(request):
@@ -151,6 +182,9 @@ def forgotPassword(request):
             return redirect('forgotPassword')
     return render(request, 'accounts/forgotPassword.html')
 
+
+
+
 def resetpassword_validate(request,uidb64,token):
     try:
         uid=urlsafe_base64_decode(uidb64).decode()
@@ -165,6 +199,9 @@ def resetpassword_validate(request,uidb64,token):
         messages.error(request,'This link has been expired!')
         return redirect('login')
         
+
+
+
 def resetPassword(request):
     if request.method=='POST':
         password=request.POST['password']

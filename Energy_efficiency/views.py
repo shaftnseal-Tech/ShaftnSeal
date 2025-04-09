@@ -63,3 +63,11 @@ def pump_analysis_view(request):
         form = PumpAnalysisForm()
     
     return render(request, "Energy_efficiency/src_graph.html", {"form": form, "graph_url": graph_url})
+
+def Energy_efficiency_view(request):
+    return render(request, 'Energy_efficiency/energy_efficiency.html')
+
+def boiler_feedpump_view(request):
+    return render(request, 'Energy_efficiency/boilerfeedpump.html')
+def boiler_feedpump_1r1s_view(request):
+    return render(request, 'Energy_efficiency/boiler1r+1spump.html')
