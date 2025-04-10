@@ -137,7 +137,7 @@ def dashboard(request):
                 u_form.save()
                
                 messages.success(request, 'Profile updated successfully!')
-                return redirect('dashboard')
+                return redirect('home')
             else:
                 messages.error(request, 'Error in updating profile!')
                 return redirect('dashboard')

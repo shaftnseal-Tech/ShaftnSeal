@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Maker, PumpModel, ModelVariant, ModelPart, ModelVariantPart 
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.templatetags.static import static
 
 
 def get_pumpmodels(request, id):
@@ -13,9 +15,6 @@ def get_model_varient(request, id):
     variants = ModelVariant.objects.filter(model_id=id)
     data = list(variants.values('id', 'discharge_diameter', 'stages'))
     return JsonResponse(data, safe=False)
-
-from django.conf import settings
-from django.templatetags.static import static
 
 def get_parts(request, model_id, variant_id):
     # Fetch common parts (for model)
