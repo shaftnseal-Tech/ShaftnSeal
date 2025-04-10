@@ -1,14 +1,8 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block css %} 
-{{ block.super }}
+{% extends 'base.html' %} {% load static %} {% block css %} {{ block.super }}
 
 <link rel="stylesheet" href="{% static 'Products/home.css' %}" />
 
-
-{% endblock css %}
-
-{% block content %}
+{% endblock css %} {% block content %}
 
 <section class="hero-section bg-white">
   <div class="hero-content">
@@ -16,12 +10,17 @@
     <p class="subheading">
       Your One-Stop Solution for Industrial Sealing & Pump Needs
     </p>
-    <div >
-      
-      <p>Welcome, <strong>{{ user.first_name }} 
-        {% comment %} {{ user.last_name }}</strong></p>
-    <p>Email: {{ user}}</p> {% endcomment %}
-    {% comment %} <p>Authenticated: {{ user.is_authenticated }}</p> {% endcomment %}
+    <div>
+      <p>
+        Welcome,
+        <strong
+          >{{ user.first_name }} {% comment %} {{ user.last_name }}</strong
+        >
+      </p>
+      <p>Email: {{ user}}</p>
+      {% endcomment %} {% comment %}
+      <p>Authenticated: {{ user.is_authenticated }}</p>
+      {% endcomment %}
     </div>
     <div class="search-icon-container">
       <input
@@ -33,7 +32,10 @@
       <i class="fas fa-search search-icon"></i>
       <div class="dropdown" id="dropdown-container">
         <div class="cards-container" id="cards-container">
-          <a href="{% url 'Energy_efficiency_home' %}" class="card" data-url="{% url 'Energy_efficiency_home' %}"
+          <a
+            href="{% url 'Energy_efficiency_home' %}"
+            class="card"
+            data-url="{% url 'Energy_efficiency_home' %}"
             >Energy Efficiency</a
           >
           <a
@@ -54,16 +56,22 @@
       </div>
     </div>
     <div class="hero-image mt-5" id="lottie-container">
-      {% comment %} <img src="{% static 'img/homeheroimg.svg' %}"
-      alt="Industrial Solutions"> {% endcomment %}
-       <img src="{% static 'img/2.svg' %}" alt="Industrial Solutions" class="animated-svg">
+      {% comment %}
+      <img
+        src="{% static 'img/homeheroimg.svg' %}"
+        alt="Industrial Solutions"
+      />
+      {% endcomment %}
+      <img
+        src="{% static 'img/2.svg' %}"
+        alt="Industrial Solutions"
+        class="animated-svg"
+      />
     </div>
   </div>
 </section>
 
-{% endblock  %} 
-
-{% block js %}
+{% endblock %} {% block js %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.13/lottie.min.js"></script>
 
