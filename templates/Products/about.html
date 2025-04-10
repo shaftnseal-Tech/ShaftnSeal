@@ -1,118 +1,112 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{block.super}}
+<link rel="stylesheet" href="{% static 'Products/aboutus.css' %}" />
 
-
-{% block css %}
-    {{block.super}}
 {% endblock css %}
-    
-
-{% block content %}
+ {% block content %}
 <section class="hero-section">
-    <div class="hero-content">
-        <h1 class="seal">About Us</h1>
-       
-        <p class="subtitle">
-            Shaft & Seal is a specialized engineering solutions provider dedicated to enhancing energy 
-            efficiency in pumping systems. With expertise in pumps, boiler feed pumps, drive shafts, 
-            mechanical seals, and high-quality pump spares, we offer cutting-edge solutions that optimize 
-            performance, reduce energy consumption, and extend the life of industrial machinery
-        </p>
-        <button class="learn-more-btn">Learn Mores</button>
+  <div class="hero-content">
+    <h1 class="about">About Us</h1>
 
-    
-    </div>
+    <p class="subtitle">
+      Shaft & Seal is a specialized engineering solutions provider dedicated to
+      enhancing energy efficiency in pumping systems. With expertise in pumps,
+      boiler feed pumps, drive shafts, mechanical seals, and high-quality pump
+      spares, we offer cutting-edge solutions that optimize performance, reduce
+      energy consumption, and extend the life of industrial machinery
+    </p>
+    <button class="learn-more-btn">Learn Mores</button>
+  </div>
+
   <section>
     <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Product 1 -->
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body">
-                        <h4>Energy-Efficient Pumping System</h4>
-                        <p>Precision-engineered solutions for high-pressure application.</p>
-                    </div>
-
-                </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Product 1 -->
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4>Energy-Efficient Pumping System</h4>
+              <p>
+                Precision-engineered solutions for high-pressure application.
+              </p>
             </div>
-    
-            <!-- Product 2 -->
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body">
-                        <h4>Boiler Feed Pumps</h4>
-                        <p>Precision-engineered solutions for high-pressure applications.</p>
-
-                    </div>
-
-
-                </div>
-            </div>
-    
-            <!-- Product 3 -->
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body">
-                        <h4>Drive Shafts</h4>
-                        <p>Manufacturing and supplying robust shafts for pumps and other machinery.</p>
-
-                    </div>
-
-
-                </div>
-            </div>
-    
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body">
-                        <h4>Drive Shafts</h4>
-                        <p>Manufacturing and supplying robust shafts for pumps and other machinery.</p>
-
-                    </div>
-
-
-                </div>
-            </div>
-    
-            <div class="col">
-                <div class="card ">
-                    <div class="card-body">
-                        <h4>Drive Shafts</h4>
-                        <p>Manufacturing and supplying robust shafts for pumps and other machinery.</p>
-
-                    </div>
-
-
-                </div>
-            </div>
-    
-            <!-- Add more products here -->
-    
+          </div>
         </div>
+
+        <!-- Product 2 -->
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4>Boiler Feed Pumps</h4>
+              <p>
+                Precision-engineered solutions for high-pressure applications.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4>Drive Shafts</h4>
+              <p>
+                Manufacturing and supplying robust shafts for pumps and other
+                machinery.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4>Drive Shafts</h4>
+              <p>
+                Manufacturing and supplying robust shafts for pumps and other
+                machinery.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4>Drive Shafts</h4>
+              <p>
+                Manufacturing and supplying robust shafts for pumps and other
+                machinery.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more products here -->
+      </div>
     </div>
   </section>
-    <section class="container my-5">
-        <div class="maincontent">
-            <h2 >The Promoters</h2>
 
-            <div class="row">
-               <p>
-                Shaft & Seal is led by an experienced energy auditor with over 20 years of expertise in pumping systems. 
-                Our leadership brings deep technical knowledge in pump efficiency optimization, system audits, and engineering solutions, ensuring clients receive the most effective and reliable products.
-With a commitment to innovation, sustainability, and cost-effective engineering, Shaft & Seal is your trusted partner for all pumping system needs.
-               </p>
+  <section class="container my-5">
+    <div class="maincontent">
+      <h2>The Promoters</h2>
 
-            </div>
-        </div>
-       
-    </section>
-   
-  
-    <div >
+      <div class="row">
+        <p>
+          Shaft & Seal is led by an experienced energy auditor with over 20
+          years of expertise in pumping systems. Our leadership brings deep
+          technical knowledge in pump efficiency optimization, system audits,
+          and engineering solutions, ensuring clients receive the most effective
+          and reliable products. With a commitment to innovation,
+          sustainability, and cost-effective engineering, Shaft & Seal is your
+          trusted partner for all pumping system needs.
+        </p>
+      </div>
     </div>
+  </section>
 
-
-    
+  <div></div>
 </section>
 {% endblock %}
-    
