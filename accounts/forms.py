@@ -1,5 +1,6 @@
 from django import forms
 from .models import Account, UserProfile
+import re
 
 
 class RegistrationForm(forms.ModelForm):
@@ -16,7 +17,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ['first_name','last_name','phone_number', 'email', 'password','address','pincode','designation','department']
+        fields = ['first_name','last_name','phone_number', 'email','address','pincode','designation','department', 'password']
 
 
     def clean(self):
@@ -28,6 +29,12 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError(
                 "Password does not match!"
             )
+    
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number')
+        if not re.match(r'^\d{10}$', str(phone)):
+            raise forms.ValidationError("Phone number must be exactly 10 digits.")
+        return phone
 
     
     def __init__(self, *args, **kwargs):

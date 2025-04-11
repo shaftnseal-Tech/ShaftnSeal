@@ -71,11 +71,8 @@ def register(request):
             return redirect('/accounts/login/?command=verification&email='+email) 
     else:
         form = RegistrationForm()
-
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/register.html', context)
+    
+    return render(request, 'accounts/register.html',{'form':form})
 
 
 
