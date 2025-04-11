@@ -1,96 +1,95 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static %}
-{% block title %}
-    Register 
-{% endblock %}
+{% block title %} 
+Register 
+{% endblock %} 
+{% block css %} 
+{{ block.super }}
 
+<link rel="stylesheet" href="{% static 'accounts/allform.css' %}" />
+
+{% endblock css %}
 {% block content %}
 
 <section class="section-content padding-y">
-    <div class="card mx-auto shadow" style="max-width: 700px; margin-top: 50px;">
-      <article class="card-body p-4">
-        {% include 'includes/alerts.html' %}
-        <header class="mb-4 text-center">
-          <h4 class="card-title">Create Your Account</h4>
-        </header>
-  
-        <form action="{% url 'register' %}" method="POST">
-        {% csrf_token %}
-  
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>First Name</label>
-              {{ form.first_name }}
-            </div>
-            <div class="form-group col-md-6">
-              <label>Last Name</label>
-              {{ form.last_name }}
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>Email</label>
-              {{ form.email }}
-            </div>
-            <div class="form-group col-md-6">
-              <label>Phone Number</label>
-              {{ form.phone_number }}
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>Address</label>
-              {{ form.address }}
-            </div>
-            <div class="form-group col-md-6">
-              <label>Pincode</label>
-              {{ form.pincode }}
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>Department</label>
-              {{ form.department }}
-            </div>
-            <div class="form-group col-md-6">
-              <label>Designation</label>
-              {{ form.designation }}
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>Create Password</label>
-              {{ form.password }}
-            </div>
-            <div class="form-group col-md-6">
-              <label>Confirm Password</label>
-              {{ form.confirm_password }}
-            </div>
-          </div>
-  
-          <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
-          </div>
-  
-          <!-- Error display -->
-          <div class="text-danger">
-            {{ form.email.errors }}
-            {{ form.non_field_errors }}
-          </div>
-        </form>
-      </article>
-    </div>
-  
-    <p class="text-center mt-4">
-      Already have an account? <a href="{% url 'login' %}">Log In</a>
-    </p>
-  </section>
-  
-  
+  <div class="card mx-auto shadow" style="max-width: 700px; margin-top: 50px">
+    <article class="card-body p-4">
+      {% include 'includes/alerts.html' %}
+      <header class="mb-4 text-center">
+        <h4 class="card-title">Register</h4>
+      </header>
 
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>First Name</label>
+            {{ form.first_name }}
+          </div>
+          <div class="form-group col-md-6">
+            <label>Last Name</label>
+            {{ form.last_name }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Email</label>
+            {{ form.email }}
+          </div>
+          <div class="form-group col-md-6">
+            <label>Phone Number</label>
+            {{ form.phone_number }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Address</label>
+            {{ form.address }}
+          </div>
+          <div class="form-group col-md-6">
+            <label>Pincode</label>
+            {{ form.pincode }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Department</label>
+            {{ form.department }}
+          </div>
+          <div class="form-group col-md-6">
+            <label>Designation</label>
+            {{ form.designation }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Create Password</label>
+            {{ form.password }}
+          </div>
+          <div class="form-group col-md-6">
+            <label>Confirm Password</label>
+            {{ form.confirm_password }}
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-register">Register</button>
+        </div>
+        <!-- Error display -->
+        <div class="text-danger">
+          {{ form.email.errors }} {{ form.non_field_errors }}
+        </div>
+      </form>
+    </article>
+  </div>
+
+  <p class="text-center mt-4">
+    Already have an account? <a href="{% url 'login' %}">Log In</a>
+  </p>
+</section>
 
 {% endblock %}
