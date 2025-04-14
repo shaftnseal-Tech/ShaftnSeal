@@ -1,103 +1,94 @@
-.about{
-    color:crimson !important;
-   
+
+/* General Styling */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
 }
-.hero-section{
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #F2F2F2 !important;
+
+.breadcrumb img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
 
-  .breadcrumb img {
-    width: 100%;
-    height: 500px;
-  }
+/* Hero Section */
+.hero-section {
+  background: #f2f2f2;
+  color: white;
+  padding: 60px 20px;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
 
-  .breadcrumb a {
-    text-decoration: none;
-    color: #007bff;
-    display: flex;
-    align-items: center;
-   
-  }
+.hero-content .subtitle {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: auto;
+  padding: 10px;
+  color: black;
+  text-align: center;
+}
 
-  .breadcrumb span {
-    color: #6c757d;
-  }
-  
-  /*card effect*/
-  .card {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    padding: 1rem;
-    z-index: 0;
-    background:white;
-    color:white;
-  }
+.learnmorebtn {
+  background-color: #ff7f50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
 
-  .card::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff, #ffcc00);
-    background-size: 600% 600%;
-    z-index: -2;
-    filter: blur(10px);
-    animation: glow 6s linear infinite;
-    border-radius: 18px;
-  }
+.learnmorebtn:hover {
+  background-color: #ff5722;
+  transform: scale(1.05);
+}
 
-  .card::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    background: linear-gradient(135deg, #95a5a6, #5d8aa8);
+/* Cards */
+.card {
+  border: none;
+  background: linear-gradient(to right, #004d7a, #008793);
 
-    z-index: -1;
-    border-radius: 14px;
-  }
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
 
-  @keyframes glow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
-  .card h4 {
-    font-weight: 600;
-  }
+.card-body h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
 
-  .card p {
-    color:rgb(255, 249, 249);
-  }
-  .subtitle{
-    font-size: 20px;
-  }
-  .learnmorebtn{
-    background-color: #fda521;
-    color: #fff;
-    border: none;
-    width: 200px;
-    height: 30px;
-    font-size: 18px;
-    border-radius: 10px;
-  }
+/* Promoters Section */
+.maincontent {
+  background: linear-gradient(to right, #004d7a, #008793);
+
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.maincontent h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.maincontent p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: white;
+}
+
