@@ -1,0 +1,85 @@
+.hero-section{
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #F2F2F2 !important;
+}
+
+.search-icon-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#search-input {
+  width: 50%;
+  padding: 18px 24px;
+  border: 2px solid #ddd;
+  border-radius: 40px;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+#search-input:focus {
+  border-color: #fda521;
+  box-shadow: 0 0 12px rgb(226, 250, 89);
+}
+
+/* Search Icon */
+.search-icon {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.4em;
+  
+}
+.maincardCard{
+    display: flex;
+   justify-content:center;
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 20px;
+    margin-left:20%;
+
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    backdrop-filter: blur(10px);
+    background: whitesmoke;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.1);
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card-titleh5{
+    font-size: 18px;
+    color:white
+}
+.seal {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #0c2340;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+  display: inline-block; 
+  position: relative;
+}

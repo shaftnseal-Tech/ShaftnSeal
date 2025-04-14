@@ -431,3 +431,14 @@ h4 {
   width: 50%;
   height: 50%;
 }
+/**/
+.seal {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #0c2340;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+  display: inline-block; 
+  position: relative;
+}

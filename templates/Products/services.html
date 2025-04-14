@@ -1,77 +1,90 @@
 {% extends 'base.html' %}
 {% load static %}
+<<<<<<< Updated upstream
 {% block title %}
     Shaft & Seal | Service
 {% endblock %}
+=======
+{% block css %}
+{{ block.super }}
+
+<link rel="stylesheet" href="{% static 'Products/services.css' %}" />
+
+{% endblock css %}
+>>>>>>> Stashed changes
 
 {% block content %}
 
 <section class="hero-section">
-    <h1 class="seal">Our Services
-    </h1>   
-     <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Product 1 -->
-            <div class="col">
-                <div class="card">                
-                     <div class="card2" >
-                        <h2>High-Quality Manufacturing</h2>
-                        <p>Our state-of-the-art facilities ensure precision engineering and durability.</p>
-                     </div>                   
-                </div>
-            </div>
-    
-            <!-- Product 2 -->
-            <div class="col">
-                <div class="card">
-                    <div class="card2">
-                        <h2>Custom Pump Design</h2>
-                        <p>We specialize in designing pumps tailored to your specific industrial needs.</p>
-                    </div>                      
-                   
-                </div>
-            </div>
-    
-            <!-- Product 3 -->
-            <div class="col">
-                <div class="card">
-                    
-                    <a class="card2">
-                        <h2>Maintenance & Support</h2>
-                        <p>Comprehensive maintenance services to keep your pumps running efficiently.</p>         
-                    </a>                       
-                 
-                </div>
-            </div>
-    
-            <!-- Add more products here -->
-            <div class="col">
-                <div class="card">
-                    
-                    <div class="card2">
-                        <h2>Roto Pumps:</h2>
-                        <p>
-                            Specializes in positive displacement pumps and has 
-                            a strong global presence, with a focus on quality and reliability.  </p>         
-                        </div>                      
-                 
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    
-                    <div class="card2">
-                        <h2>KSB</h2>
-                        <p>
-                            A global leader in pumps, valves, and services, with a strong presence in India, 
-                            offering industrial pumps and solutions for various applications. </p>         
-                    </a>                       
-                 
-                </div>
-            </div>
-             
-        </div>
+    <div >
+        <h1 class="seal"> Services</h1>
     </div>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Product 1 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Energy-Efficient Pumping System</h4>
+                <p>
+                  Precision-engineered solutions for high-pressure application.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Product 2 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Boiler Feed Pumps</h4>
+                <p>
+                  Precision-engineered solutions for high-pressure applications.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Product 3 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Add more products here -->
+        </div>
+      </div>
 </section>
 {% endblock  %}
     
