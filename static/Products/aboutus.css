@@ -14,7 +14,6 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin-bottom: 20px;
 }
-<<<<<<< Updated upstream
 
 /* Hero Section */
 .hero-section {
@@ -45,13 +44,23 @@ body {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-=======
+
 .hero-content .subtitle {
     font-size: 1.3rem;
     max-width: 800px;
     margin: auto;
     padding: 10px;
     text-align: center;
+
+    background-color: #F2F2F2 !important;
+}
+.hero-content .subtitle {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+
   }
 
 
@@ -89,19 +98,19 @@ body {
     background:white;
     color:white;
   }
->>>>>>> Stashed changes
+
 
 .learnmorebtn:hover {
   background-color: #ff5722;
   transform: scale(1.05);
 }
 
-<<<<<<< Updated upstream
+
 /* Cards */
 .card {
   border: none;
   background: linear-gradient(to right, #004d7a, #008793);
-=======
+
   .card::after {
     content: "";
     position: absolute;
@@ -110,7 +119,6 @@ body {
     right: 2px;
     bottom: 2px;
     background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
->>>>>>> Stashed changes
 
   border-radius: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -149,8 +157,7 @@ body {
   color: white;
 }
 
-<<<<<<< Updated upstream
-=======
+
   .card p {
     color:rgb(255, 249, 249);
   }
@@ -193,4 +200,4 @@ body {
     line-height: 1.8;
     color:white;
   }
->>>>>>> Stashed changes
+  }
