@@ -54,17 +54,14 @@ body {
 
     background-color: #F2F2F2 !important;
 }
-.hero-content .subtitle {
-    font-size: 1.3rem;
-    max-width: 800px;
-    margin: auto;
-    padding: 10px;
-    text-align: center;
-
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
   }
 
-
-   img {
+  .breadcrumb img {
     width: 100%;
     height: 50px;
   }
@@ -118,45 +115,27 @@ body {
     left: 2px;
     right: 2px;
     bottom: 2px;
-    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
+    background: linear-gradient(135deg, #95a5a6, #5d8aa8);
 
-  border-radius: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
+    z-index: -1;
+    border-radius: 14px;
+  }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
+  @keyframes glow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
-.card-body h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-}
-
-/* Promoters Section */
-.maincontent {
-  background: linear-gradient(to right, #004d7a, #008793);
-
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-.maincontent h2 {
-  font-size: 2rem;
-  color: white;
-  margin-bottom: 20px;
-}
-
-.maincontent p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: white;
-}
-
+  .card h4 {
+    font-weight: 600;
+  }
 
   .card p {
     color:rgb(255, 249, 249);
@@ -167,37 +146,10 @@ body {
   .learnmorebtn {
     background-color: #ff7f50;
     border: none;
-    color: white;
-    padding: 12px 24px;
-    margin-top: 20px;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 10px;
   }
-  
-  .learnmorebtn:hover {
-    background-color: #ff5722;
-    transform: scale(1.05);
-  }
-  
- 
-  .maincontent {
-    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
 
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
- .maincontent h2 {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  .maincontent p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color:white;
-  }
   }
