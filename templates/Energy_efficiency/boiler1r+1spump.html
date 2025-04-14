@@ -1,9 +1,14 @@
-{% extends 'base.html' %} {% load static %} {% block css %} {{ block.super }}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{ block.super }}
 <link
   rel="stylesheet"
   href="{% static 'Energy_efficiency/boiler-1r+1s.css' %}"
 />
-{% endblock css %} {% block content %}
+{% endblock css %} 
+{% block content %}
+
 <!-- System Modal -->
 <div id="systemModal" class="modal-container">
   <div class="modal-box">
@@ -188,20 +193,40 @@
 </div>
 
 <!-- Hero Section -->
-<section class="hero-section">
-  <h1 class="seal">1 Running + 1 StandBy</h1>
-  <div class="container my-5">
-    <img
-      src="{% static 'Energy_efficiency/images/1R+1sb.png' %}"
-      class="cardimg"
-      alt="Product 1"
-    />
-  </div>
-  <div style="display: flex; justify-content: center; margin: 20px">
-    <button class="button" id="backbtn">Back</button>
-    <button id="showModalBtn" class="button">How your pump Running</button>
+
+<section class="hero-section bg-light py-5">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-5">
+    
+    <!-- Image on the left -->
+    <div class="flex-shrink-0">
+      <img
+        src="{% static '../static/img/1rs-pump.avif' %}"
+        class="cardimg img-fluid"
+        alt="Product 1"
+        style="max-width: 800px; width: 100%; height: auto;"
+      />
+    </div>
+
+    <!-- Text and Buttons on the right -->
+    <div class="text-center text-md-start" style="max-width: 500px;">
+      <h1 class="seal mb-3">1 Running + 1 StandBy</h1>
+      <p class="mb-4">
+        Our dual-pump system ensures reliability and efficiency. While one pump operates to deliver optimal performance, the other remains on standby, ready to take over instantly in case of failure or maintenance. This setup reduces downtime and enhances operational safety.
+      </p>
+      <div class="d-flex justify-content-center justify-content-md-start gap-3">
+        <button class=" custom-btn" id="backbtn"><i class="bi bi-arrow-left"></i></button>
+        <button id="showModalBtn" class=" custom-btn">How your pump Running</button>
+      </div>
+    </div>
+
   </div>
 </section>
-{% endblock content %} {% block js %} {{ block.super }}
+
+
+
+
+{% endblock content %}
+{% block js %}
+{{ block.super }}
 <script src="{% static 'Energy_efficiency/boiler-1r+1s.js' %}"></script>
 {% endblock js %}

@@ -1,0 +1,106 @@
+
+{% comment %} energy_efficiency.html page {% endcomment %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{ block.super}}
+<link rel="stylesheet" href="{% static 'Energy_efficiency/ef.css' %}" />
+{% endblock css %} 
+{% block content %}
+
+<section class="hero-section">
+  <h1 class="seal" data-text="EnergyEfficiency">Energy Efficiency</h1>
+  <div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+     
+      <div class="col">
+        <div class="card">
+          <a class="card2" href="{% url 'boiler_feedpump' %}">
+            Boiler Feed Pump
+          </a>
+        </div>
+      </div>
+
+      
+      <div class="col">
+        <div class="card">
+          <a class="card2"> Condensate Extraction Pum </a>
+        </div>
+      </div>
+
+   
+      <div class="col">
+        <div class="card">
+          <a class="card2"> Cooling Tower Pump (ACW/MCW) </a>
+        </div>
+      </div>
+
+    
+      <div class="col">
+        <div class="card">
+          <a class="card2"> DM Water Pump </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
+
+
+{% comment %} boiler_feedpump.html page {% endcomment %}
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'Energy_efficiency/boiler-page.css' %}">
+{% endblock css %}
+    
+{% block content %}
+<section class="hero-section">
+    <h1 class="seal"> What is your operating philosophy?
+    </h1>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top" >
+                    <div class="card-body">
+                       
+                    </div>
+                    <a class="btnboiler " href="{% url 'boiler_feedpump_1r+1s' %}">1Running + 1StandBy</a>
+                </div>
+            </div>
+           
+    
+            
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top">
+                    <div class="card-body">
+                       
+                    </div>
+                    <button class="btnboiler ">2Running +1StandBy</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="/image/1R+1sb.png" class="card-img-top" >
+                    <div class="card-body">
+                        
+                    </div>
+                    <button class="btnboiler ">Multiple Running + Multiple StandBy</button>
+                </div>
+            </div>
+          
+    
+        </div>
+    </div>
+    
+</section>
+{% endblock content %}
+     {% endcomment %}

@@ -81,3 +81,27 @@
 .modal {
   margin-right: 800px;
 }
+
+.cardimg{
+  border-radius: none;
+
+}
+
+.custom-btn {
+  /* background-color: #FFB22Cv; */
+  background-color: #cf0f47 !important;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 178, 44, 0.3);
+}
+
+.custom-btn:hover {
+  background-color: #c1093d !important;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(255, 178, 44, 0.5);
+  transform: translateY(-2px);
+}

@@ -1,62 +1,75 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block css %}
-    {{ block.super}}
-    <link rel="stylesheet" href="{% static 'Energy_efficiency/home.css' %}">
-{% endblock css %}
-    
-
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{ block.super}}
+<link rel="stylesheet" href="{% static 'Energy_efficiency/ef.css' %}" />
+{% endblock css %} 
 {% block content %}
-<section class="hero-section">
-    <h1 class="seal" data-text='EnergyEfficiency'>Energy Efficiency
-              
-    </h1>   
-     <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Product 1 -->
-            <div class="col">
-                <div class="card">
-                   
-                     <a class="card2" href="{% url 'boiler_feedpump' %}">
-                        Boiler Feed Pump
-                     </a>
-                      
-                    
-                </div>
+<section class="hero-section py-5 bg-light">
+  <div class="container text-center mb-5">
+    <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Energy Efficiency</h1>
+    <p class="text-muted">Explore our advanced pump solutions for optimal performance and energy savings.</p>
+  </div>
+
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      
+      <!-- Card Template -->
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center">
+            <div class="icon mb-3 text-custom">
+              <i class="bi bi-gear-fill fs-1"></i>
             </div>
-    
-            <!-- Product 2 -->
-            <div class="col">
-                <div class="card">
-                
-                    <a class="card2">
-                        Condensate Extraction Pum </a>                      
-                   
-                </div>
-            </div>
-    
-            <!-- Product 3 -->
-            <div class="col">
-                <div class="card">
-                    
-                    <a class="card2">
-                        Cooling Tower Pump (ACW/MCW)  </a>                       
-                 
-                </div>
-            </div>
-    
-            <!-- Add more products here -->
-            <div class="col">
-                <div class="card ">
-                   
-                    <a class="card2">
-                        DM Water Pump     </a>                       
-                 
-                </div>
-            </div>
+            <h5 class="card-title fw-semibold">Boiler Feed Pump</h5>
+            <p class="card-text text-muted small">High-pressure pumps ideal for boiler feeding.</p>
+            <a href="{% url 'boiler_feedpump' %}" class="btn custom-btn mt-2">Click Here</a>
+          </div>
         </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center">
+            <div class="icon mb-3 text-custom">
+              <i class="bi bi-droplet-fill fs-1"></i>
+            </div>
+            <h5 class="card-title fw-semibold">Condensate Extraction Pump</h5>
+            <p class="card-text text-muted small">Efficient removal of condensed steam from condensers.</p>
+            <a href="#" class="btn custom-btn mt-2">Click Here</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center">
+            <div class="icon mb-3 text-custom">
+              <i class="bi bi-fan fs-1"></i>
+            </div>
+            <h5 class="card-title fw-semibold">Cooling Tower Pump (ACW/MCW)</h5>
+            <p class="card-text text-muted small">Reliable performa in cooling water.</p>
+            <a href="#" class="btn custom-btn  mt-2">Click Here</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 hover-card">
+          <div class="card-body text-center">
+            <div class="icon mb-3 text-custom">
+              <i class="bi bi-water fs-1"></i>
+            </div>
+            <h5 class="card-title fw-semibold">DM Water Pump</h5>
+            <p class="card-text text-muted small">Specially designed for demineralized water systems.</p>
+            <a href="#" class="btn custom-btn mt-2">Click Here</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
+
+
 {% endblock content %}
-    
