@@ -7,7 +7,7 @@ __pycache__/
 shaftweb_env/
 env/
 venv/
-
+darshan_env/
 # Django Migrations (optional, if you don't want to track them)
 **/migrations/*.pyc
 **/migrations/__pycache__/
