@@ -7,15 +7,28 @@
 </head>
 <body>
     <h2>Pump Analysis</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Analyze</button>
+        <div>
+            {{ form1.as_p }}
+            {{ form2.as_p }}
+            {{ form3.as_p }}
+            {{ form4.as_p }}
+            {{ form5.as_p }}
+            {{ form6.as_p }}
+            {{ form7.as_p }}
+        </div>
+        <button type="submit">Submit</button>
     </form>
 
-    {% if graph_url %}
-        <h3>Comparison Graph</h3>
-        <img src="data:image/png;base64,{{ graph_url }}" alt="SRC vs Theoretical Curve">
+    {% if pdf_url %}
+        <h3>Preview of Theoretical SRC Curve (PDF):</h3>
+        <object data="{{ pdf_url }}" type="application/pdf" width="600" height="400">
+            <p>It appears your browser doesn't support PDF previewing. 
+                <a href="{{ pdf_url }}" target="_blank">Click here to view the PDF</a>.</p>
+        </object>
+        <br>
+        <a href="{{ pdf_url }}" download>Download PDF</a>
     {% endif %}
 </body>
 </html>

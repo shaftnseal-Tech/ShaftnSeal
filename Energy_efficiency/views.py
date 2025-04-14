@@ -1,73 +1,94 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import io
-import base64
+import pandas as pd
 from django.shortcuts import render
-from .forms import PumpAnalysisForm
+from .forms import (
+    System_data,
+    Pump_name_plate_data,
+    Motor_name_plate_data,
+    Electrical_parameters,
+    Commercial_data,
+    Actual_data,
+    Test_curve_data,
+)
+from .utils.services import PumpEfficiency  # Ensure this is correctly imported
+from django.conf import settings
+import os
 
-def pump_analysis_view(request):
-    graph_url = None  # Placeholder for graph image
-    
+def boiler_feedpump_1r1s_view(request):
+    graph_url = None
+    pdf_url = None  # Variable for the PDF URL
+
     if request.method == "POST":
-        form = PumpAnalysisForm(request.POST)
-        
-        if form.is_valid():
-            # Get form data
-            h1 = form.cleaned_data['h1']
-            h2 = form.cleaned_data['h2']
-            p1 = form.cleaned_data['p1']
-            p2 = form.cleaned_data['p2']
-            temperature = form.cleaned_data['temperature']
-            specific_gravity = form.cleaned_data['specific_gravity']
-            Q_act = form.cleaned_data['Q_act']
-            H_act = form.cleaned_data['H_act']
-            Qnp = form.cleaned_data['Qnp']
-            Hnp = form.cleaned_data['Hnp']
+        form1 = System_data(request.POST)
+        form2 = Pump_name_plate_data(request.POST)
+        form3 = Motor_name_plate_data(request.POST)
+        form4 = Electrical_parameters(request.POST)
+        form5 = Commercial_data(request.POST)
+        form6 = Actual_data(request.POST)
+        form7 = Test_curve_data(request.POST, request.FILES)
 
-            # Calculate Static Head
-            static_head = h2 - h1
+        if (
+            form1.is_valid() and form2.is_valid() and form3.is_valid()
+            and form4.is_valid() and form5.is_valid() and form6.is_valid()
+            and form7.is_valid()
+        ):
+            # Extract form data
+            h1 = form1.cleaned_data['h1']
+            h2 = form1.cleaned_data['h2']
+            p1 = form1.cleaned_data['p1']
+            p2 = form1.cleaned_data['p2']
+            temperature = form1.cleaned_data['temperature']
 
-            # Convert pressures from bar to meters of liquid column
-            pressure_head = ((p2 - p1) * 10) / specific_gravity  # 1 bar ≈ 10 meters water column
+            Qnp = form2.cleaned_data['Qnp']
+            Hnp = form2.cleaned_data['Hnp']
 
-            # Calculate Dynamic Head
-            dynamic_head = H_act - static_head - pressure_head
+            total_flow_rate = form6.cleaned_data['total_flow_rate']
+            actual_suction_pressure = form6.cleaned_data['actual_suction_pressure']
+            actual_discharge_pressure = form6.cleaned_data['actual_discharge_pressure']
 
-            # Compute SRC using the constant K
-            k = dynamic_head / (Q_act ** 2)
-            Q_values = np.linspace(0, Qnp * 1.2, 50)  # Generate flow rates
-            SRC_values = static_head + pressure_head + k * (Q_values ** 2)
+            
+            QH_values = form7.cleaned_data['QH_test_data']
+           
+            obj = PumpEfficiency()
+            sepecificgravity = obj.get_specific_gravity(temperature)
+            static_head = obj.calculate_static_head(h1, h2, p1, p2)
+            k1 = obj.calculate_theoretical_src('2r+1s', Qnp, Hnp, QH_values)
+            graph_url = obj.display_src()  
+            
+            pdf_url = os.path.join(settings.MEDIA_URL, 'src_plot_standard.pdf' if obj.pump_philosophy != '2R + 1s' else 'src_plot_2r1s.pdf')
+            print( pdf_url)
 
-            # Compute Theoretical Pump Curve
-            H_theoretical = Hnp * (1 - (Q_values / Qnp) ** 2)
-
-            # Plot graph
-            plt.figure(figsize=(7, 5))
-            plt.plot(Q_values, H_theoretical, 'b--', label="Theoretical Pump Curve")
-            plt.plot(Q_values, SRC_values, 'r-', label="System Resistance Curve (SRC)")
-            plt.scatter(Q_act, H_act, color='green', label="Actual Operating Point")
-            plt.xlabel("Flow Rate (Q) in m³/h")
-            plt.ylabel("Head (H) in meters")
-            plt.title("Comparison of Theoretical and Actual SRC Curves")
-            plt.legend()
-            plt.grid(True)
-
-            # Convert plot to image
-            buf = io.BytesIO()
-            plt.savefig(buf, format="png")
-            buf.seek(0)
-            graph_url = base64.b64encode(buf.getvalue()).decode("utf-8")
-            buf.close()
-    
     else:
-        form = PumpAnalysisForm()
-    
-    return render(request, "Energy_efficiency/src_graph.html", {"form": form, "graph_url": graph_url})
+        form1 = System_data()
+        form2 = Pump_name_plate_data()
+        form3 = Motor_name_plate_data()
+        form4 = Electrical_parameters()
+        form5 = Commercial_data()
+        form6 = Actual_data()
+        form7 = Test_curve_data()
+
+    context = {
+        'form1': form1,
+        'form2': form2,
+        'form3': form3,
+        'form4': form4,
+        'form5': form5,
+        'form6': form6,
+        'form7': form7,
+        'graph_url': graph_url,
+        'pdf_url': pdf_url,  # Pass the PDF URL to the template
+    }
+
+    return render(request, "Energy_efficiency/boiler1r+1spump.html", context)
+
+
+
+
 
 def Energy_efficiency_view(request):
     return render(request, 'Energy_efficiency/energy_efficiency.html')
 
 def boiler_feedpump_view(request):
     return render(request, 'Energy_efficiency/boilerfeedpump.html')
-def boiler_feedpump_1r1s_view(request):
-    return render(request, 'Energy_efficiency/boiler1r+1spump.html')
+
+

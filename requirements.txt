@@ -11,7 +11,7 @@ kiwisolver==1.4.8
 matplotlib==3.10.1
 numpy==2.2.4
 packaging==24.2
-panda==0.3.1
+pandas
 pillow==11.1.0
 PyMySQL==1.1.1
 pyparsing==3.2.3
