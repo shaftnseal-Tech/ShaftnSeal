@@ -1,27 +1,10 @@
 .hero-section{
-    padding: 60px 20px;
     text-align: center;
    
     background-color: #F2F2F2 !important;
+    height: 150vh;
 }
-@media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    padding: 30px 20px;
-  }
 
-  .hero-content {
-    max-width: 90%;
-  }
-
-  .learn-more-btn {
-    font-size: 14px;
-  }
-
-  .search-icon-container {
-    max-width: 350px;
-  }
-}
 
 
 .search-icon-container {
@@ -31,11 +14,12 @@
 }
 
 #search-input {
-  width: 50%;
+  width: 100%;
   padding: 18px 24px;
   border: 2px solid #ddd;
   border-radius: 40px;
   outline: none;
+  margin-top: 20px;
   font-size: 15px;
   transition: all 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
@@ -117,4 +101,94 @@
   height: 150px;
   border-radius: 10px;
 
+}
+/**/
+.about-banner {
+  position: relative;
+  height: 300px;
+  background-image: url("/static/img/website-page-contact-us-email-600nw-1958537320.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner-text {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-heading {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.breadcrumb-item {
+  display: inline;
+}
+
+.breadcrumb-link {
+  color: #fda521;
+  text-decoration: none;
+}
+
+.breadcrumb-separator {
+  color: white;
+  margin: 0 5px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
