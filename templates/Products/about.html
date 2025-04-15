@@ -3,7 +3,7 @@
 {% block css %}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'Products/aboutus.css' %}" />
-{% endblock css %}
+{% endblock css %} 
 {% block content %}
 
 <section class="hero-section">
@@ -31,9 +31,40 @@
     </div>
   </div>
 
+  <!-- Promoters Section -->
+  <section class="container my-5">
+    <div class="maincontent">
+      <h2 class="mb-5 mt-5 text-center">The Promoters</h2>
+      <div class="row align-items-center">
+        <!-- Text Column -->
+        <div class="col-md-6">
+          <p>
+            Shaft & Seal is led by an experienced energy auditor with over 20
+            years of expertise in pumping systems. Our leadership brings deep
+            technical knowledge in pump efficiency optimization, system audits,
+            and engineering solutions, ensuring clients receive the most
+            effective and reliable products. With a commitment to innovation,
+            sustainability, and cost-effective engineering, Shaft & Seal is your
+            trusted partner for all pumping system needs.
+          </p>
+        </div>
+        <!-- Image Column -->
+        <div class="col-md-6 text-center">
+          <img
+            src="{% static 'img/abtuss.avif' %}"
+            alt="Promoter"
+            class="promo-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Product Highlights Section -->
   <section class="container my-5">
+    <h2 class="text-center mb-5">Product Highlights</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
+      
       <!-- Card 1 -->
       <div class="col">
         <div class="card h-100 text-center">
@@ -46,7 +77,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Card 2 -->
       <div class="col">
         <div class="card h-100 text-center">
@@ -59,7 +90,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Card 3 -->
       <div class="col">
         <div class="card h-100 text-center">
@@ -73,7 +104,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Card 4 -->
       <div class="col">
         <div class="card h-100 text-center">
@@ -86,7 +117,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Card 5 -->
       <div class="col">
         <div class="card h-100 text-center">
@@ -102,37 +133,7 @@
       </div>
     </div>
   </section>
-  
 
-  <!-- Promoters Section -->
-
-<section class="container my-5">
-  <div class="maincontent">
-    <h2 class="mb-5 mt-5 text-center ">The Promoters</h2>
-    <div class="row align-items-center">
-      <!-- Text Column -->
-      <div class="col-md-6">
-        <p>
-          Shaft & Seal is led by an experienced energy auditor with over 20
-          years of expertise in pumping systems. Our leadership brings deep
-          technical knowledge in pump efficiency optimization, system audits,
-          and engineering solutions, ensuring clients receive the most
-          effective and reliable products. With a commitment to innovation,
-          sustainability, and cost-effective engineering, Shaft & Seal is your
-          trusted partner for all pumping system needs.
-        </p>
-      </div>
-      <!-- Image Column -->
-      <div class="col-md-6 text-center">
-        <img
-          src="{% static 'img/abtuss.avif' %}"
-          alt="Promoter"
-          class="promo-img"
-        />
-      </div>
-    </div>
-  </div>
-</section>
 </section>
 
 {% endblock %}

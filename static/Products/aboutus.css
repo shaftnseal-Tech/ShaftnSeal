@@ -238,7 +238,11 @@
   color: #cf0f47;
   animation: slideInDown 1s ease-in-out;
 }
-
+h2{
+  font-weight: 700;
+  color: #cf0f47;
+  /* animation: slideInDown 1s ease-in-out; */
+}
 .maincontent p {
   font-size: 1.1rem;
   line-height: 1.7;
