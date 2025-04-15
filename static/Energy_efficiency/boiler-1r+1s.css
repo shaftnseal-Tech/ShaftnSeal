@@ -106,7 +106,6 @@
 
 
 /* boiler 1r+1spump.html section model start */
-
 .modal-heading {
   font-size: 2rem;
   font-weight: bold;
@@ -119,7 +118,7 @@
   margin-bottom: 30px;
 }
 
-.selectbtn {
+/* .selectbtn {
   background-color: #007bff;
   color: white;
   padding: 15px 20px;
@@ -132,17 +131,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.selectbtn:hover {
+/* .selectbtn:hover {
   background-color: #0056b3;
-}
+} */
 
-.arrow-icon {
+/* .arrow-icon {
   margin-left: 10px;
   font-size: 1.2rem;
-}
-.submitbtn {
+} */
+/* .submitbtn {
   background-color: #28a745;
   color: white;
   padding: 12px 30px;
@@ -151,28 +150,29 @@
   border-radius: 8px;
   transition: background-color 0.3s ease;
   cursor: pointer;
-  
-}
+} */
 
-.submitbtn:hover {
+/* .submitbtn:hover {
   background-color: #218838;
-}
+} */
+
 /* Style for modal cards */
-.bs {
+/* .bs {
   background-color: #033043 !important;
   color: white;
   border: none;
-}
+} */
 
 /* Ensure text inside buttons and headings inside cards are white */
-.card h4,
+/* .card h4,
 .card .selectbtn,
 .card .selectbtn h4,
 .card .submitbtn {
   color: white;
-}
+} */
 
 /* Optional: Hover effect for buttons */
+
 .selectbtn:hover,
 .submitbtn:hover {
   background-color: #044d64;
