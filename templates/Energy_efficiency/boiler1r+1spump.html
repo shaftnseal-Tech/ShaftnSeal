@@ -122,78 +122,94 @@
 <!-- Selection Modal -->
 <div id="selectionModal" class="modal-container">
   <div class="modalcontent">
+    <!-- Headline and Subtitle -->
+    <div class="text-center my-4">
+      <h1 class="modal-heading" style="color: black;">Select Data Input Form</h2>
+      <p class="modal-subtitle" style="color: black;">Choose a data section below to fill in and generate your output.</p>
+    </div>
+
     <div class="container my-5">
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <button id="opensystemModal" class="selectbtn">
-                <h4>System data</h4>
+          <div class="card bs" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="opensystemModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">System Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>     
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="openPumpModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Pump Name Plate Data <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <button id="openPumpModal" class="selectbtn">
-                <h4>Pump Name Plate Data</h4>
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="openmotormodal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Motor Plate Data <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
+          <div class="card" style="background-color: #033043; color: white;">
             <div class="card-body">
-              <button id="openmotormodal" class="selectbtn">
-                <h4>Motor Plate Data</h4>
+              <button id="openActulModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Actual Plate Data <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
+          <div class="card" style="background-color: #033043; color: white;">
             <div class="card-body">
-              <button id="openActulModal" class="selectbtn">
-                <h4>Actual Plate Data</h4>
+              <button id="opentestcueveModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Test Curve Data <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
+          <div class="card" style="background-color: #033043; color: white;">
             <div class="card-body">
-              <button id="opentestcueveModal" class="selectbtn">
-                <h4>Test Curve Data</h4>
+              <button id="openElectricalModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Electrical Parameters <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
+          <div class="card" style="background-color: #033043; color: white;">
             <div class="card-body">
-              <button id="openElectricalModal" class="selectbtn">
-                <h4>Electrical Parameter</h4>
+              <button id="opencommercialModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Commercial Data <i class="bi bi-arrow-right"></i></h4>
               </button>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <button id="opencommercialModal" class="selectbtn">
-                <h4>Commercial Data</h4>
-              </button>
-            </div>
+        <div class="col">      
+          <div class="card-body text-center ">
+            <button id="submitSelection" class="submitbtn"
+              style="background-color: #fda521; color: white; padding: 15px 45px; font-size: 18px; border-radius: 5px;">
+              Submit
+            </button>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
 </div>
 
-<!-- Hero Section -->
 
+
+<!-- Hero Section -->
 <section class="hero-section bg-light py-5">
   <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-5">
     
