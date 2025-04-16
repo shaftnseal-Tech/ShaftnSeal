@@ -1,148 +1,195 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'Spares/search.css' %}" />
+<style>
 
-{% block css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'Spares/search.css' %}">
-    <style>
-        /* Table styling */
-        .parts-table {
-            position: relative;
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        }
+  .parts-table {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
 
-        .parts-table th, .parts-table td {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: center;
-        }
+  .parts-table th,
+  .parts-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: center;
+  }
 
-        .parts-table thead {
-            background-color: #4CAF50;
-            color: white;
-        }
+  .parts-table thead {
+    background-color: #4caf50;
+    color: white;
+  }
 
-        .parts-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+  .parts-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
 
-        .parts-table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
+  .parts-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
 
-        .search-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+  .search-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-        .search-btn:hover {
-            background-color: #45a049;
-        }
+  .search-btn:hover {
+    background-color: #45a049;
+  }
 
-        
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style> 
 {% endblock css %}
-
 {% block content %}
+
 <!-- Chatbot Section -->
 
-
 <section class="hero-section">
-    <div class="hero-content">
-        <h1 class="seal">Spares Detail</h1>
+  <div class="hero-content">
+    <h1 class="spareshead" >Spares Detailsssssss</h1>
 
-        <!-- Search Maker Section -->
-        <div class="search-container">
-            <input type="text" class="search-box" id="search" placeholder="Search Maker..." onkeyup="filterDropdown()" onfocus="showDropdown()">
-            <div class="dropdown-content" id="dropdown-container">
-                {% for maker in makers %}
-                    <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')">{{ maker.name }}</a>
-                {% endfor %}
-            </div>
+    <!-- Search Maker Section -->
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-box"
+        id="search"
+        placeholder="Search Maker..."
+        onkeyup="filterDropdown()"
+        onfocus="showDropdown()"
+      />
+      <div class="dropdown-content" id="dropdown-container">
+        {% for maker in makers %}
+        <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')"
+          >{{ maker.name }}</a
+        >
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Spares Form Modal -->
+    <div class="modal-container" id="search-form">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeModal('search-form')"
+          >&times;</span
+        >
+        <div class="form-container">
+          <h2>Spares Form</h2>
+          <form onsubmit="searchParts(); return false;">
+            <select
+              id="ModelName"
+              class="modaloption"
+              onchange="fetchVariants()"
+            >
+              <option value="">Select Model</option>
+            </select>
+
+            <select id="Variant" class="modaloption">
+              <option value="">Select Variant</option>
+            </select>
+
+            <button type="submit" class="search-btn">Search Parts</button>
+          </form>
         </div>
+      </div>
+    </div>
 
-        <!-- Spares Form Modal -->
-        <div class="modal-container" id="search-form">
-            <div class="modal-box">
-                <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
-                <div class="form-container">
-                    <h2>Spares Form</h2>
-                    <form onsubmit="searchParts(); return false;">
-                        <select id="ModelName" class="modaloption" onchange="fetchVariants()">
-                            <option value="">Select Model</option>
-                        </select>
-
-                        <select id="Variant" class="modaloption">
-                            <option value="">Select Variant</option>
-                        </select>
-
-                        <button type="submit" class="search-btn">Search Parts</button>
-                    </form>
-                </div>
-            </div>
+    <!-- Parts Display Section -->
+    <div class="parts-display" id="parts-display" style="display: none">
+      <div
+        id="chatbot-container"
+        style="
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          padding: 15px;
+          border-radius: 8px;
+          width: 100%;
+          background-color: #f9f9f9;
+        "
+      >
+        <h3>Parts Chat Assistant</h3>
+        <div
+          id="chat-window"
+          style="
+            height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          <div class="chatbot-message">
+            Hello! Enter a part name or number to search for it.
+          </div>
         </div>
-
-        <!-- Parts Display Section -->
-        <div class="parts-display" id="parts-display" style="display: none;">
-            <div id="chatbot-container" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; width: 100%; background-color: #f9f9f9;">
-    <h3>Parts Chat Assistant</h3>
-    <div id="chat-window" style="height: 200px; overflow-y: auto; background: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
-        <div class="chatbot-message">Hello! Enter a part name or number to search for it.</div>
-    </div>
-    <div style="display: flex;">
-        <input type="text" id="user-input" placeholder="Type part name or number..." style="flex: 1; padding: 8px;">
-        <button onclick="sendMessage()" style="padding: 8px 15px; margin-left: 10px;">Send</button>
-    </div>
-    </div>
-    
-            <h2>Parts List</h2>
-            <table class="parts-table">
-                <thead>
-                    <tr>
-                        <th>Part No</th>
-                        <th>Name</th>
-                        <th>Material</th>
-                        <th>Technical Details</th>
-                        <th>Drawing</th>
-                        <th>CAD File</th>
-                        <th>Mapping</th>
-                    </tr>
-                </thead>
-                <tbody id="all-parts-list">
-                    <!-- JS will populate this -->
-                </tbody>
-            </table>
+        <div style="display: flex">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Type part name or number..."
+            style="flex: 1; padding: 8px"
+          />
+          <button
+            onclick="sendMessage()"
+            style="padding: 8px 15px; margin-left: 10px"
+          >
+            Send
+          </button>
         </div>
+      </div>
+
+      <h2>Parts List</h2>
+      <table class="parts-table">
+        <thead>
+          <tr>
+            <th>Part No</th>
+            <th>Name</th>
+            <th>Material</th>
+            <th>Technical Details</th>
+            <th>Drawing</th>
+            <th>CAD File</th>
+            <th>Mapping</th>
+          </tr>
+        </thead>
+        <tbody id="all-parts-list">
+          <!-- JS will populate this -->
+        </tbody>
+      </table>
     </div>
+  </div>
 </section>
-{% endblock  %}
-
-{% block js %}
+{% endblock %}
+{% block js %} 
 {{ block.super }}
 <script>
-    function sendMessage() {
-    const inputField = document.getElementById('user-input');
+  function sendMessage() {
+    const inputField = document.getElementById("user-input");
     const userMessage = inputField.value.trim();
-    const chatWindow = document.getElementById('chat-window');
+    const chatWindow = document.getElementById("chat-window");
 
     if (!userMessage) return;
 
     // Show user's message
-    const userMessageDiv = document.createElement('div');
-    userMessageDiv.className = 'user-message';
+    const userMessageDiv = document.createElement("div");
+    userMessageDiv.className = "user-message";
     userMessageDiv.innerText = userMessage;
     chatWindow.appendChild(userMessageDiv);
 
@@ -153,149 +200,164 @@
     chatbotResponse(userMessage);
 
     // Clear input field
-    inputField.value = '';
-}
+    inputField.value = "";
+  }
 
-function chatbotResponse(message) {
-    const chatWindow = document.getElementById('chat-window');
+  function chatbotResponse(message) {
+    const chatWindow = document.getElementById("chat-window");
 
-    let responseText = '';
-    const tableRows = document.querySelectorAll('#all-parts-list tr');
+    let responseText = "";
+    const tableRows = document.querySelectorAll("#all-parts-list tr");
 
     let found = false;
 
-    tableRows.forEach(row => {
-        const partNo = row.cells[0].textContent.toLowerCase();
-        const partName = row.cells[1].textContent.toLowerCase();
+    tableRows.forEach((row) => {
+      const partNo = row.cells[0].textContent.toLowerCase();
+      const partName = row.cells[1].textContent.toLowerCase();
 
-        if (partNo.includes(message.toLowerCase()) || partName.includes(message.toLowerCase())) {
-            found = true;
-            row.style.backgroundColor = '#ffff99'; // Highlight the row
-            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            row.style.backgroundColor = ''; // Reset other rows
-        }
+      if (
+        partNo.includes(message.toLowerCase()) ||
+        partName.includes(message.toLowerCase())
+      ) {
+        found = true;
+        row.style.backgroundColor = "#ffff99"; // Highlight the row
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        row.style.backgroundColor = ""; // Reset other rows
+      }
     });
 
     if (found) {
-        responseText = `Here is the part you are looking for!`;
+      responseText = `Here is the part you are looking for!`;
     } else {
-        responseText = `Sorry, I couldn't find a part with "${message}". Please try another name or number.`;
+      responseText = `Sorry, I couldn't find a part with "${message}". Please try another name or number.`;
     }
 
     // Show chatbot response
-    const botMessageDiv = document.createElement('div');
-    botMessageDiv.className = 'chatbot-message';
+    const botMessageDiv = document.createElement("div");
+    botMessageDiv.className = "chatbot-message";
     botMessageDiv.innerText = responseText;
     chatWindow.appendChild(botMessageDiv);
 
     chatWindow.scrollTop = chatWindow.scrollHeight;
-}
+  }
 
-    const SPARES_BASE_URL = '/Spares';
+  const SPARES_BASE_URL = "/Spares";
 
-    function showDropdown() {
-        document.getElementById('dropdown-container').style.display = 'block';
+  function showDropdown() {
+    document.getElementById("dropdown-container").style.display = "block";
+  }
+
+  function filterDropdown() {
+    const input = document.getElementById("search").value.toUpperCase();
+    const container = document.getElementById("dropdown-container");
+    const links = container.getElementsByTagName("a");
+
+    for (let i = 0; i < links.length; i++) {
+      const txtValue = links[i].textContent || links[i].innerText;
+      links[i].style.display =
+        txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
     }
+  }
 
-    function filterDropdown() {
-        const input = document.getElementById('search').value.toUpperCase();
-        const container = document.getElementById('dropdown-container');
-        const links = container.getElementsByTagName('a');
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+  }
 
-        for (let i = 0; i < links.length; i++) {
-            const txtValue = links[i].textContent || links[i].innerText;
-            links[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
-        }
-    }
+  function selectMaker(makerId, makerName) {
+    document.getElementById("search").value = makerName;
+    document.getElementById("dropdown-container").style.display = "none";
 
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
+    fetch(`${SPARES_BASE_URL}/get_pumpmodels/${makerId}/`)
+      .then((response) => response.json())
+      .then((models) => {
+        const modelSelect = document.getElementById("ModelName");
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
+        models.forEach((model) => {
+          modelSelect.innerHTML += `<option value="${model.id}">${model.name}</option>`;
+        });
 
-    function selectMaker(makerId, makerName) {
-        document.getElementById('search').value = makerName;
-        document.getElementById('dropdown-container').style.display = 'none';
+        document.getElementById("search-form").style.display = "flex";
+      })
+      .catch((error) => {
+        console.error("Error fetching models:", error);
+        alert("Failed to load pump models.");
+      });
+  }
 
-        fetch(`${SPARES_BASE_URL}/get_pumpmodels/${makerId}/`)
-            .then(response => response.json())
-            .then(models => {
-                const modelSelect = document.getElementById('ModelName');
-                modelSelect.innerHTML = '<option value="">Select Model</option>';
-                models.forEach(model => {
-                    modelSelect.innerHTML += `<option value="${model.id}">${model.name}</option>`;
-                });
+  function fetchVariants() {
+    const modelId = document.getElementById("ModelName").value;
+    if (!modelId) return;
 
-                document.getElementById('search-form').style.display = 'flex';
-            })
-            .catch(error => {
-                console.error('Error fetching models:', error);
-                alert('Failed to load pump models.');
-            });
-    }
+    fetch(`${SPARES_BASE_URL}/get_model_varient/${modelId}/`)
+      .then((response) => response.json())
+      .then((variants) => {
+        const variantSelect = document.getElementById("Variant");
+        variantSelect.innerHTML = '<option value="">Select Variant</option>';
+        variants.forEach((variant) => {
+          const text = `Dia: ${variant.discharge_diameter}mm - Stages: ${variant.stages}`;
+          variantSelect.innerHTML += `<option value="${variant.id}">${text}</option>`;
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching variants:", error);
+        alert("Failed to load model variants.");
+      });
+  }
 
-    function fetchVariants() {
-        const modelId = document.getElementById('ModelName').value;
-        if (!modelId) return;
-
-        fetch(`${SPARES_BASE_URL}/get_model_varient/${modelId}/`)
-            .then(response => response.json())
-            .then(variants => {
-                const variantSelect = document.getElementById('Variant');
-                variantSelect.innerHTML = '<option value="">Select Variant</option>';
-                variants.forEach(variant => {
-                    const text = `Dia: ${variant.discharge_diameter}mm - Stages: ${variant.stages}`;
-                    variantSelect.innerHTML += `<option value="${variant.id}">${text}</option>`;
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching variants:', error);
-                alert('Failed to load model variants.');
-            });
-    }
-
-    function searchParts() {
-    const modelId = document.getElementById('ModelName').value;
-    const variantId = document.getElementById('Variant').value;
+  function searchParts() {
+    const modelId = document.getElementById("ModelName").value;
+    const variantId = document.getElementById("Variant").value;
 
     if (!modelId || !variantId) {
-        alert('Please select both Model and Variant.');
-        return;
+      alert("Please select both Model and Variant.");
+      return;
     }
 
     fetch(`${SPARES_BASE_URL}/get_parts/${modelId}/${variantId}/`)
-        .then(response => response.json())
-        .then(parts => {
-            // ✅ Show parts display table
-            document.getElementById('parts-display').style.display = 'block';
+      .then((response) => response.json())
+      .then((parts) => {
+        // ✅ Show parts display table
+        document.getElementById("parts-display").style.display = "block";
 
-            // ✅ Hide the modal
-            closeModal('search-form');
+        // ✅ Hide the modal
+        closeModal("search-form");
 
-            const allPartsList = document.getElementById('all-parts-list');
-            allPartsList.innerHTML = '';
+        const allPartsList = document.getElementById("all-parts-list");
+        allPartsList.innerHTML = "";
 
-            // ✅ Combine both common and variant parts into one array
-            const combinedParts = [...parts.common_parts, ...parts.variant_parts];
+        // ✅ Combine both common and variant parts into one array
+        const combinedParts = [...parts.common_parts, ...parts.variant_parts];
 
-            combinedParts.forEach(part => {
-                allPartsList.innerHTML += `
+        combinedParts.forEach((part) => {
+          allPartsList.innerHTML += `
                     <tr>
                         <td>${part.part_no}</td>
                         <td>${part.name}</td>
                         <td>${part.material}</td>
                         <td>${part.technical_details}</td>
-                        <td>${part.drawing_file ? `<a href="${part.drawing_file}" download>Download</a>` : 'N/A'}</td>
-                        <td>${part.cad_file ? `<a href="${part.cad_file}" download>Download</a>` : 'N/A'}</td>
-                        <td>${part.mapping ? `<a href="${part.mapping}" download>Download</a>` : 'N/A'}</td>
+                        <td>${
+                          part.drawing_file
+                            ? `<a href="${part.drawing_file}" download>Download</a>`
+                            : "N/A"
+                        }</td>
+                        <td>${
+                          part.cad_file
+                            ? `<a href="${part.cad_file}" download>Download</a>`
+                            : "N/A"
+                        }</td>
+                        <td>${
+                          part.mapping
+                            ? `<a href="${part.mapping}" download>Download</a>`
+                            : "N/A"
+                        }</td>
                     </tr>`;
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching parts:', error);
-            alert('Failed to load parts data.');
         });
-}
-
+      })
+      .catch((error) => {
+        console.error("Error fetching parts:", error);
+        alert("Failed to load parts data.");
+      });
+  }
 </script>
 {% endblock js %}

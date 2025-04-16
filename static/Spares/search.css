@@ -1,0 +1,18 @@
+/* .hero-section {
+  text-align: center;
+  background-color: #ac2c2c !important;
+  height: 130vh;
+} */
+ 
+.spareshead{
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ea0f6e !important;
+    letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    position: relative;
+  }
+  
+  

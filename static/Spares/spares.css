@@ -1,29 +1,27 @@
-.hero-section{
-    text-align: center;
-   
-    background-color: #ac2c2c !important;
-    height: 130vh;
-  }
-   .seal {
+/* .hero-section {
+  text-align: center;
+  background-color: #ac2c2c !important;
+  height: 130vh;
+} */
+ 
+.spareshead {
   font-size: 3rem;
   font-weight: 700;
-  color: #0c2340;
+  color: #ea0f6e !important;
   letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-bottom: 0.5rem;
-  display: inline-block; 
+  display: inline-block;
   position: relative;
-  }
-  /**/
-  
-  
-  .subtitle {
+}
+
+.subtitle {
   font-size: 18px;
   color: #333;
   max-width: 800px;
   margin: 0 auto 20px;
-  }
-  @keyframes slideInDown {
+}
+@keyframes slideInDown {
   from {
     transform: translateY(-30px);
     opacity: 0;
@@ -32,9 +30,9 @@
     transform: translateY(0);
     opacity: 1;
   }
-  }
-  
-  @keyframes fadeInUp {
+}
+
+@keyframes fadeInUp {
   from {
     transform: translateY(30px);
     opacity: 0;
@@ -43,9 +41,9 @@
     transform: translateY(0);
     opacity: 1;
   }
-  }
-  
-  @keyframes fadeInRight {
+}
+
+@keyframes fadeInRight {
   from {
     transform: translateX(30px);
     opacity: 0;
@@ -54,9 +52,9 @@
     transform: translateX(0);
     opacity: 1;
   }
-  }
+}
 
-.spareshead{
-    font-size: 24px;
-    color:crimson;
+.spareshead {
+  font-size: 24px;
+  color: crimson;
 }
