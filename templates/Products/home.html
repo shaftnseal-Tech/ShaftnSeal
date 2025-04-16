@@ -19,13 +19,16 @@
     </p>
     <div>
       <p>
-        Welcome,
+        Welcome to Shaft and Seal
+        
+        {% if user %}
         <strong
-          >{{ user.first_name }} {% comment %} {{ user.last_name }}</strong
-        >
+        >{{ user.first_name }}  {{ user.last_name }}</strong>
+        {% endif %}
+          
+       
       </p>
-      <p>Email: {{ user}}</p>
-      {% endcomment %} {% comment %}
+       {% comment %}
       <p>Authenticated: {{ user.is_authenticated }}</p>
       {% endcomment %}
     </div>

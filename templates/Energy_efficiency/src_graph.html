@@ -1,34 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pump Analysis</title>
-</head>
-<body>
-    <h2>Pump Analysis</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            {{ form1.as_p }}
-            {{ form2.as_p }}
-            {{ form3.as_p }}
-            {{ form4.as_p }}
-            {{ form5.as_p }}
-            {{ form6.as_p }}
-            {{ form7.as_p }}
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ system_data_form.as_p }}
+    {{ pump_nameplate_form.as_p }}
+    {{ motor_nameplate_form.as_p }}
+    {{ actual_pump_data_form.as_p }}
+    {{ test_data_form.as_p }}
+    {{ electrical_params_form.as_p }}
+    {{ commercial_data_form.as_p }}
+    <button type="submit" class="btn btn-primary">Save as Draft</button>
+</form>
 
-    {% if pdf_url %}
-        <h3>Preview of Theoretical SRC Curve (PDF):</h3>
-        <object data="{{ pdf_url }}" type="application/pdf" width="600" height="400">
-            <p>It appears your browser doesn't support PDF previewing. 
-                <a href="{{ pdf_url }}" target="_blank">Click here to view the PDF</a>.</p>
-        </object>
-        <br>
-        <a href="{{ pdf_url }}" download>Download PDF</a>
-    {% endif %}
-</body>
-</html>
+<!-- Final Submit Button -->
+<form method="POST" action="{% url 'final_submission' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Submit Final Data</button>
+</form>

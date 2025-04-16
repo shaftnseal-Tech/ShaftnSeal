@@ -55,12 +55,13 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff        = models.BooleanField(default=False)
     is_active       = models.BooleanField(default=False)
     is_superadmin   = models.BooleanField(default=False)
-
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     objects = MyAccountManager()
-
+    class Meta:
+        db_table = 'User_account'
     def __str__(self):
         return self.email
 
@@ -83,7 +84,8 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=20, blank=True)
     state = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=20, blank=True)
-
+    class Meta:
+        db_table = 'User_Profile'
     def __str__(self):
         return self.user.first_name
 

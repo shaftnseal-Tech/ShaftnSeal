@@ -14,9 +14,12 @@
   <div class="modal-box">
     <span id="closeSystemModal" class="close">&times;</span>
     <h2>System data</h2>
-    <form method="post">
-      {% csrf_token %} {{ form1 }} {{ form1.errors }}
-      <button type="submit" class="btnfind">Save</button>
+    <form method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+      
+              {{ system_data_form.as_p }}
+
+      <button type="submit" name="save_system_data" class="btn btn-warning">💾 Save System Data</button>
     </form>
   </div>
 </div>
@@ -26,10 +29,13 @@
   <div class="modal-box">
     <span id="closePumpModal" class="close">&times;</span>
     <h2>Pump name plate data</h2>
-    <form method="post">
-      {% csrf_token %} {{ form2 }} {{ form2.errors }}
-      <button type="submit" class="btnfind">Save</button>
-    </form>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ pump_nameplate_form.as_p }}
+          
+      <button type="submit" name="save_pump_nameplate" class="btn btn-warning">💾 Save Pump Nameplate Data</button>
+  </form>
   </div>
 </div>
 
@@ -38,12 +44,13 @@
   <div class="modal-box">
     <span id="closeMotorModal" class="close">&times;</span>
     <h2>Motor Plate Data</h2>
-    <input type="text" class="input-modal" placeholder="Enter Voltage" />
-    <input type="text" class="input-modal" placeholder="Enter Power Factor" />
-    <input type="text" class="input-modal" placeholder="Enter Power" />
-    <input type="text" class="input-modal" placeholder="Enter N1" />
-    <input type="text" class="input-modal" placeholder="Enter N2" />
-    <button class="btnfind">Save</button>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ motor_nameplate_form.as_p }}
+         
+      <button type="submit" name="save_motor_nameplate" class="btn btn-warning">💾 Save Motor Nameplate Data</button>
+  </form>
   </div>
 </div>
 
@@ -52,22 +59,13 @@
   <div class="modal-box">
     <span id="closeActualModal" class="close">&times;</span>
     <h2>Actual Plate Data</h2>
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Enter Actual flow rate (Qact)"
-    />
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Enter Pump discharge pressure"
-    />
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Enter Pump suction pressure"
-    />
-    <button id="Actualsavebtn" class="btnfind">Save</button>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ actual_pump_data_form.as_p }}
+         
+      <button type="submit" name="save_actual_pump_data" class="btn btn-warning">💾 Save Actual Pump Data</button>
+  </form>
   </div>
 </div>
 
@@ -76,14 +74,14 @@
   <div class="modal-box">
     <span id="closeTestCurveModal" class="close">&times;</span>
     <h2>Test curve Data</h2>
-    <input type="file" id="xmlFileInput" accept=".xml" />
-    <button id="uploadXmlBtn" class="btnfind">Upload XML</button>
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Upload Test Curve Data (XLSX)"
-    />
-    <button id="testcurvesavebtn" class="btnfind">Save</button>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      
+              {{ test_data_form.as_p }}
+         
+      <button type="submit" name="save_test_data" class="btn btn-warning">💾 Save Test Data</button>
+  </form>
   </div>
 </div>
 
@@ -92,11 +90,13 @@
   <div class="modal-box">
     <span id="closeElectricalModal" class="close">&times;</span>
     <h2>Electrical Parameter</h2>
-    <input type="text" class="input-modal" placeholder="Enter Voltage" />
-    <input type="text" class="input-modal" placeholder="Enter Power Factor" />
-    <input type="text" class="input-modal" placeholder="Enter Power" />
-    <input type="text" class="input-modal" placeholder="Enter Efficiency" />
-    <button id="Electricalsavebtn" class="btnfind">Save</button>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+              {{ electrical_params_form.as_p }}
+         
+      <button type="submit" name="save_electrical_params" class="btn btn-warning">💾 Save Electrical Parameters</button>
+  </form>
   </div>
 </div>
 
@@ -105,17 +105,13 @@
   <div class="modal-box">
     <span id="closeCommercialModal" class="close">&times;</span>
     <h2>Commercial Data</h2>
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Enter hours/year pump runs"
-    />
-    <input
-      type="text"
-      class="input-modal"
-      placeholder="Enter Cost of Electricity"
-    />
-    <button class="btnfind" onclick="navigateToNextPage()">Submit</button>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'final_submission' %}">
+      {% csrf_token %}
+      
+              {{ commercial_data_form.as_p }}
+        
+      <button type="submit" class="btn btn-success"> Submit</button>
+  </form>
   </div>
 </div>
 
