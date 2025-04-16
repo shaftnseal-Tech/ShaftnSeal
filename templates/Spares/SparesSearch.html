@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block css %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'Spares/search.css' %}">
-{% endblock css %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'Spares/spares.css' %}" />
+{% endblock css %} 
 
 {% block content %}
 <div class="modal-container" id="search-form">
     <div class="modal-box">
         <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
         <div class="form-container">
-            <h2>Spares Form</h2>
+            <h2 class="spareshead">Spares Form</h2>
             <form onsubmit="generateCustomerDetails(); return false;">
                 <div>
                     <select id="ModalName" class="modaloption">

@@ -1,0 +1,62 @@
+.hero-section{
+    text-align: center;
+   
+    background-color: #ac2c2c !important;
+    height: 130vh;
+  }
+   .seal {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0c2340;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+  display: inline-block; 
+  position: relative;
+  }
+  /**/
+  
+  
+  .subtitle {
+  font-size: 18px;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  }
+  @keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  }
+  
+  @keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  }
+  
+  @keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  }
+
+.spareshead{
+    font-size: 24px;
+    color:crimson;
+}
