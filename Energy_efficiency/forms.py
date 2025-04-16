@@ -6,7 +6,7 @@ class SystemData(forms.ModelForm):
         model = Energy_Efficiency_Parameters
         fields = [
             'height1', 'height2', 'suction_pressure', 'discharge_pressure', 
-            'fluid_temperature'
+            'fluid_temperature',
         ]
         labels = {
             'height1':' Height between Suction tank and center of the pump (h1)',
@@ -76,7 +76,7 @@ class ElectricalParameters(forms.ModelForm):
             'actual_power_factor':'Actual Power Factor (pf)',
             'actual_power':'Actual power (kwh)',
             'actual_efficiency':'Actual Efficiency (%)',
-            'N2':'Actual speed'
+            'N2':'Actual speed (rpm)'
         }
 class ComercialData(forms.ModelForm):
     class Meta:
