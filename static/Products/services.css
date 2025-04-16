@@ -1,4 +1,5 @@
 .hero-section{
+<<<<<<< Updated upstream
   text-align: center;
  
   background-color: #F2F2F2 !important;
@@ -196,3 +197,95 @@ to {
   opacity: 1;
 }
 }
+=======
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f2f2f2!important;
+    height: 100vh;
+}
+@media (max-width: 768px) {
+    .hero-section {
+      flex-direction: column;
+      padding: 30px 20px;
+    }
+  
+    .hero-content {
+      max-width: 90%;
+    }
+  
+    .learn-more-btn {
+      font-size: 14px;
+    }
+  
+    .search-icon-container {
+      max-width: 350px;
+    }
+  }
+  .card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 1rem;
+    z-index: 0;
+    background:white;
+    color:white;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff, #ffcc00);
+    background-size: 600% 600%;
+    z-index: -2;
+    filter: blur(10px);
+    animation: glow 6s linear infinite;
+    border-radius: 18px;
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
+
+    z-index: -1;
+    border-radius: 14px;
+  }
+
+  @keyframes glow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .card h4 {
+    font-weight: 600;
+  }
+
+  .card p {
+    color:rgb(255, 249, 249);
+  }
+  .seal {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #0c2340;
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0.5rem;
+    display: inline-block; 
+    position: relative;
+  }
+>>>>>>> Stashed changes

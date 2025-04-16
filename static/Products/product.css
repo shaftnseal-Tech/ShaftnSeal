@@ -1,4 +1,5 @@
 .hero-section{
+<<<<<<< Updated upstream
     text-align: center;
    
     background-color: #F2F2F2 !important;
@@ -7,6 +8,13 @@
 
 
 
+=======
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #F2F2F2 !important;
+}
+
+>>>>>>> Stashed changes
 .search-icon-container {
   position: relative;
   max-width: 900px;
@@ -14,12 +22,19 @@
 }
 
 #search-input {
+<<<<<<< Updated upstream
   width: 100%;
+=======
+  width: 50%;
+>>>>>>> Stashed changes
   padding: 18px 24px;
   border: 2px solid #ddd;
   border-radius: 40px;
   outline: none;
+<<<<<<< Updated upstream
   margin-top: 20px;
+=======
+>>>>>>> Stashed changes
   font-size: 15px;
   transition: all 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
@@ -42,10 +57,50 @@
   font-size: 1.4em;
   
 }
+<<<<<<< Updated upstream
 
 
 .seal {
   font-size: 3rem;
+=======
+.maincardCard{
+    display: flex;
+   justify-content:center;
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 20px;
+    margin-left:20%;
+
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    backdrop-filter: blur(10px);
+    background: whitesmoke;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.1);
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card-titleh5{
+    font-size: 18px;
+    color:white
+}
+.seal {
+  font-size: 3.5rem;
+>>>>>>> Stashed changes
   font-weight: 700;
   color: #0c2340;
   letter-spacing: 1px;
@@ -53,6 +108,7 @@
   margin-bottom: 0.5rem;
   display: inline-block; 
   position: relative;
+<<<<<<< Updated upstream
 }
 /**/
 .custombutton{
@@ -191,4 +247,6 @@
     transform: translateX(0);
     opacity: 1;
   }
+=======
+>>>>>>> Stashed changes
 }
