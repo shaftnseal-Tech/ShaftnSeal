@@ -38,7 +38,7 @@ class Part(models.Model):
     mapping = models.FileField(upload_to='mapping_files/',blank=True,null=True,verbose_name="Mapping File")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return f"{self.part_no} - {self.name}"
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Efficiency Parameters</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container my-5">
+
+    <h2 class="mb-4">Energy Efficiency Parameters</h2>
+
+    <!-- Display messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- System Data Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>System Data</h5></div>
+            <div class="card-body">
+                {{ system_data_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_system_data" class="btn btn-warning">💾 Save System Data</button>
+    </form>
+
+    <!-- Pump Nameplate Data Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Pump Nameplate Data</h5></div>
+            <div class="card-body">
+                {{ pump_nameplate_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_pump_nameplate" class="btn btn-warning">💾 Save Pump Nameplate Data</button>
+    </form>
+
+    <!-- Motor Nameplate Data Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Motor Nameplate Data</h5></div>
+            <div class="card-body">
+                {{ motor_nameplate_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_motor_nameplate" class="btn btn-warning">💾 Save Motor Nameplate Data</button>
+    </form>
+
+    <!-- Actual Pump Data Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Actual Pump Data</h5></div>
+            <div class="card-body">
+                {{ actual_pump_data_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_actual_pump_data" class="btn btn-warning">💾 Save Actual Pump Data</button>
+    </form>
+
+    <!-- Test Data Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Test Data</h5></div>
+            <div class="card-body">
+                {{ test_data_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_test_data" class="btn btn-warning">💾 Save Test Data</button>
+    </form>
+
+    <!-- Electrical Parameters Form -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Electrical Parameters</h5></div>
+            <div class="card-body">
+                {{ electrical_params_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" name="save_electrical_params" class="btn btn-warning">💾 Save Electrical Parameters</button>
+    </form>
+
+    <!-- Commercial Data Form -->
+    <form method="POST" enctype="multipart/form-data" action="{% url 'final_submission' %}">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-header"><h5>Commercial Data</h5></div>
+            <div class="card-body">
+                {{ commercial_data_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success"> Submit</button>
+    </form>
+
+    <!-- Final Submission Form -->
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

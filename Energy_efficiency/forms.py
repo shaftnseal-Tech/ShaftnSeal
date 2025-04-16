@@ -1,72 +1,90 @@
 from django import forms
+from .models import Energy_Efficiency_Parameters
 
-class System_data(forms.Form):
-    h1 = forms.FloatField(widget=forms.NumberInput(attrs={'class':'input-modal' ,'type':'text','placeholder':'Enter Suction Tank Height (m):  '}),label='')
-    h2 = forms.FloatField(widget=forms.NumberInput(attrs={'class':'input-modal' ,'type':'text','placeholder':'Enter Discharge Drum Height (m): '}),label='')
-    p1 = forms.FloatField(widget=forms.NumberInput(attrs={'class':'input-modal' ,'type':'text','placeholder':'Enter Suction Pressure (bar): '}),label='')
-    p2 = forms.FloatField(widget=forms.NumberInput(attrs={'class':'input-modal' ,'type':'text','placeholder':'Enter Discharge Pressure (bar): '}),label='')
-    temperature = forms.FloatField(widget=forms.NumberInput(attrs={'class':'input-modal' ,'type':'text','placeholder':'Enter Fluid Temperature (°C): '}),label='')
-   
-
-
-
-
-class Pump_name_plate_data(forms.Form):
-    Qnp = forms.FloatField(required=True,label='',widget=forms.NumberInput(attrs={
-            'class': 'input-modal',
-            'placeholder': 'Enter Flow Rate (Qnp) in m3/hr',
+class SystemData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'height1', 'height2', 'suction_pressure', 'discharge_pressure', 
+            'fluid_temperature'
+        ]
+        labels = {
+            'height1':' Height between Suction tank and center of the pump (h1)',
+            'height2':' Height between Discharge tank and center of the pump (h2)',
+            'suction_pressure':'Suction tank pressure  (kg/cm²)',
+            'discharge_pressure':'Discharge tank pressure  (kg/cm²)',
+            'fluid_temperature':'Fluid Temperature  (DC)',
             
-        })
-    )
+        }
 
-    Hnp = forms.FloatField(
-        required=True,
-        label='',
-        widget=forms.NumberInput(attrs={
-            'class': 'input-modal',
-            'placeholder': 'Enter Head (Hnp) in m3/hr' 
-        })
-    )
+class PumpNamePlateData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'nominal_flow_rate', 'nominal_head', 'pump_efficiency', 'pump_speed',
+        ]
+        labels ={
+            'nominal_flow_rate':'Pump name plate flow  (m³/hr)',
+            'nominal_head':'Pump name plate head  (m)',
+            'pump_efficiency':'Pump Efficiency  (%)',
+            'pump_speed':'Pump speed (rpm)'
+        }
+        
+class MotorNamePlateData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'motor_voltage', 'motor_power_factor', 'motor_power', 'N1', 
+        ]
+        labels = {
+            'motor_voltage':'Motor Voltage (volts)',
+            'motor_power_factor':'Motor Power Facter(pf)',
+            'motor_power': 'Motor Power output(kwh)',
+            'N1':'Speed(N1) in(rpm)'
+            
+        }
 
-    Pump_Efficiency = forms.CharField(
-        required=True,
-        label='',
-        widget=forms.TextInput(attrs={
-            'class': 'input-modal',
-            'placeholder': 'Enter Pump Efficiency in decimal'
-        })
-    )
+class ActualPumpData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'actual_flow_rate', 'pump_discharge_pressure', 'pump_suction_pressure'
+        ]
+        labels ={
+            'actual_flow_rate':'Total Flow Rate in 24hrs (m³/hr)',
+            'pump_suction_pressure':'Pump Suction Pressure (kg/cm²)',
+            'pump_discharge_pressure':'Pump Discharge Pressure (kg/cm²)',
+        }
 
-    Pump_speed = forms.CharField(
-        required=True,
-        label='',
-        widget=forms.TextInput(attrs={
-            'class': 'input-modal',
-            'placeholder': 'Enter Pump Speed (RPM) '
-        })
-    )
-
-class Motor_name_plate_data(forms.Form):
-    Voltage = forms.FloatField(required=True)
-    Current = forms.FloatField(required=True)
-    Power_factor = forms.FloatField(required=True)
-    Power = forms.FloatField(required=True)
-    Motor_Efficiency = forms.FloatField(required=True)
-    
-class Commercial_data(forms.Form):
-    No_of_hrs_pump_running = forms.FloatField(required=True)
-    Cost_of_electricity = forms.FloatField(required=True)
-    
-class Actual_data(forms.Form):
-    total_flow_rate = forms.FloatField(required=True)
-    actual_suction_pressure = forms.FloatField(required=True)
-    actual_discharge_pressure = forms.FloatField(required=True)
-    
-class Electrical_parameters(forms.Form):
-    actual_Voltage = forms.FloatField(required=True)
-    actual_Current = forms.FloatField(required=True)
-    actual_Power_factor = forms.FloatField(required=True)
-    actual_Power = forms.FloatField(required=True)
-
-class Test_curve_data(forms.Form):
-    QH_test_data = forms.FileField(required=True)
+class TestData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'text_curve_data'
+        ]
+        labels = {
+            'text_curve_data':'Upload Test Data'
+        }
+class ElectricalParameters(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'actual_voltage', 'actual_power_factor', 'actual_power', 'actual_efficiency','N2',
+        ]
+        labels={
+            'actual_voltage':'Actual Voltage (volts)',
+            'actual_power_factor':'Actual Power Factor (pf)',
+            'actual_power':'Actual power (kwh)',
+            'actual_efficiency':'Actual Efficiency (%)',
+            'N2':'Actual speed'
+        }
+class ComercialData(forms.ModelForm):
+    class Meta:
+        model = Energy_Efficiency_Parameters
+        fields = [
+            'no_hrs_pumprun', 'cost_of_electricity'
+        ]
+        labels = {
+            'no_hrs_pumprun':'Number of hrs pump in operation per year',
+            'cost_of_electricity':'Cost of Electricity per kwh'
+        }
