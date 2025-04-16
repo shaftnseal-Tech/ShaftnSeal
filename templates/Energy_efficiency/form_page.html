@@ -1,112 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Efficiency Parameters</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Efficiency Parameters</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .card {
+      cursor: pointer;
+    }
+
+    .card-body {
+      display: none;
+    }
+
+    .card.opened .card-body {
+      display: block;
+    }
+
+    .form-control {
+      margin: 10px 0;
+    }
+
+    select.form-control {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body class="container my-5">
 
-    <h2 class="mb-4">Energy Efficiency Parameters</h2>
+  <h2 class="mb-4 text-center">Energy Efficiency Parameters</h2>
 
-    <!-- Display messages -->
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
-    {% endif %}
+  <!-- Display messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
 
-    <!-- System Data Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>System Data</h5></div>
-            <div class="card-body">
-                {{ system_data_form.as_p }}
-            </div>
+  <!-- 🟢 SINGLE Form for All Sections -->
+  <form method="POST" enctype="multipart/form-data" action="{% url 'final_submission' %}">
+    {% csrf_token %}
+
+    <!-- System Data -->
+    <div class="card mb-4" id="system-data-card">
+      <div class="card-header"><h5>System Data</h5></div>
+      <div class="card-body" id="system-data-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ system_data_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_system_data" class="btn btn-warning">💾 Save System Data</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Pump Nameplate Data Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Pump Nameplate Data</h5></div>
-            <div class="card-body">
-                {{ pump_nameplate_form.as_p }}
-            </div>
+    <!-- Pump Nameplate Data -->
+    <div class="card mb-4" id="pump-nameplate-card">
+      <div class="card-header"><h5>Pump Nameplate Data</h5></div>
+      <div class="card-body" id="pump-nameplate-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ pump_nameplate_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_pump_nameplate" class="btn btn-warning">💾 Save Pump Nameplate Data</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Motor Nameplate Data Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Motor Nameplate Data</h5></div>
-            <div class="card-body">
-                {{ motor_nameplate_form.as_p }}
-            </div>
+    <!-- Motor Nameplate Data -->
+    <div class="card mb-4" id="motor-nameplate-card">
+      <div class="card-header"><h5>Motor Nameplate Data</h5></div>
+      <div class="card-body" id="motor-nameplate-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ motor_nameplate_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_motor_nameplate" class="btn btn-warning">💾 Save Motor Nameplate Data</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Actual Pump Data Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Actual Pump Data</h5></div>
-            <div class="card-body">
-                {{ actual_pump_data_form.as_p }}
-            </div>
+    <!-- Actual Pump Data -->
+    <div class="card mb-4" id="actual-pump-data-card">
+      <div class="card-header"><h5>Actual Pump Data</h5></div>
+      <div class="card-body" id="actual-pump-data-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ actual_pump_data_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_actual_pump_data" class="btn btn-warning">💾 Save Actual Pump Data</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Test Data Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Test Data</h5></div>
-            <div class="card-body">
-                {{ test_data_form.as_p }}
-            </div>
+    <!-- Test Data -->
+    <div class="card mb-4" id="test-data-card">
+      <div class="card-header"><h5>Test Data</h5></div>
+      <div class="card-body" id="test-data-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ test_data_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_test_data" class="btn btn-warning">💾 Save Test Data</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Electrical Parameters Form -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Electrical Parameters</h5></div>
-            <div class="card-body">
-                {{ electrical_params_form.as_p }}
-            </div>
+    <!-- Electrical Parameters -->
+    <div class="card mb-4" id="electrical-params-card">
+      <div class="card-header"><h5>Electrical Parameters</h5></div>
+      <div class="card-body" id="electrical-params-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ electrical_params_form.as_p }}
+          </div>
         </div>
-        <button type="submit" name="save_electrical_params" class="btn btn-warning">💾 Save Electrical Parameters</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Commercial Data Form -->
-    <form method="POST" enctype="multipart/form-data" action="{% url 'final_submission' %}">
-        {% csrf_token %}
-        <div class="card mb-4">
-            <div class="card-header"><h5>Commercial Data</h5></div>
-            <div class="card-body">
-                {{ commercial_data_form.as_p }}
-            </div>
+    <!-- Commercial Data -->
+    <div class="card mb-4" id="commercial-data-card">
+      <div class="card-header"><h5>Commercial Data</h5></div>
+      <div class="card-body" id="commercial-data-form">
+        <div class="row">
+          <div class="col-md-6">
+            {{ commercial_data_form.as_p }}
+          </div>
         </div>
-        <button type="submit" class="btn btn-success"> Submit</button>
-    </form>
+      </div>
+    </div>
 
-    <!-- Final Submission Form -->
+    <!-- Submit Button -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
+  <script>
+    // Function to toggle the form card open/close
+    function toggleCard(cardId, event) {
+      // Prevent the card from toggling if the clicked element is an input field
+      if (event.target.tagName.toLowerCase() === 'input' || event.target.tagName.toLowerCase() === 'select') {
+        return;
+      }
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      const card = document.getElementById(cardId);
+      const form = document.getElementById(cardId + '-form');
+      const isOpened = card.classList.contains('opened');
+
+      // Toggle the 'opened' class
+      if (isOpened) {
+        card.classList.remove('opened');
+      } else {
+        card.classList.add('opened');
+      }
+
+      // Toggle visibility of the form inside the card
+      form.style.display = isOpened ? 'none' : 'block';
+    }
+
+    // Event listeners for each card
+    document.getElementById('system-data-card').addEventListener('click', (event) => toggleCard('system-data-card', event));
+    document.getElementById('pump-nameplate-card').addEventListener('click', (event) => toggleCard('pump-nameplate-card', event));
+    document.getElementById('motor-nameplate-card').addEventListener('click', (event) => toggleCard('motor-nameplate-card', event));
+    document.getElementById('actual-pump-data-card').addEventListener('click', (event) => toggleCard('actual-pump-data-card', event));
+    document.getElementById('test-data-card').addEventListener('click', (event) => toggleCard('test-data-card', event));
+    document.getElementById('electrical-params-card').addEventListener('click', (event) => toggleCard('electrical-params-card', event));
+    document.getElementById('commercial-data-card').addEventListener('click', (event) => toggleCard('commercial-data-card', event));
+  </script>
 </body>
 </html>

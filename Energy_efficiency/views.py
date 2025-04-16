@@ -29,77 +29,55 @@ def boiler_feedpump_view(request):
 
 
 
-
-# Util: Get or create a draft instance
-def get_draft_only(request):
-    if not request.user.is_authenticated:
-        return None
-    draft = Energy_Efficiency_Parameters.objects.filter(user=request.user, is_draft=True).first()
-    if not draft:
-        draft = Energy_Efficiency_Parameters.objects.create(user=request.user, is_draft=True)
-    return draft
-
 @login_required
 def boiler_form(request):
-    
-
-    draft = get_draft_only(request)
-
     if request.method == 'POST':
-        # All forms and their corresponding trigger buttons
-        form_data = [
-            ('save_system_data', SystemData, 'System Data'),
-            ('save_pump_nameplate', PumpNamePlateData, 'Pump Nameplate Data'),
-            ('save_motor_nameplate', MotorNamePlateData, 'Motor Nameplate Data'),
-            ('save_actual_pump_data', ActualPumpData, 'Actual Pump Data'),
-            ('save_test_data', TestData, 'Test Data'),
-            ('save_electrical_params', ElectricalParameters, 'Electrical Parameters'),
-            ('save_commercial_data', ComercialData, 'Commercial Data'),
-        ]
+        system_form = SystemData(request.POST)
+        pump_form = PumpNamePlateData(request.POST)
+        motor_form = MotorNamePlateData(request.POST)
+        actual_form = ActualPumpData(request.POST)
+        test_form = TestData(request.POST, request.FILES)
+        electrical_form = ElectricalParameters(request.POST)
+        commercial_form = ComercialData(request.POST)
 
-        # Identify which form was submitted
-        for action, form_class, form_name in form_data:
-            if action in request.POST:
-                form = form_class(request.POST, request.FILES, instance=draft)
+        if all([
+            system_form.is_valid(), pump_form.is_valid(), motor_form.is_valid(),
+            actual_form.is_valid(), test_form.is_valid(),
+            electrical_form.is_valid(), commercial_form.is_valid()
+        ]):
+            system_form.save()
+            pump_form.save()
+            motor_form.save()
+            actual_form.save()
+            test_form.save()
+            electrical_form.save()
+            commercial_form.save()
 
-                if form.is_valid():
-                    form.save()
-                    messages.success(request, f"{form_name} saved successfully.")
-
-                    if form_name == 'Commercial Data':
-                        return redirect('final_submission')
-                    return redirect('form-page')
-
-                messages.error(request, f"Failed to save {form_name}. Please check the form for errors.")
-
+            messages.success(request, "Data submitted successfully!")
+            return redirect('some_success_page')
+        else:
+            messages.error(request, "Please correct the errors in the form.")
     else:
-        # On GET, load all forms with the current draft instance
-        system_data_form = SystemData(instance=draft)
-        pump_nameplate_form = PumpNamePlateData(instance=draft)
-        motor_nameplate_form = MotorNamePlateData(instance=draft)
-        actual_pump_data_form = ActualPumpData(instance=draft)
-        test_data_form = TestData(instance=draft)
-        electrical_params_form = ElectricalParameters(instance=draft)
-        commercial_data_form = ComercialData(instance=draft)
+        system_form = SystemData()
+        pump_form = PumpNamePlateData()
+        motor_form = MotorNamePlateData()
+        actual_form = ActualPumpData()
+        test_form = TestData()
+        electrical_form = ElectricalParameters()
+        commercial_form = ComercialData()
 
     return render(request, 'Energy_efficiency/form_page.html', {
-        'system_data_form': system_data_form,
-        'pump_nameplate_form': pump_nameplate_form,
-        'motor_nameplate_form': motor_nameplate_form,
-        'actual_pump_data_form': actual_pump_data_form,
-        'test_data_form': test_data_form,
-        'electrical_params_form': electrical_params_form,
-        'commercial_data_form': commercial_data_form,
+        'system_data_form': system_form,
+        'pump_nameplate_form': pump_form,
+        'motor_nameplate_form': motor_form,
+        'actual_pump_data_form': actual_form,
+        'test_data_form': test_form,
+        'electrical_params_form': electrical_form,
+        'commercial_data_form': commercial_form,
     })
 
 @login_required
 def finalize_submission(request):
     """Handle the final submission of the draft data."""
     
-    draft = get_draft_only(request)
-
-    if draft:
-        draft.is_draft = False  # Mark the draft as finalized
-        draft.save()
-
     return render(request,'Energy_efficiency/finalize_submission.html')
