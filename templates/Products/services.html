@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+{{ block.super }}
 
+<<<<<<< Updated upstream
 {% block title %}
     Shaft & Seal | Service
 {% endblock %}
@@ -12,10 +15,16 @@
 
 {% endblock css %}
 
+=======
+<link rel="stylesheet" href="{% static 'Products/services.css' %}" />
+
+{% endblock css %}
+>>>>>>> Stashed changes
 
 {% block content %}
 
 <section class="hero-section">
+<<<<<<< Updated upstream
    
   <div class="hero-content">
       <div class="about-banner">
@@ -114,6 +123,77 @@
      </div>
 </div>
   
+=======
+    <div >
+        <h1 class="seal"> Services</h1>
+    </div>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Product 1 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Energy-Efficient Pumping System</h4>
+                <p>
+                  Precision-engineered solutions for high-pressure application.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Product 2 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Boiler Feed Pumps</h4>
+                <p>
+                  Precision-engineered solutions for high-pressure applications.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Product 3 -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h4>Drive Shafts</h4>
+                <p>
+                  Manufacturing and supplying robust shafts for pumps and other
+                  machinery.
+                </p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Add more products here -->
+        </div>
+      </div>
+>>>>>>> Stashed changes
 </section>
 {% endblock  %}
     
