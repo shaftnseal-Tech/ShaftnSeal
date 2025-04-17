@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Energy_Efficiency_Parameters
 from .forms import EnergyEfficiencyForm
-from .utils import services
+
 
 
 
@@ -50,12 +50,20 @@ def boiler_form(request):
 from django.forms.models import model_to_dict
 @login_required
 def pump_efficiency_calculater(request):
-    form_data = Energy_Efficiency_Parameters.objects.get(user_id=request.user.id)
+    # Get the latest submission by the user (assuming 'created_at' or use '-id')
+    form_data = Energy_Efficiency_Parameters.objects.filter(user_id=request.user.id).order_by('-id').first()
     
-    df = pd.read_excel(form_data.text_curve_data)
-    print(df.head())
-    data = model_to_dict(form_data)  # Prints all field names and values as a dictionary
-    return render(request, 'Energy_efficiency/Efficiency_calculation.html', {'form_data':data})
+    if form_data:
+        data = model_to_dict(form_data)
+
+        return render(request, 'Energy_efficiency/Efficiency_calculation.html', {
+            'form_data': data,
+        })
+    else:
+       
+        return render(request, 'Energy_efficiency/Efficiency_calculation.html', {
+            'error': 'No submissions found for your account.'
+        })
 
 
 @login_required
