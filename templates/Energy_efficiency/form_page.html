@@ -1,61 +1,47 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
 {% block title %}
-<title>Energy Efficiency Parameters</title>
-{% endblock title %}
-  
-
-
+Shaft & Seal |
+Energy Efficiency Parameters 
+{% endblock title %} 
 {% block css %}
-{{ block.super }}
-<style>
-  .card {
-    cursor: pointer;
-  }
-
-  .card-body {
-    display: none;
-  }
-
-  .card.opened .card-body {
-    display: block;
-  }
-
-  .form-control {
-    margin: 10px 0;
-  }
-
-  select.form-control {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-  }
-
-  .toggle-icon {
-    float: right;
-    font-size: 1.2rem;
-  }
-</style>
+{{ block.super}}
+<link rel="stylesheet" href="{% static 'Energy_efficiency/form-page.css' %}" />
 {% endblock css %}
-  
-  
+
 
 {% block content %}
-<h2 class="mb-4 text-center">Energy Efficiency Parameters</h2>
+
+<section class="hero-section py-5 bg-light">
+  <div class="container text-center mb-5">
+    <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Energy Efficiency Parameters</h1>
+    <p class="text-muted">Explore our advanced pump solutions for optimal performance and energy savings.</p>
+  </div>
+{% comment %} <h2 class="mb-4 text-center form-head">Energy Efficiency Parameters</h2> {% endcomment %}
 
 <!-- Display messages -->
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  {% endfor %}
+{% if messages %} 
+{% for message in messages %}
+<div
+  class="alert mt-5 alert-{{ message.tags }} alert-dismissible fade show"
+  role="alert"
+>
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
 {% endif %}
 
-<form method="POST" enctype="multipart/form-data" action="{% url 'form-page' %}">
+<form
+  method="POST"
+  enctype="multipart/form-data"
+  action="{% url 'form-page' %}"
+>
   {% csrf_token %}
 
   <!-- System Data -->
@@ -70,7 +56,9 @@
           <p>{{ form.height1.label }} {{ form.height1 }}</p>
           <p>{{ form.height2.label }} {{ form.height2 }}</p>
           <p>{{ form.suction_pressure.label }} {{ form.suction_pressure }}</p>
-          <p>{{ form.discharge_pressure.label }} {{ form.discharge_pressure }}</p>
+          <p>
+            {{ form.discharge_pressure.label }} {{ form.discharge_pressure }}
+          </p>
           <p>{{ form.fluid_temperature.label }} {{ form.fluid_temperature }}</p>
         </div>
       </div>
@@ -118,8 +106,13 @@
     </div>
     <div class="card-body" id="actual-pump-data-card-form">
       <p>{{ form.actual_flow_rate.label }} {{ form.actual_flow_rate }}</p>
-      <p>{{ form.pump_discharge_pressure.label }} {{ form.pump_discharge_pressure }}</p>
-      <p>{{ form.pump_suction_pressure.label }} {{ form.pump_suction_pressure }}</p>
+      <p>
+        {{ form.pump_discharge_pressure.label }} {{ form.pump_discharge_pressure
+        }}
+      </p>
+      <p>
+        {{ form.pump_suction_pressure.label }} {{ form.pump_suction_pressure }}
+      </p>
     </div>
   </div>
 
@@ -129,7 +122,7 @@
       <h5 class="mb-0">EnterTest Data</h5>
       <span class="toggle-icon">▲</span>
     </div>
-    <div class="card-body" id="test-data-card-form" style="display: block;">
+    <div class="card-body" id="test-data-card-form" style="display: block">
       <p>{{ form.text_curve_data.label }} {{ form.text_curve_data }}</p>
     </div>
   </div>
@@ -167,39 +160,34 @@
   </div>
 
 </form>
-{% endblock content %}
-  
 
-{% block js %}
+{% endblock content %} 
+{% block js %} 
 {{ block.super }}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Use Bootstrap's Collapse plugin to handle the toggling automatically
-    const collapseElements = document.querySelectorAll('.card-header');
-    
-    collapseElements.forEach(header => {
-      header.addEventListener('click', function () {
+    const collapseElements = document.querySelectorAll(".card-header");
+
+    collapseElements.forEach((header) => {
+      header.addEventListener("click", function () {
         const body = header.nextElementSibling;
-        const icon = header.querySelector('.toggle-icon');
+        const icon = header.querySelector(".toggle-icon");
 
         // Check the current state and toggle
-        if (body.style.display === 'none' || !body.style.display) {
-          body.style.display = 'block';
-          icon.textContent = '▲';  // Change icon to up
+        if (body.style.display === "none" || !body.style.display) {
+          body.style.display = "block";
+          icon.textContent = "▲"; // Change icon to up
         } else {
-          body.style.display = 'none';
-          icon.textContent = '▼';  // Change icon to down
+          body.style.display = "none";
+          icon.textContent = "▼"; // Change icon to down
         }
       });
     });
 
     // Ensure the first card is open on page load
-    document.querySelector('.card-body').style.display = 'block';
+    document.querySelector(".card-body").style.display = "block";
   });
 </script>
 
 {% endblock js %}
-  
-  
-
-  
