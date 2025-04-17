@@ -10,13 +10,13 @@ class EnergyEfficiencyForm(forms.ModelForm):
             # Pump Name Plate Fields
             'nominal_flow_rate', 'nominal_head', 'pump_efficiency', 'pump_speed',
             # Motor Name Plate Fields
-            'motor_voltage', 'motor_power_factor', 'motor_power', 'N1',
+            'motor_voltage', 'motor_power_factor', 'motor_power', 'N1','motor_current',
             # Actual Pump Data Fields
             'actual_flow_rate', 'pump_discharge_pressure', 'pump_suction_pressure',
             # Test Data Fields
             'text_curve_data',
             # Electrical Parameters Fields
-            'actual_voltage', 'actual_power_factor', 'actual_power', 'actual_efficiency', 'N2',
+            'actual_voltage', 'actual_power_factor', 'actual_power', 'actual_efficiency', 'N2','actual_current',
             # Commercial Data Fields
             'no_hrs_pumprun', 'cost_of_electricity'
         ]
@@ -34,6 +34,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             'pump_speed': 'Pump speed (rpm)',
             
             'motor_voltage': 'Motor Voltage (volts)',
+            'motor_current':'Motor Current (amp)',
             'motor_power_factor': 'Motor Power Factor (pf)',
             'motor_power': 'Motor Power output (kWh)',
             'N1': 'Speed (N1) in (rpm)',
@@ -45,6 +46,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             'text_curve_data': 'Upload Test Data',
            
             'actual_voltage': 'Actual Voltage (volts)',
+            'actual_current':'Actual Current (amp)',
             'actual_power_factor': 'Actual Power Factor (pf)',
             'actual_power': 'Actual Power (kWh)',
             'actual_efficiency': 'Actual Efficiency (%)',
@@ -68,6 +70,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             'pump_speed': forms.NumberInput(attrs={'class': 'form-control'}),
 
             'motor_voltage': forms.NumberInput(attrs={'class': 'form-control'}),
+            'motor_current': forms.NumberInput(attrs={'class': 'form-control'}),
             'motor_power_factor': forms.NumberInput(attrs={'class': 'form-control'}),
             'motor_power': forms.NumberInput(attrs={'class': 'form-control'}),
             'N1': forms.NumberInput(attrs={'class': 'form-control'}),
@@ -84,6 +87,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
 
     
             'actual_voltage': forms.NumberInput(attrs={'class': 'form-control'}),
+            'actual_current': forms.NumberInput(attrs={'class': 'form-control'}),
             'actual_power_factor': forms.NumberInput(attrs={'class': 'form-control'}),
             'actual_power': forms.NumberInput(attrs={'class': 'form-control'}),
             'actual_efficiency': forms.NumberInput(attrs={'class': 'form-control'}),

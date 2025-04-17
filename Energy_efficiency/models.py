@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import Account
 
 class Energy_Efficiency_Parameters(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,blank=True)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
 
     # Basic input parameters
     height1 = models.FloatField(verbose_name='Height1')
@@ -17,6 +17,7 @@ class Energy_Efficiency_Parameters(models.Model):
     pump_speed = models.FloatField(verbose_name='Pump Speed')
 
     motor_voltage = models.FloatField(verbose_name='Motor Voltage')
+    motor_current = models.FloatField(verbose_name='Motor Current')
     motor_power_factor = models.FloatField(verbose_name='Motor Power Factor')
     motor_power = models.FloatField(verbose_name='Power')
 
@@ -30,6 +31,7 @@ class Energy_Efficiency_Parameters(models.Model):
     text_curve_data = models.FileField(verbose_name='Test Data', upload_to='test_curve_data/')
 
     actual_voltage = models.FloatField(verbose_name='Actual Voltage')
+    actual_current = models.FloatField(verbose_name='Actual Vlotage')
     actual_power_factor = models.FloatField(verbose_name='Actual Power Factor')
     actual_power = models.FloatField(verbose_name='Actual Power')
     actual_efficiency = models.FloatField(verbose_name='Actual Efficiency')

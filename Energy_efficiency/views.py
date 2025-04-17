@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Energy_Efficiency_Parameters
 from .forms import EnergyEfficiencyForm
+from .utils import services
 
 
 
@@ -33,11 +34,12 @@ def boiler_form(request):
         form = EnergyEfficiencyForm(request.POST, request.FILES)
         
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.user = request.user  # 👈 Assign the logged-in user
+            instance.save()
             messages.success(request, "Data submitted successfully!")
             return redirect('final_submission') 
         else:
-         
             messages.error(request, "Please correct the errors in the form.")
     else:
         form = EnergyEfficiencyForm()
@@ -45,6 +47,16 @@ def boiler_form(request):
     return render(request, 'Energy_efficiency/form_page.html', {
         'form': form,
     })
+from django.forms.models import model_to_dict
+@login_required
+def pump_efficiency_calculater(request):
+    print(request.user.id)
+    form_data = Energy_Efficiency_Parameters.objects.get(user_id=request.user.id)
+    df = pd.read_excel(form_data.text_curve_data)
+    print(df.head())
+    data = model_to_dict(form_data)  # Prints all field names and values as a dictionary
+    return render(request, 'Energy_efficiency/Efficiency_calculation.html', {'form_data':data})
+
 
 @login_required
 def finalize_submission(request):
