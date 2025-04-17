@@ -44,26 +44,15 @@
     text-align: center;
 
     background-color: #F2F2F2 !important;
-<<<<<<< Updated upstream
 } */
 /* .breadcrumb {
     display: flex;
     align-items: center;
     font-size: 14px;
     margin-bottom: 20px;
-=======
-}
-.hero-content .subtitle {
-    font-size: 1.3rem;
-    max-width: 800px;
-    margin: auto;
-    padding: 10px;
-    text-align: center;
->>>>>>> Stashed changes
   }
 
-
-   img {
+  .breadcrumb img {
     width: 100%;
     height: 50px;
   }
@@ -71,7 +60,6 @@
   nav[aria-label="breadcrumb"] {
     text-align: center;
     margin-top: 20px;
-<<<<<<< Updated upstream
   } */
 
 /* .breadcrumb {
@@ -89,26 +77,6 @@
 
 /*card effect*/
 /* .card {
-=======
-  }
-
-  .breadcrumb {
-    display: inline-flex;
-    justify-content: center;
-    font-size: 1.1rem;
-    background-color: #f8f9fa;
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-  }
-
-  .breadcrumb-item + .breadcrumb-item::before {
-    color: #6c757d;
-  }
-
- 
-  /*card effect*/
-  .card {
->>>>>>> Stashed changes
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -136,7 +104,7 @@
     left: 2px;
     right: 2px;
     bottom: 2px;
-    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
+    background: linear-gradient(135deg, #95a5a6, #5d8aa8);
 
     z-index: -1;
     border-radius: 14px;
@@ -167,7 +135,6 @@
   .learnmorebtn {
     background-color: #ff7f50;
     border: none;
-<<<<<<< Updated upstream
     width: 200px;
     height: 30px;
     font-size: 18px;
@@ -322,38 +289,3 @@ h2{
     opacity: 1;
   }
 }
-=======
-    color: white;
-    padding: 12px 24px;
-    margin-top: 20px;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .learnmorebtn:hover {
-    background-color: #ff5722;
-    transform: scale(1.05);
-  }
-  
- 
-  .maincontent {
-    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
-
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
- .maincontent h2 {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 20px;
-  }
-  
-  .maincontent p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color:white;
-  }
->>>>>>> Stashed changes
