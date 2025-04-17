@@ -50,8 +50,8 @@ def boiler_form(request):
 from django.forms.models import model_to_dict
 @login_required
 def pump_efficiency_calculater(request):
-    print(request.user.id)
     form_data = Energy_Efficiency_Parameters.objects.get(user_id=request.user.id)
+    
     df = pd.read_excel(form_data.text_curve_data)
     print(df.head())
     data = model_to_dict(form_data)  # Prints all field names and values as a dictionary
