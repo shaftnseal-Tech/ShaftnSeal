@@ -7,261 +7,123 @@
 {% block css %}
 {{ block.super }}
 
-<link rel="stylesheet" href="{% static 'products/product.css' %}" />
+<link rel="stylesheet" href="{% static 'Products/product.css' %}" />
 
 
 {% endblock css %}
 {% block content %}
-<section class="hero-section">
-<<<<<<< Updated upstream
-   
+
+   <section class="hero-section">
     <div class="hero-content">
-        <div class="about-banner">
-          <div class="banner-overlay"></div>
-          <!-- Banner Text -->
-          <div class="banner-text text-center text-white">
-            <h1 class="banner-heading">Products</h1>
-=======
-    <h1 class="seal">OUR PRODUCTS</h1>
-    <div class="search-icon-container">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search your products here..."
-          aria-label="Search"
-        />
-       
-           
+      <div class="about-banner">
+        <div class="banner-overlay"></div>
+        <!-- Banner Text -->
+        <div class="banner-text text-center text-white">
+          <h1 class="banner-heading">PRODUCT</h1>
+  
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="{% url 'home' %}" class="breadcrumb-link">Home</a>
+              </li>
+              <li class="breadcrumb-separator">/</li>
+              <li class="breadcrumb-item active text-white" aria-current="page">
+                Product
+              </li>
+              
+            </ol>
+          </nav>
+         
+      </div>
+    </div>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        
+        <!-- Card Template -->
+        <div class="col">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <img src="/static/img/pumpimg.png">
+              <h1>Product</h1>
+              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
+              <h3>Rs. 8,500.00</h3>
+              <div class="custombutton">
+                <a  class="custom-btn">Addtocart</a>
+                <a class="custom-btn">Details</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    <div class="d-flex justify-content-center">
-        <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4 ">
-           
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-titleh5e">Product 1</h5>
-                        <p class="card-text">This is a description of product 1.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
+        <div class="col">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <img src="/static/img/pumpimg.png">
+              <h1>Product</h1>
+              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
+              <h3>Rs. 8,500.00</h3>
+              <div class="custombutton">
+                <a  class="custom-btn">Addtocart</a>
+                <a class="custom-btn">Details</a>
+              </div>
             </div>
+          </div>
+        </div>
     
-           
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-titleh5">Product 2</h5>
-                        <p class="card-text">This is a description of product 2.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
+        <!-- Card 3 -->
+        <div class="col">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <img src="/static/img/pumpimg.png">
+              <h1>Product</h1>
+              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
+              <h3>Rs. 8,500.00</h3>
+              <div class="custombutton">
+                <a  class="custom-btn">Addtocart</a>
+                <a class="custom-btn">Details</a>
+              </div>
             </div>
+          </div>
+        </div>
     
-            <!-- Product 3 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-titleh5">Product 2</h5>
-                        <p class="card-text">This is a description of product 2.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
+        <!-- Card 4 -->
+        <div class="col">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <img src="/static/img/pumpimg.png">
+              <h1>Product</h1>
+              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
+              <h3>Rs. 8,500.00</h3>
+              <div class="custombutton">
+                <a  class="custom-btn">Addtocart</a>
+                <a class="custom-btn">Details</a>
+              </div>
             </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-titleh5">Product 2</h5>
-                        <p class="card-text">This is a description of product 2.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-titleh5">Product 2</h5>
-                        <p class="card-text">This is a description of product 2.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/static/img/ChatGPT Image Apr 12, 2025, 03_59_24 PM.png" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-titleh5">Product 2</h5>
-                        <p class="card-text">This is a description of product 2.</p>
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more products here -->
->>>>>>> Stashed changes
+          </div>
+        </div>
     
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">
-                  <a href="{% url 'home' %}" class="breadcrumb-link">Home</a>
-                </li>
-                <li class="breadcrumb-separator">/</li>
-                <li class="breadcrumb-item active text-white" aria-current="page">
-                  products
-                </li>
-                
-              </ol>
-            </nav>
-          
+        <!-- Card 5 -->
+        <div class="col">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <img src="/static/img/pumpimg.png">
+              <h1>Product</h1>
+              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
+              <h3>Rs. 8,500.00</h3>
+              <div class="custombutton">
+                <a  class="custom-btn">Addtocart</a>
+                <a class="custom-btn">Details</a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-   
-     </div>
-     
-     <div class="container">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      
-      <!-- Card Template -->
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0 hover-card ">
-          <div class="card-body text-center">
-            
-           <img src="/static/img/pumpimg.png">
-           <h4>Product</h4>
-           <p>Product Description</p>
-
-           <h5>MRP : 250</h5>
-           <div class="custombutton">
-            <a class="btn custom-btn mt-2" >AddToCart</a>
-            <a class="btn custom-btn mt-2" >Details</a>
-
-           </div>
-
-        </div>
-        </div>
-      </div>
-
+    
+         </div>
     </div>
-  </div>
     
-</section>
+       
+          </div>
+   </section>
 {% endblock  %}
     
 

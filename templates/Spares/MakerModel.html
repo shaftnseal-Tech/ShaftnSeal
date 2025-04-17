@@ -1,68 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'Spares/search.css' %}">
-    <style>
-        /* Table styling */
-        .parts-table {
-            position: relative;
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        }
+{% block css %} 
+{{block.super}}
 
-        .parts-table th, .parts-table td {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: center;
-        }
+<link rel="stylesheet" href="{% static 'Spares/search.css' %}" />
 
-        .parts-table thead {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .parts-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .parts-table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .search-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-btn:hover {
-            background-color: #45a049;
-        }
-
-        
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
-{% endblock css %}
-
+{% endblock css %} 
 {% block content %}
 <!-- Chatbot Section -->
 
 
 <section class="hero-section">
-    <div class="hero-content">
-        <h1 class="spareshead">Spares Detail</h1>
+    <div >
+        <h1 class="spareshead">Spares Details</h1>
+        <p>Explore our high-quality spare parts for enhanced reliability and extended equipment lifespan</p>
 
         <!-- Search Maker Section -->
         <div class="search-container">
@@ -73,7 +25,16 @@
              {% endfor %}
           
             </div>
+            
         </div>
+        <div class="hero-image mt-5" id="lottie-container">
+           
+            <img
+              src="{% static 'img/6.svg' %}"
+              alt="Industrial Solutions"
+              class="animated-svg"
+            />
+          </div>
 
         <!-- Spares Form Modal -->
         <div  class="modal-container" id="search-form" style="display: none;">
@@ -97,17 +58,18 @@
         </div>
 
         <!-- Parts Display Section -->
-        <div class="parts-display" id="parts-display" style="display: none;">
-            <div id="chatbot-container" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; width: 100%; background-color: #f9f9f9;">
+    <div class="parts-container">
+        <div class="parts-display" id="parts-display" >
+            <div id="chatbot-container" >
     <h3>Parts Chat Assistant</h3>
-    <div id="chat-window" style="height: 200px; overflow-y: auto; background: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+    <div id="chat-window" >
         <div class="chatbot-message">Hello! Enter a part name or number to search for it.</div>
     </div>
     <div style="display: flex;">
-        <input type="text" id="user-input" placeholder="Type part name or number..." style="flex: 1; padding: 8px;">
-        <button onclick="sendMessage()" style="padding: 8px 15px; margin-left: 10px;">Send</button>
+        <input type="text" id="user-input" placeholder="Type part name or number..." >
+        <button onclick="sendMessage()" >Send</button>
     </div>
-    </div>
+   
     
             <h2>Parts List</h2>
             <table class="parts-table">
@@ -126,8 +88,9 @@
                     <!-- JS will populate this -->
                 </tbody>
             </table>
-        </div>
+        
     </div>
+</div>
 </section>
 {% endblock  %}
 

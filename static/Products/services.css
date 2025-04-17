@@ -1,5 +1,4 @@
 .hero-section{
-<<<<<<< Updated upstream
   text-align: center;
  
   background-color: #F2F2F2 !important;
@@ -196,31 +195,8 @@ to {
   transform: translateX(0);
   opacity: 1;
 }
+
 }
-=======
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #f2f2f2!important;
-    height: 100vh;
-}
-@media (max-width: 768px) {
-    .hero-section {
-      flex-direction: column;
-      padding: 30px 20px;
-    }
-  
-    .hero-content {
-      max-width: 90%;
-    }
-  
-    .learn-more-btn {
-      font-size: 14px;
-    }
-  
-    .search-icon-container {
-      max-width: 350px;
-    }
-  }
   .card {
     position: relative;
     border-radius: 16px;
@@ -228,7 +204,7 @@ to {
     padding: 1rem;
     z-index: 0;
     background:white;
-    color:white;
+    color:black;
   }
 
   .card::before {
@@ -238,7 +214,8 @@ to {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff, #ffcc00);
+    border: 2px solid #cf0f47;
+
     background-size: 600% 600%;
     z-index: -2;
     filter: blur(10px);
@@ -253,12 +230,14 @@ to {
     left: 2px;
     right: 2px;
     bottom: 2px;
-    background: linear-gradient(135deg, #205781,#4F959D, #98D2C0);
+    background: white;
 
     z-index: -1;
     border-radius: 14px;
   }
-
+.card p{
+  color:gray;
+}
   @keyframes glow {
     0% {
       background-position: 0% 50%;
@@ -288,4 +267,3 @@ to {
     display: inline-block; 
     position: relative;
   }
->>>>>>> Stashed changes
