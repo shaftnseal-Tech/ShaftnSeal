@@ -91,10 +91,8 @@
     <span id="closeElectricalModal" class="close">&times;</span>
     <h2>Electrical Parameter</h2>
     <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      
-              {{ electrical_params_form.as_p }}
-         
+      {% csrf_token %}  
+              {{ electrical_params_form.as_p }}       
       <button type="submit" name="save_electrical_params" class="btn btn-warning">💾 Save Electrical Parameters</button>
   </form>
   </div>
@@ -225,9 +223,9 @@
       <p class="mb-4">
         Our dual-pump system ensures reliability and efficiency. While one pump operates to deliver optimal performance, the other remains on standby, ready to take over instantly in case of failure or maintenance. This setup reduces downtime and enhances operational safety.
       </p>
-      <div class="d-flex justify-content-center justify-content-md-start gap-3">
+      <div class="d-flex justify-content-center justify-content-md-start gap-3 frm-btnn">
         <button class=" custom-btn" id="backbtn"><i class="bi bi-arrow-left"></i></button>
-        <a href="{% url 'form-page' %}">How your pump running</a>
+        <a href="{% url 'form-page' %}" class="custom-btn" >How your pump running</a>
       </div>
     </div>
 
