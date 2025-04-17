@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import Account
 
 class Energy_Efficiency_Parameters(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,blank=True)
 
     # Basic input parameters
     height1 = models.FloatField(verbose_name='Height1')
@@ -37,12 +37,11 @@ class Energy_Efficiency_Parameters(models.Model):
     no_hrs_pumprun = models.FloatField(verbose_name='No. of Hours Pump Run')
     cost_of_electricity = models.FloatField(verbose_name='Cost of Electricity')
 
-    is_draft = models.BooleanField(default=True, help_text="Indicates if this entry is in draft form")
+   
 
     class Meta:
-        db_table = 'Energy_Efficiency_Parameters'  # Custom table name
-        verbose_name = "Energy Efficiency Parameter"  # Singular form
+        db_table = 'Energy_Efficiency_Parameters'  
+        verbose_name = "Energy Efficiency Parameter" 
         verbose_name_plural = "Energy Efficiency Parameters"
 
-    def __str__(self):
-        return f"Energy Efficiency Data for {self.user.username if self.user else 'Anonymous'} - Draft: {self.is_draft}"
+ 
