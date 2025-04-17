@@ -1,30 +1,40 @@
 .card {
-    cursor: pointer;
-  }
-
-  .card-body {
-    display: none;
-  }
-
-  .card.opened .card-body {
-    display: block;
+    background-color: #ffffff;
   }
 
   .form-control {
-    margin: 10px 0;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  select.form-control {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
+  .card-header h5 {
+    font-size: 1.25rem;
   }
 
   .toggle-icon {
-    float: right;
     font-size: 1.2rem;
+    transition: transform 0.3s ease;
   }
 
-.form-head{
-    color: crimson;
+  .card-header:hover .toggle-icon {
+    transform: scale(1.2);
+  }
+  .btn-custom{
+    background-color: #033043;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+.bg-custom{
+    background-color: #033043;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 1rem;
 }

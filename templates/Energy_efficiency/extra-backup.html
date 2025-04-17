@@ -1,106 +1,193 @@
-
-{% comment %} energy_efficiency.html page {% endcomment %}
-{% extends 'base.html' %} 
-{% load static %} 
-{% block css %} 
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Shaft & Seal |
+Energy Efficiency Parameters 
+{% endblock title %} 
+{% block css %}
 {{ block.super}}
-<link rel="stylesheet" href="{% static 'Energy_efficiency/ef.css' %}" />
-{% endblock css %} 
+<link rel="stylesheet" href="{% static 'Energy_efficiency/form-page.css' %}" />
+{% endblock css %}
+
+
 {% block content %}
 
-<section class="hero-section">
-  <h1 class="seal" data-text="EnergyEfficiency">Energy Efficiency</h1>
-  <div class="container my-5">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-     
-      <div class="col">
-        <div class="card">
-          <a class="card2" href="{% url 'boiler_feedpump' %}">
-            Boiler Feed Pump
-          </a>
-        </div>
-      </div>
+<section class="hero-section py-5 bg-light">
+  <div class="container text-center mb-5">
+    <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Energy Efficiency Parameters</h1>
+    <p class="text-muted">Explore our advanced pump solutions for optimal performance and energy savings.</p>
+  </div>
+{% comment %} <h2 class="mb-4 text-center form-head">Energy Efficiency Parameters</h2> {% endcomment %}
 
-      
-      <div class="col">
-        <div class="card">
-          <a class="card2"> Condensate Extraction Pum </a>
-        </div>
-      </div>
+<!-- Display messages -->
+{% if messages %} 
+{% for message in messages %}
+<div
+  class="alert mt-5 alert-{{ message.tags }} alert-dismissible fade show"
+  role="alert"
+>
+  {{ message }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endfor %}
+{% endif %}
 
-   
-      <div class="col">
-        <div class="card">
-          <a class="card2"> Cooling Tower Pump (ACW/MCW) </a>
-        </div>
-      </div>
+<form
+  method="POST"
+  enctype="multipart/form-data"
+  action="{% url 'form-page' %}"
+>
+  {% csrf_token %}
 
-    
-      <div class="col">
-        <div class="card">
-          <a class="card2"> DM Water Pump </a>
+  <!-- System Data -->
+  <div class="card mb-4 opened" id="system-data-card" aria-expanded="true">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter System Data</h5>
+      <span class="toggle-icon">▲</span>
+    </div>
+    <div class="card-body" id="system-data-card-form">
+      <div class="row">
+        <div class="col-md-6">
+          <p>{{ form.height1.label }} {{ form.height1 }}</p>
+          <p>{{ form.height2.label }} {{ form.height2 }}</p>
+          <p>{{ form.suction_pressure.label }} {{ form.suction_pressure }}</p>
+          <p>
+            {{ form.discharge_pressure.label }} {{ form.discharge_pressure }}
+          </p>
+          <p>{{ form.fluid_temperature.label }} {{ form.fluid_temperature }}</p>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-{% endblock content %}
-
-
-{% comment %} boiler_feedpump.html page {% endcomment %}
-{% comment %} {% extends 'base.html' %}
-{% load static %}
-
-
-{% block css %}
-    {{ block.super }}
-
-    <link rel="stylesheet" href="{% static 'Energy_efficiency/boiler-page.css' %}">
-{% endblock css %}
-    
-{% block content %}
-<section class="hero-section">
-    <h1 class="seal"> What is your operating philosophy?
-    </h1>
-    <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/image/1R+1sb.png" class="card-img-top" >
-                    <div class="card-body">
-                       
-                    </div>
-                    <a class="btnboiler " href="{% url 'boiler_feedpump_1r+1s' %}">1Running + 1StandBy</a>
-                </div>
-            </div>
-           
-    
-            
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/image/1R+1sb.png" class="card-img-top">
-                    <div class="card-body">
-                       
-                    </div>
-                    <button class="btnboiler ">2Running +1StandBy</button>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="/image/1R+1sb.png" class="card-img-top" >
-                    <div class="card-body">
-                        
-                    </div>
-                    <button class="btnboiler ">Multiple Running + Multiple StandBy</button>
-                </div>
-            </div>
-          
-    
-        </div>
+  <!-- Pump Nameplate Data -->
+  <div class="card mb-4" id="pump-nameplate-card" aria-expanded="false">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter Pump Nameplate Data</h5>
+      <span class="toggle-icon">▼</span>
     </div>
-    
-</section>
-{% endblock content %}
-     {% endcomment %}
+    <div class="card-body" id="pump-nameplate-card-form">
+      <div class="row">
+        <div class="col-md-6">
+          <p>{{ form.nominal_flow_rate.label }} {{ form.nominal_flow_rate }}</p>
+          <p>{{ form.nominal_head.label }} {{ form.nominal_head }}</p>
+          <p>{{ form.pump_efficiency.label }} {{ form.pump_efficiency }}</p>
+          <p>{{ form.pump_speed.label }} {{ form.pump_speed }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Motor Nameplate Data -->
+  <div class="card mb-4" id="motor-nameplate-card" aria-expanded="false">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter Motor Nameplate Data</h5>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body" id="motor-nameplate-card-form">
+      <p>{{ form.motor_voltage.label }} {{ form.motor_voltage }}</p>
+      <p>{{ form.motor_current.label }} {{ form.motor_current }}</p>
+      <p>{{ form.motor_power_factor.label }} {{ form.motor_power_factor }}</p>
+      <p>{{ form.motor_power.label }} {{ form.motor_power }}</p>
+      <p>{{ form.N1.label }} {{ form.N1 }}</p>
+    </div>
+  </div>
+
+  <!-- Actual Pump Data -->
+  <div class="card mb-4" id="actual-pump-data-card" aria-expanded="false">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter Actual Pump Data</h5>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body" id="actual-pump-data-card-form">
+      <p>{{ form.actual_flow_rate.label }} {{ form.actual_flow_rate }}</p>
+      <p>
+        {{ form.pump_discharge_pressure.label }} {{ form.pump_discharge_pressure
+        }}
+      </p>
+      <p>
+        {{ form.pump_suction_pressure.label }} {{ form.pump_suction_pressure }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Test Data -->
+  <div class="card mb-4 opened" id="test-data-card" aria-expanded="true">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">EnterTest Data</h5>
+      <span class="toggle-icon">▲</span>
+    </div>
+    <div class="card-body" id="test-data-card-form" style="display: block">
+      <p>{{ form.text_curve_data.label }} {{ form.text_curve_data }}</p>
+    </div>
+  </div>
+  <!-- Electrical Parameters -->
+  <div class="card mb-4" id="electrical-params-card" aria-expanded="false">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter Electrical Parameters</h5>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body" id="electrical-params-card-form">
+      <p>{{ form.actual_voltage.label }} {{ form.actual_voltage }}</p>
+      <p>{{ form.actual_current.label }} {{ form.actual_current}}</p>
+      <p>{{ form.actual_power_factor.label }} {{ form.actual_power_factor }}</p>
+      <p>{{ form.actual_power.label }} {{ form.actual_power }}</p>
+      <p>{{ form.actual_efficiency.label }} {{ form.actual_efficiency }}</p>
+      <p>{{ form.N2.label }} {{ form.N2 }}</p>
+    </div>
+  </div>
+
+  <!-- Commercial Data -->
+  <div class="card mb-4" id="commercial-data-card" aria-expanded="false">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Enter Commercial Data</h5>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body" id="commercial-data-card-form">
+      <p>{{ form.no_hrs_pumprun.label }} {{ form.no_hrs_pumprun }}</p>
+      <p>{{ form.cost_of_electricity.label }} {{ form.cost_of_electricity }}</p>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="text-center mt-4">
+    <button type="submit" class="btn btn-success">Submit</button>
+  </div>
+
+</form>
+
+{% endblock content %} 
+{% block js %} 
+{{ block.super }}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Use Bootstrap's Collapse plugin to handle the toggling automatically
+    const collapseElements = document.querySelectorAll(".card-header");
+
+    collapseElements.forEach((header) => {
+      header.addEventListener("click", function () {
+        const body = header.nextElementSibling;
+        const icon = header.querySelector(".toggle-icon");
+
+        // Check the current state and toggle
+        if (body.style.display === "none" || !body.style.display) {
+          body.style.display = "block";
+          icon.textContent = "▲"; // Change icon to up
+        } else {
+          body.style.display = "none";
+          icon.textContent = "▼"; // Change icon to down
+        }
+      });
+    });
+
+    // Ensure the first card is open on page load
+    document.querySelector(".card-body").style.display = "block";
+  });
+</script>
+
+{% endblock js %}
