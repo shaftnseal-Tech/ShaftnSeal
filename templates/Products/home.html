@@ -56,7 +56,11 @@
             >Spares</a
           >
           <a href="pumppage.html" class="card" data-url="pumppage.html">Pump</a>
-          <a href="morepage.html" class="card" data-url="morepage.html"
+          <a
+            href="{% url 'spares_page' %}"
+            data-url="{% url 'spares_page' %}"
+          
+            class="card"
             >Services</a
           >
           <a href="morepage.html" class="card" data-url="morepage.html"
