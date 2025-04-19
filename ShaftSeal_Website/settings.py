@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     # "Customers",
     "Spares",
     "Products",
-    "Energy_efficiency"
+    "Energy_efficiency",
+    "service_app",
 ]
 
 MIDDLEWARE = [

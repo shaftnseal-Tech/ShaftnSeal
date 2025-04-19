@@ -27,6 +27,7 @@ urlpatterns = [
     path('Spares/',include('Spares.urls')),
     path('',include('Products.urls')),
     path("Energy_efficiency/", include("Energy_efficiency.urls")),
+    path('service_app/', include('service_app.urls')),
   
   
 ]
