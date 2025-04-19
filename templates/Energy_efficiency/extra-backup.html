@@ -53,39 +53,39 @@ Energy Efficiency Parameters
       </div>
   
       <div class="card-body" id="system-data-card-form">
-        <form>
+        
           <div class="row justify-content-center">
             <div class="col-10">
               <div class="mb-3 text-center">
-                {{ form.height1.label_tag }}<br>
+                {{ form.height1.label }}<br>
                 {{ form.height1 }}
               </div>
               <div class="mb-3 text-center">
-                {{ form.height2.label_tag }}<br>
+                {{ form.height2.label }} <br>
                 {{ form.height2 }}
               </div>
               <div class="mb-3 text-center">
-                {{ form.suction_pressure.label_tag }}<br>
+                {{ form.suction_pressure.label }}<br>
                 {{ form.suction_pressure }}
               </div>
               <div class="mb-3 text-center">
-                {{ form.discharge_pressure.label_tag }}<br>
+                {{ form.discharge_pressure.label }} <br>
                 {{ form.discharge_pressure }}
               </div>
               <div class="mb-3 text-center">
-                {{ form.fluid_temperature.label_tag }}<br>
+                {{ form.fluid_temperature.label }}<br>
                 {{ form.fluid_temperature }}
               </div>
             </div>
           </div>
-        </form>
+       
       </div>
     </div>
   </div>
   
   
   <!-- Pump Nameplate Data -->
-<div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
   <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="pump-nameplate-card" aria-expanded="false">
     <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
       <h5 class="mb-0">Enter Pump Nameplate Data</h5>
@@ -93,36 +93,36 @@ Energy Efficiency Parameters
     </div>
 
     <div class="card-body" id="pump-nameplate-card-form">
-      <form>
+      
         <div class="row justify-content-center">
           <div class="col-10">
 
             <div class="mb-3 text-center">
-              {{ form.nominal_flow_rate.label_tag }}<br>
+              {{ form.nominal_flow_rate.label }}  <br>
               {{ form.nominal_flow_rate }}
             </div>
 
             <div class="mb-3 text-center">
-              {{ form.nominal_head.label_tag }}<br>
+              {{ form.nominal_head.label }} <br>
               {{ form.nominal_head }}
             </div>
 
             <div class="mb-3 text-center">
-              {{ form.pump_efficiency.label_tag }}<br>
+              {{ form.pump_efficiency.label }} <br>
               {{ form.pump_efficiency }}
             </div>
 
             <div class="mb-3 text-center">
-              {{ form.pump_speed.label_tag }}<br>
+              {{ form.pump_speed.label }}<br>
               {{ form.pump_speed }}
             </div>
 
           </div>
         </div>
-      </form>
+    
     </div>
   </div>
-</div>
+  </div>
 
   <!-- Motor Nameplate Data -->
   <div class="d-flex justify-content-center">
@@ -133,43 +133,42 @@ Energy Efficiency Parameters
       </div>
   
       <div class="card-body" id="motor-nameplate-card-form">
-        <form>
+     
           <div class="row justify-content-center">
             <div class="col-10">
   
               <div class="mb-3 text-center">
-                {{ form.motor_voltage.label_tag }}<br>
+                {{ form.motor_voltage.label }}<br>
                 {{ form.motor_voltage }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.motor_current.label_tag }}<br>
+                {{ form.motor_current.label }} <br>
                 {{ form.motor_current }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.motor_power_factor.label_tag }}<br>
+                {{ form.motor_power_factor.label}}<br>
                 {{ form.motor_power_factor }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.motor_power.label_tag }}<br>
+                {{ form.motor_power.label }}<br>
                 {{ form.motor_power }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.N1.label_tag }}<br>
+                {{ form.N1.label }}<br>
                 {{ form.N1 }}
               </div>
   
             </div>
           </div>
-        </form>
+      
       </div>
     </div>
   </div>
   
-
   <!-- Actual Pump Data -->
   <div class="d-flex justify-content-center">
     <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="actual-pump-data-card" aria-expanded="false">
@@ -179,35 +178,35 @@ Energy Efficiency Parameters
       </div>
   
       <div class="card-body" id="actual-pump-data-card-form">
-        <form>
+       
           <div class="row justify-content-center">
             <div class="col-10">
   
               <div class="mb-3 text-center">
-                {{ form.actual_flow_rate.label_tag }}<br>
+                {{ form.actual_flow_rate.label}}<br>
                 {{ form.actual_flow_rate }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.pump_discharge_pressure.label_tag }}<br>
+                {{ form.pump_discharge_pressure.label }}<br>
                 {{ form.pump_discharge_pressure }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.pump_suction_pressure.label_tag }}<br>
+                {{ form.pump_suction_pressure.label }}<br>
                 {{ form.pump_suction_pressure }}
               </div>
   
             </div>
           </div>
-        </form>
+       
       </div>
     </div>
   </div>
   
 
-  <!-- Test Data -->
-<div class="d-flex justify-content-center">
+ <!-- Test Data -->
+ <div class="d-flex justify-content-center">
   <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="test-data-card" aria-expanded="true">
     <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
       <h5 class="mb-0">Enter Test Data</h5>
@@ -215,21 +214,19 @@ Energy Efficiency Parameters
     </div>
 
     <div class="card-body" id="test-data-card-form" style="display: block;">
-      <form>
+     
         <div class="row justify-content-center">
           <div class="col-10">
-
             <div class="mb-3 text-center">
-              {{ form.text_curve_data.label_tag }}<br>
+              {{ form.text_curve_data.label }}<br>
               {{ form.text_curve_data }}
             </div>
-
           </div>
         </div>
-      </form>
+     
     </div>
   </div>
-</div>
+ </div>
 
 
   <!-- Electrical Parameters -->
@@ -241,43 +238,43 @@ Energy Efficiency Parameters
       </div>
   
       <div class="card-body" id="electrical-params-card-form">
-        <form>
+       
           <div class="row justify-content-center">
             <div class="col-10">
   
               <div class="mb-3 text-center">
-                {{ form.actual_voltage.label_tag }}<br>
+                {{ form.actual_voltage.label}}<br>
                 {{ form.actual_voltage }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.actual_current.label_tag }}<br>
+                {{ form.actual_current.label}}<br>
                 {{ form.actual_current }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.actual_power_factor.label_tag }}<br>
+                {{ form.actual_power_factor.label}}<br>
                 {{ form.actual_power_factor }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.actual_power.label_tag }}<br>
+                {{ form.actual_power.label}}<br>
                 {{ form.actual_power }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.actual_efficiency.label_tag }}<br>
+                {{ form.actual_efficiency.label }}<br>
                 {{ form.actual_efficiency }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.N2.label_tag }}<br>
+                {{ form.N2.label}}<br>
                 {{ form.N2 }}
               </div>
   
             </div>
           </div>
-        </form>
+      
       </div>
     </div>
   </div>
@@ -292,23 +289,23 @@ Energy Efficiency Parameters
       </div>
   
       <div class="card-body" id="commercial-data-card-form">
-        <form>
+      
           <div class="row justify-content-center">
             <div class="col-10">
   
               <div class="mb-3 text-center">
-                {{ form.no_hrs_pumprun.label_tag }}<br>
+                {{ form.no_hrs_pumprun.label}}<br>
                 {{ form.no_hrs_pumprun }}
               </div>
   
               <div class="mb-3 text-center">
-                {{ form.cost_of_electricity.label_tag }}<br>
+                {{ form.cost_of_electricity.label }}<br>
                 {{ form.cost_of_electricity }}
               </div>
   
             </div>
           </div>
-        </form>
+     
       </div>
     </div>
   </div>
