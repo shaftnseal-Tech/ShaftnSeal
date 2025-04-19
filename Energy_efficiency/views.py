@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Energy_Efficiency_Parameters
 from .forms import EnergyEfficiencyForm
-
+from django.forms.models import model_to_dict
 
 
 
@@ -26,6 +26,8 @@ def Energy_efficiency_view(request):
 
 def boiler_feedpump_view(request):
     return render(request, 'Energy_efficiency/boilerfeedpump.html')
+
+
 
 
 @login_required
@@ -47,7 +49,10 @@ def boiler_form(request):
     return render(request, 'Energy_efficiency/form_page.html', {
         'form': form,
     })
-from django.forms.models import model_to_dict
+
+
+
+
 @login_required
 def pump_efficiency_calculater(request):
     # Get the latest submission by the user (assuming 'created_at' or use '-id')
@@ -60,13 +65,28 @@ def pump_efficiency_calculater(request):
         p1 = data['suction_pressure']
         p2 = data['discharge_pressure']
         t = data['fluid_temperature']
+        text_curve_data = data['text_curve_data']
+        philosophy = '1R + 1s'
+        Qnp_value = data['nominal_flow_rate']
+        Hnp_value = data['nominal_head']
+        
         
         
         obj = PumpEfficiency()
+        spg = obj.get_specific_gravity(t)
+        Static_head = obj.calculate_static_head(h1,h2,p1,p2)
+        k1 = obj.calculate_theoretical_src(philosophy,Qnp_value,Hnp_value,text_curve_data)
+        Graph_url = obj.display_src()
+        media_url_path = Graph_url.replace(settings.MEDIA_ROOT, settings.MEDIA_URL).replace("\\", "/")
+        print("Graph_url:",media_url_path)
+        print('Static Head:', Static_head)
+        print('Specific Gravity',spg)
+        print('k1',k1)
+        print('',k1)
         
         print(obj.get_specific_gravity(t))
         return render(request, 'Energy_efficiency/Efficiency_calculation.html', {
-            'form_data': data,
+            'form_data': data,'Graph_url': media_url_path,
         })
     else:
        
@@ -75,22 +95,15 @@ def pump_efficiency_calculater(request):
         })
 
 
+
+
+
 @login_required
 def finalize_submission(request):
     """Handle the final submission of the draft data."""
 
-    operation_labels = [
-        "Theoretical Operations",
-        "Actual Operations",
-        "Required",
-        "Output 4",
-        "Output 5",
-        "Output 6",
-        "Output 7"
-    ]
-
     return render(
         request,
         'Energy_efficiency/finalize_submission.html',
-        {'operation_labels': operation_labels}
+      
     )

@@ -68,6 +68,7 @@ class PumpEfficiency:
 
         self.Qnp = float(Qnp)
         self.Hnp = float(Hnp)
+        
 
         self.dynamic_head1 = self.Hnp - self.static_head
         self.k1 = self.dynamic_head1 / (self.Qnp ** 2)
