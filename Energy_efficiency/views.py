@@ -55,7 +55,16 @@ def pump_efficiency_calculater(request):
     
     if form_data:
         data = model_to_dict(form_data)
-
+        h1 = data['height1']
+        h2 = data['height2']
+        p1 = data['suction_pressure']
+        p2 = data['discharge_pressure']
+        t = data['fluid_temperature']
+        
+        
+        obj = PumpEfficiency()
+        
+        print(obj.get_specific_gravity(t))
         return render(request, 'Energy_efficiency/Efficiency_calculation.html', {
             'form_data': data,
         })
