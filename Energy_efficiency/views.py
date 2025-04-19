@@ -78,5 +78,19 @@ def pump_efficiency_calculater(request):
 @login_required
 def finalize_submission(request):
     """Handle the final submission of the draft data."""
-    
-    return render(request,'Energy_efficiency/finalize_submission.html')
+
+    operation_labels = [
+        "Theoretical Operations",
+        "Actual Operations",
+        "Required",
+        "Output 4",
+        "Output 5",
+        "Output 6",
+        "Output 7"
+    ]
+
+    return render(
+        request,
+        'Energy_efficiency/finalize_submission.html',
+        {'operation_labels': operation_labels}
+    )
