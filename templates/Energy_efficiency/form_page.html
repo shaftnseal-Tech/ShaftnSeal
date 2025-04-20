@@ -45,59 +45,77 @@ Energy Efficiency Parameters
   {% csrf_token %}
 
   <!-- System Data -->
-  <div class="card mb-4 opened" id="system-data-card" aria-expanded="true">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter System Data</h5>
-      <span class="toggle-icon">▲</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3" style="width: 600px;" id="system-data-card" aria-expanded="true">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white rounded-3">
+        <h5 class="mb-0">Enter System Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▲</span>
+      </div>
     <div class="card-body" id="system-data-card-form">
-      <div class="row">
-        <div class="col-md-6">
-          <p>{{ form.height1.label }} {{ form.height1 }}</p>
-          <p>{{ form.height2.label }} {{ form.height2 }}</p>
-          <p>{{ form.suction_pressure.label }} {{ form.suction_pressure }}</p>
-          <p>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="mb-3 text-center">{{ form.height1.label }} {{ form.height1 }}</div>
+          <div class="mb-3 text-center">{{ form.height2.label }} {{ form.height2 }}</div>
+          <div class="mb-3 text-center">{{ form.suction_pressure.label }} {{ form.suction_pressure }}</div>
+          <div class="mb-3 text-center">
             {{ form.discharge_pressure.label }} {{ form.discharge_pressure }}
-          </p>
-          <p>{{ form.fluid_temperature.label }} {{ form.fluid_temperature }}</p>
+          </div>
+          <div class="mb-3 text-center">{{ form.fluid_temperature.label }} {{ form.fluid_temperature }}</div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
   <!-- Pump Nameplate Data -->
-  <div class="card mb-4" id="pump-nameplate-card" aria-expanded="false">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter Pump Nameplate Data</h5>
-      <span class="toggle-icon">▼</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="pump-nameplate-card" aria-expanded="false">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Pump Nameplate Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▼</span>
+      </div>
+  
     <div class="card-body" id="pump-nameplate-card-form">
       <div class="row">
-        <div class="col-md-6">
-          <p>{{ form.nominal_flow_rate.label }} {{ form.nominal_flow_rate }}</p>
-          <p>{{ form.nominal_head.label }} {{ form.nominal_head }}</p>
-          <p>{{ form.pump_efficiency.label }} {{ form.pump_efficiency }}</p>
-          <p>{{ form.pump_speed.label }} {{ form.pump_speed }}</p>
+        <div class="col-10">
+          <div class="mb-3 text-center">{{ form.nominal_flow_rate.label }} {{ form.nominal_flow_rate }}</div>
+          <div class="mb-3 text-center">{{ form.nominal_head.label }} {{ form.nominal_head }}</div>
+          <div class="mb-3 text-center">{{ form.pump_efficiency.label }} {{ form.pump_efficiency }}</div>
+          <div class="mb-3 text-center"> {{ form.pump_speed.label }} {{ form.pump_speed }}</div>
         </div>
       </div>
     </div>
+    </div>
   </div>
-
 
   
   <!-- Motor Nameplate Data -->
-  <div class="card mb-4" id="motor-nameplate-card" aria-expanded="false">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter Motor Nameplate Data</h5>
-      <span class="toggle-icon">▼</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="motor-nameplate-card" aria-expanded="false">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Motor Nameplate Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▼</span>
+      </div>
     <div class="card-body" id="motor-nameplate-card-form">
-      <p>{{ form.motor_voltage.label }} {{ form.motor_voltage }}</p>
-      <p>{{ form.motor_current.label }} {{ form.motor_current }}</p>
-      <p>{{ form.motor_power_factor.label }} {{ form.motor_power_factor }}</p>
-      <p>{{ form.motor_power.label }} {{ form.motor_power }}</p>
-      <p>{{ form.N1.label }} {{ form.N1 }}</p>
+      <div class="mb-3 text-center">
+        {{ form.motor_voltage.label }}
+        {{ form.motor_voltage }}</div>
+      <div class="mb-3 text-center">
+        {{ form.motor_current.label }}
+         {{ form.motor_current }}</div>
+      <div class="mb-3 text-center">
+        {{ form.motor_power_factor.label }} 
+        {{ form.motor_power_factor }}</div>
+      <div class="mb-3 text-center">
+        {{ form.motor_power.label }} 
+        {{ form.motor_power }}
+      </div>
+      <div class="mb-3 text-center">
+        {{ form.N1.label }} 
+        {{ form.N1 }}
+      </div>
     </div>
+  </div>
   </div>
 
   <!-- Actual Pump Data -->
@@ -127,6 +145,7 @@ Energy Efficiency Parameters
       <p>{{ form.text_curve_data.label }} {{ form.text_curve_data }}</p>
     </div>
   </div>
+
   <!-- Electrical Parameters -->
   <div class="card mb-4" id="electrical-params-card" aria-expanded="false">
     <div class="card-header d-flex justify-content-between align-items-center">
@@ -157,7 +176,7 @@ Energy Efficiency Parameters
 
   <!-- Submit Button -->
   <div class="text-center mt-4">
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-custom px-5 py-2  shadow-sm custom-btn">Submit</button>
   </div>
 
 </form>

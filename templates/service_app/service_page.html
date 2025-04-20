@@ -4,13 +4,69 @@
 {% block css %} 
 {{block.super}}
 
+<link rel="stylesheet" href="{% static 'service_app/css/serviceapp.css' %}" />
 
 
 {% endblock css %} 
 {% block content %}
 <!-- Chatbot Section -->
-<h1>Service page</h1>
 
+    <div class="hero-section">
+        <div class=" modal-dialog">
+            <div class="modalbox">
+            
+    <h2 class="seal">Find Your Detail</h2>
+    <form id="customerForm">
+        <label>Customer Code:</label>
+        <input
+        type="text"
+     required
+        autofocus
+      />
+        <label>Contact Person:</label>
+        <input
+        type="text"
+         required
+        autofocus
+      />
+        <label>Email:</label>
+        <input
+        type="Email"
+         required
+        autofocus
+      />
+        <label>Phone Number:</label>
+        <input
+        type="Number"
+         required
+        autofocus
+      />
+        <label>Pump Model:</label>
+        <input
+        type="text"
+         required
+        autofocus
+      />
+      
+        <label class="naturelbl">Nature of Service:</label>
+        <select id="serviceType">
+            <option value="OverHauling Service">OverHauling Service</option>
+            <option value="Break Down Service">Break Down Service</option>
+            <option value="Consultancy On Energy Saving"> Consultancy On Energy Saving</option>
+            <option value=" Engineering Consultancy On Pump Selection"> Engineering Consultancy On Pump Selection</option>
+ <option value="Consultancy On Energy Saving"> Consultancy On Energy Saving</option>
+ <option value=" Site Visit On PerDay Basis"> Site Visit On PerDay Basis</option>
+
+        </select><br><br>
+
+        <label >Remark</label>
+        <textarea id="remark" rows="5" cols="40"></textarea>
+        <button type="submit" class="btnsave">Submit</button>
+    </form>
+    </div>
+        </div>
+</div>
+   
 {% endblock content  %}
 
 {% block js %}
