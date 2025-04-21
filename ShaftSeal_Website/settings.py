@@ -67,17 +67,14 @@ WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-         'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'NAME': 'ShaftnSeal_db',
+        'USER': 'shaftnseal_user',
+        'PASSWORD': 'Shaft&Seal@12345',
+        'HOST': '56.228.32.11',  # or your EC2 private IP if connecting internally
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
