@@ -192,31 +192,67 @@ Energy Efficiency Parameters
   </div>
 
   <!-- Electrical Parameters -->
-  <div class="card mb-4" id="electrical-params-card" aria-expanded="false">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter Electrical Parameters</h5>
-      <span class="toggle-icon">▼</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="electrical-params-card" aria-expanded="false">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Electrical Parameters</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▼</span>
+      </div>
     <div class="card-body" id="electrical-params-card-form">
-      <p>{{ form.actual_voltage.label }} {{ form.actual_voltage }}</p>
-      <p>{{ form.actual_current.label }} {{ form.actual_current}}</p>
-      <p>{{ form.actual_power_factor.label }} {{ form.actual_power_factor }}</p>
-      <p>{{ form.actual_power.label }} {{ form.actual_power }}</p>
-      <p>{{ form.actual_efficiency.label }} {{ form.actual_efficiency }}</p>
-      <p>{{ form.N2.label }} {{ form.N2 }}</p>
+      <div class="row justify-content-center">
+        <div class="col-10">
+
+      <div class="mb-3 text-center">
+        {{ form.actual_voltage.label }}
+         {{ form.actual_voltage }}</div>
+      <div class="mb-3 text-center">
+        {{ form.actual_current.label }} 
+        {{ form.actual_current}}
+      </div>
+      <div class="mb-3 text-center">
+        {{ form.actual_power_factor.label }} 
+        {{ form.actual_power_factor }}
+      </div>
+      <div class="mb-3 text-center">
+        {{ form.actual_power.label }}
+         {{ form.actual_power }}
+        </div>
+      <div class="mb-3 text-center">
+        {{ form.actual_efficiency.label }} 
+        {{ form.actual_efficiency }}
+      </div>
+      <div class="mb-3 text-center">
+        {{ form.N2.label }} 
+        {{ form.N2 }}
+      </div>
     </div>
+  </div>
+</div>
+  </div>
   </div>
 
   <!-- Commercial Data -->
-  <div class="card mb-4" id="commercial-data-card" aria-expanded="false">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter Commercial Data</h5>
-      <span class="toggle-icon">▼</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="commercial-data-card" aria-expanded="false">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Commercial Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▼</span>
+      </div>
     <div class="card-body" id="commercial-data-card-form">
-      <p>{{ form.no_hrs_pumprun.label }} {{ form.no_hrs_pumprun }}</p>
-      <p>{{ form.cost_of_electricity.label }} {{ form.cost_of_electricity }}</p>
+      <div class="row justify-content-center">
+        <div class="col-10">
+      <div class="mb-3 text-center">
+        {{ form.no_hrs_pumprun.label }}
+         {{ form.no_hrs_pumprun }}
+        </div>
+      <div class="mb-3 text-center">
+        {{ form.cost_of_electricity.label }} 
+        {{ form.cost_of_electricity }}
+      </div>
     </div>
+  </div>
+</div>
+  </div>
   </div>
 
   <!-- Submit Button -->
