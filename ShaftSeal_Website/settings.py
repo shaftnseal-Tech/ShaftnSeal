@@ -8,12 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG') == 'True'
+DEBUG = 'True'
 
 ALLOWED_HOSTS = ['*']  # Add your server's IP or domain here
 
