@@ -1,108 +1,24 @@
-.hover-card {
+.cardboiler {
+  background-color: #033043 !important;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.cardboiler a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cardboiler a:hover {
+  text-decoration: underline;
+}
+
+/* Optional hover effect */
 .hover-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
-.custom-btn {
-  /* background-color: #FFB22C; */
-  background-color: #cf0f47;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 178, 44, 0.3);
-}
-
-.custom-btn:hover {
-  background-color: #c1093d;
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(255, 178, 44, 0.5);
-  transform: translateY(-2px);
-}
-.card {
-  border: 1.3px solid #cf0f47 !important;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(207, 15, 71, 0.3);
-  border-color: #e0245e;
-}
-.text-custom {
-  color: #cf0f47 !important;
-  font-weight: 600;
-}
-
-/* cardboiler */
-
-.cardboiler {
-    background-color: #FEBA17;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cardboiler a {
-    color: #ffffff;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cardboiler a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .cardboiler:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(207, 15, 71, 0.3);
-  }
-  
-  .hero-image {
-    text-align: center;
-  }
-  
-  .hero-image img.animated-svg {
-    max-width: 100%;
-    width: 500px;    
-    height: auto;
-    margin-top: 2rem;
-    animation: floatUpDown 3s ease-in-out infinite;
-  }
- 
-  .cardboiler a i {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .cardboiler a:hover i {
-    transform: translateX(4px); 
-  }
-  
-  /* Optional animation for visual appeal */
-  @keyframes floatUpDown {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
