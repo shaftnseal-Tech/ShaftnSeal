@@ -104,9 +104,9 @@ class PumpEfficiency:
 
     def display_src(self):
         h_line = np.full_like(self.Q1, self.Hnp)
-        static_line = np.full_like(self.Q2 if self.pump_philosophy == '2R + 1s' else self.Q1, self.static_head)
+        static_line = np.full_like(self.Q2 if self.pump_philosophy == '2R+1S' else self.Q1, self.static_head)
 
-        if self.pump_philosophy == '2R + 1s':
+        if self.pump_philosophy == '2R+1S':
             self.src = self.static_head + self.k1 * (self.Q2 ** 2)
             plt.plot(self.Q1, self.H, label='Hnp')
             plt.plot(self.Q2, self.H, label='2Hnp (Flat)')

@@ -1,56 +1,242 @@
-{% extends 'base.html' %}
-{% load static %}
-
-
+{% extends 'base.html' %} 
+{% load static %} 
+{% block css %} 
+{{ block.super }}
+<link
+  rel="stylesheet"
+  href="{% static 'Energy_efficiency/boiler-1r+1s.css' %}"
+/>
+{% endblock css %} 
 {% block content %}
 
-<div class="modal" id="registration-form">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('registration-form')">&times;</span>
-        <div class="form-container">
-            <h2 >Form</h2>
-            <form onsubmit="generateCustomerDetails(); return false;">
-                <div class="flex-group">
-                    <input type="text" id="customerName" placeholder="Customer Name" required>
-                    <input type="text" id="address" placeholder="Address" required>
-                </div>
-                <div class="flex-group">
-                    <input type="text" id="pincode" placeholder="PIN Code" maxlength="6" required>
-                    <input type="text" id="phoneNo" placeholder="Phone Number" maxlength="10" required>
-                </div>
-                <div class="flex-group">
-                 
-                </div>
-        crs        <div class="flex-group">
-                    
-                </div>
-                <input type="email" id="email" placeholder="Email Address" required>
-                
-                <button type="submit" href="home.html" >Register</button>
-            </form>
+<!-- System Modal -->
+<div id="systemModal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeSystemModal" class="close">&times;</span>
+    <h2>System data</h2>
+    <form method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+      
+              {{ system_data_form.as_p }}
+
+      <button type="submit" name="save_system_data" class="btn btn-warning">💾 Save System Data</button>
+    </form>
+  </div>
+</div>
+
+<!-- Pump Name Plate Modal -->
+<div id="detailModal" class="modal-container">
+  <div class="modal-box">
+    <span id="closePumpModal" class="close">&times;</span>
+    <h2>Pump name plate data</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ pump_nameplate_form.as_p }}
           
-        </div>
+      <button type="submit" name="save_pump_nameplate" class="btn btn-warning">💾 Save Pump Nameplate Data</button>
+  </form>
+  </div>
+</div>
+
+<!-- Motor Modal -->
+<div id="motormodal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeMotorModal" class="close">&times;</span>
+    <h2>Motor Plate Data</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ motor_nameplate_form.as_p }}
+         
+      <button type="submit" name="save_motor_nameplate" class="btn btn-warning">💾 Save Motor Nameplate Data</button>
+  </form>
+  </div>
+</div>
+
+<!-- Actual Data Modal -->
+<div id="ActualdataModal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeActualModal" class="close">&times;</span>
+    <h2>Actual Plate Data</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     
+              {{ actual_pump_data_form.as_p }}
+         
+      <button type="submit" name="save_actual_pump_data" class="btn btn-warning">💾 Save Actual Pump Data</button>
+  </form>
+  </div>
+</div>
+
+<!-- Test Curve Modal -->
+<div id="testcurvemodal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeTestCurveModal" class="close">&times;</span>
+    <h2>Test curve Data</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      
+              {{ test_data_form.as_p }}
+         
+      <button type="submit" name="save_test_data" class="btn btn-warning">💾 Save Test Data</button>
+  </form>
+  </div>
+</div>
+
+<!-- Electrical Modal -->
+<div id="ElectricalModal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeElectricalModal" class="close">&times;</span>
+    <h2>Electrical Parameter</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}  
+              {{ electrical_params_form.as_p }}       
+      <button type="submit" name="save_electrical_params" class="btn btn-warning">💾 Save Electrical Parameters</button>
+  </form>
+  </div>
+</div>
+
+<!-- Commercial Modal -->
+<div id="CommercialdataModal" class="modal-container">
+  <div class="modal-box">
+    <span id="closeCommercialModal" class="close">&times;</span>
+    <h2>Commercial Data</h2>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'final_submission' %}">
+      {% csrf_token %}
+      
+              {{ commercial_data_form.as_p }}
+        
+      <button type="submit" class="btn btn-success"> Submit</button>
+  </form>
+  </div>
+</div>
+
+<!-- Selection Modal -->
+<div id="selectionModal" class="modal-container">
+  <div class="modalcontent">
+    <!-- Headline and Subtitle -->
+    <div class="text-center my-4">
+      <h1 class="modal-heading" style="color: black;">Select Data Input Form</h2>
+      <p class="modal-subtitle" style="color: black;">Choose a data section below to fill in and generate your output.</p>
     </div>
+
+    <div class="container my-5">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card bs" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="opensystemModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">System Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>     
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="openPumpModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Pump Name Plate Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body text-center">
+              <button id="openmotormodal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Motor Plate Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body">
+              <button id="openActulModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Actual Plate Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body">
+              <button id="opentestcueveModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Test Curve Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body">
+              <button id="openElectricalModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Electrical Parameters <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="background-color: #033043; color: white;">
+            <div class="card-body">
+              <button id="opencommercialModal" class="selectbtn" style="color: white;">
+                <h4 style="color: white;">Commercial Data <i class="bi bi-arrow-right"></i></h4>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">      
+          <div class="card-body text-center ">
+            <button id="submitSelection" class="submitbtn"
+              style="background-color: #fda521; color: white; padding: 15px 45px; font-size: 18px; border-radius: 5px;">
+              Submit
+            </button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<section class="section-Contact">
-    <h1> 2 Running + 2 StandBy
-    </h1>
-    <div class="container my-5">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Product 1 -->
-            <div class="col">
-                <div class="cardimg">
-                    <img src="image/1R+1sb.png" class="card-img-top" alt="Product 1">
-                 </div> </div> </div>
-     </div>                              
-      <button onclick="showModal('registration-form')" class="regibtn">How your pump Running</button>
 
+<!-- Hero Section -->
+<section class="hero-section bg-light py-5">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-5">
+    
+    <!-- Image on the left -->
+    <div class="flex-shrink-0">
+      <img
+        src="{% static '../static/img/1rs-pump.avif' %}"
+        class="cardimg img-fluid"
+        alt="Product 1"
+        style="max-width: 800px; width: 100%; height: auto;"
+      />
     </div>
-    
+
+    <!-- Text and Buttons on the right -->
+    <div class="text-center text-md-start" style="max-width: 500px;">
+      <h1 class="seal mb-3">1 Running + 1 StandBy</h1>
+      <p class="mb-4">
+        Our dual-pump system ensures reliability and efficiency. While one pump operates to deliver optimal performance, the other remains on standby, ready to take over instantly in case of failure or maintenance. This setup reduces downtime and enhances operational safety.
+      </p>
+      <div class="d-flex justify-content-center justify-content-md-start gap-3 frm-btnn">
+        <button class=" custom-btn" id="backbtn"><i class="bi bi-arrow-left"></i></button>
+        <a href="{% url 'form-page' %}" class="custom-btn" >How your pump running</a>
+      </div>
+    </div>
+
+  </div>
 </section>
- 
-</section>
+
+
+
+
 {% endblock content %}
-    
+{% block js %}
+{{ block.super }}
+<script src="{% static 'Energy_efficiency/boiler-1r+1s.js' %}"></script>
+{% endblock js %}

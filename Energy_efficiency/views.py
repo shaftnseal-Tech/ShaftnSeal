@@ -17,8 +17,17 @@ from django.forms.models import model_to_dict
 
 
 def boiler_feedpump_1r1s_view(request):
-   return render(request, "Energy_efficiency/boiler1r+1spump.html")
-
+    pump_name = request.GET.get('pump_name')
+    if pump_name:
+        request.session['pump_name'] = str(pump_name)
+    print(pump_name)
+    return render(request, "Energy_efficiency/boiler1r+1spump.html")
+def boiler_feedpump_2r1s_view(request):
+    pump_name = request.GET.get('pump_name')
+    if pump_name:
+        request.session['pump_name'] = str(pump_name)
+    print(pump_name)
+    return render(request, "Energy_efficiency/boiler2r+1spump.html")
 
 def Energy_efficiency_view(request):
     return render(request, 'Energy_efficiency/energy_efficiency.html')
@@ -57,7 +66,8 @@ def boiler_form(request):
 def pump_efficiency_calculater(request):
     # Get the latest submission by the user (assuming 'created_at' or use '-id')
     form_data = Energy_Efficiency_Parameters.objects.filter(user_id=request.user.id).order_by('-id').first()
-    
+    pump_name = request.session.get('pump_name', 'No pump selected')
+    print(pump_name)
     if form_data:
         data = model_to_dict(form_data)
         h1 = data['height1']
@@ -66,7 +76,7 @@ def pump_efficiency_calculater(request):
         p2 = data['discharge_pressure']
         t = data['fluid_temperature']
         text_curve_data = data['text_curve_data']
-        philosophy = '1R + 1s'
+        philosophy =  pump_name 
         Qnp_value = data['nominal_flow_rate']
         Hnp_value = data['nominal_head']
         
