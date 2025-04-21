@@ -74,19 +74,32 @@ Energy Efficiency Parameters
 
 
   <!-- Pump Nameplate Data -->
-  <div class="card mb-4" id="pump-nameplate-card" aria-expanded="false">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Enter Pump Nameplate Data</h5>
-      <span class="toggle-icon">▼</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="pump-nameplate-card" aria-expanded="false">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Pump Nameplate Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▼</span>
+      </div>
     <div class="card-body" id="pump-nameplate-card-form">
-      <div class="row">
-        <div class="col-md-6">
-          <p>{{ form.nominal_flow_rate.label }} {{ form.nominal_flow_rate }}</p>
-          <p>{{ form.nominal_head.label }} {{ form.nominal_head }}</p>
-          <p>{{ form.pump_efficiency.label }} {{ form.pump_efficiency }}</p>
-          <p>{{ form.pump_speed.label }} {{ form.pump_speed }}</p>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <div class="mb-3 text-center">
+            {{ form.nominal_flow_rate.label }} 
+            {{ form.nominal_flow_rate }}
+          </div>
+          <div class="mb-3 text-center">
+            {{ form.nominal_head.label }} 
+            {{ form.nominal_head }}
+          </div>
+          <div class="mb-3 text-center">
+          {{ form.pump_efficiency.label }} 
+          {{ form.pump_efficiency }}</div>
+          <div class="mb-3 text-center">
+            {{ form.pump_speed.label }} 
+            {{ form.pump_speed }}
+          </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
