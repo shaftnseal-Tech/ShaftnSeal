@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = 'True'
 
-ALLOWED_HOSTS = ['*']  # Add your server's IP or domain here
+ALLOWED_HOSTS = []  # Add your server's IP or domain here
 
 # Application definition
 INSTALLED_APPS = [
@@ -65,7 +65,7 @@ DATABASES = {
         'NAME': 'ShaftnSeal_db',
         'USER': 'shaftnseal_user',
         'PASSWORD': 'Shaft&Seal@12345',
-        'HOST': '56.228.32.11',  # or your EC2 private IP if connecting internally
+        'HOST': '51.20.106.245',  # or your EC2 private IP if connecting internally
         'PORT': '3306',
     }
 }
