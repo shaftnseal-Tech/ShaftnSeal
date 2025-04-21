@@ -172,13 +172,22 @@ Energy Efficiency Parameters
   </div>
 
   <!-- Test Data -->
-  <div class="card mb-4 opened" id="test-data-card" aria-expanded="true">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">EnterTest Data</h5>
-      <span class="toggle-icon">▲</span>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="card shadow-lg border rounded-4 p-3 mb-4" style="width: 600px;" id="test-data-card" aria-expanded="true">
+      <div class="card-header d-flex justify-content-between align-items-center bg-custom text-white  rounded-3">
+        <h5 class="mb-0">Enter Test Data</h5>
+        <span class="toggle-icon" style="cursor: pointer;">▲</span>
+      </div>
     <div class="card-body" id="test-data-card-form" style="display: block">
-      <p>{{ form.text_curve_data.label }} {{ form.text_curve_data }}</p>
+      <div class="row justify-content-center">
+        <div class="col-10">
+      <div class="mb-3 text-center">
+        {{ form.text_curve_data.label }} 
+        {{ form.text_curve_data }}
+      </div>
+     </div>
+    </div>
+  </div>
     </div>
   </div>
 
