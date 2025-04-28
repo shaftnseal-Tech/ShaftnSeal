@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-DEBUG = 'True'
 
-ALLOWED_HOSTS = []  # Add your server's IP or domain here
+ALLOWED_HOSTS = ['13.61.2.19','localhost']
+  # Add your server's IP or domain here
 
 # Application definition
 INSTALLED_APPS = [
@@ -59,22 +59,42 @@ TEMPLATES = [
 WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 
 # Database
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ShaftnSeal_db',
-        'USER': 'shaftnseal_user',
-        'PASSWORD': 'Shaft&Seal@12345',
-        'HOST': '51.20.106.245',  # or your EC2 private IP if connecting internally
-        'PORT': '3306',
+        'NAME': 'shaftseal_db',  # Replace with your database name
+        'USER': 'admin',     # Replace with your MySQL username
+        'PASSWORD': 'ShaftNSeal',  # Replace with your MySQL password
+        'HOST': 'mysql.cvci06kus5vw.eu-north-1.rds.amazonaws.com',  # Replace with the IP you got from hostname -I in WSL
+        'PORT': '3306',  # Default MySQL port
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
     }
 }
 
 
 
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Make sure it's pointing to Redis
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
+        
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
@@ -136,3 +156,10 @@ EMAIL_HOST_USER= 'pandapritirekha2@gmail.com'
 EMAIL_HOST_PASSWORD= 'ykns inoe vvll wdwj'
 EMAIL_USE_TLS= True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis broker URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_TIMEZONE = 'UTC'
