@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = ['13.234.75.147','localhost']
+ALLOWED_HOSTS = ['13.201.77.222','localhost']
   # Add your server's IP or domain here
 
 # Application definition
