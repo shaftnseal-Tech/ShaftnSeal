@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = ['13.61.2.19','localhost']
+ALLOWED_HOSTS = ['13.234.75.147','localhost']
   # Add your server's IP or domain here
 
 # Application definition
@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'shaftseal_db',  # Replace with your database name
         'USER': 'admin',     # Replace with your MySQL username
         'PASSWORD': 'ShaftNSeal',  # Replace with your MySQL password
-        'HOST': 'mysql.cvci06kus5vw.eu-north-1.rds.amazonaws.com',  # Replace with the IP you got from hostname -I in WSL
+        'HOST': 'database-1.c106oqaau176.ap-south-1.rds.amazonaws.com',  # Replace with the IP you got from hostname -I in WSL
         'PORT': '3306',  # Default MySQL port
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
