@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = ['15.206.147.144','localhost']
+ALLOWED_HOSTS = ['*']
   # Add your server's IP or domain here
 
 # Application definition
@@ -61,14 +62,22 @@ WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 # Database
 
 
+
+
+
+
+# Load environment variables from .env
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')  # makes it platform independent
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shaftseal_db',  # Replace with your database name
-        'USER': 'admin',     # Replace with your MySQL username
-        'PASSWORD': 'ShaftNSeal',  # Replace with your MySQL password
-        'HOST': 'database-1.c106oqaau176.ap-south-1.rds.amazonaws.com',  # Replace with the IP you got from hostname -I in WSL
-        'PORT': '3306',  # Default MySQL port
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
@@ -152,7 +161,7 @@ MESSAGE_TAGS = {
 #SMTP Configuration
 EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_PORT= 587
-EMAIL_HOST_USER= 'pandapritirekha2@gmail.com'
+EMAIL_HOST_USER= 'darshanmalli93@@gmail.com'
 EMAIL_HOST_PASSWORD= 'ykns inoe vvll wdwj'
 EMAIL_USE_TLS= True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
