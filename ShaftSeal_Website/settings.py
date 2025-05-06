@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
   # Add your server's IP or domain here
@@ -67,7 +67,7 @@ WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 
 
 # Load environment variables from .env
-BASE_DIR = Path(__file__).resolve().parent.parent
+""" BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')  # makes it platform independent
 
 DATABASES = {
@@ -82,12 +82,19 @@ DATABASES = {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
     }
+} """
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # This stores the DB in your project's base directory
+    }
 }
 
 
 
-
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
+SECRET_KEY = 5456 
 
 CACHES = {
     'default': {
@@ -123,21 +130,23 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+import os
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# Directory where collectstatic will place static files for Nginx
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Optional: Additional static files locations (if needed)
+# Local development: Serve static from your 'static' folder
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  
+    os.path.join(BASE_DIR, 'static'),
 ]
+
+
+
 
 # Media files (user uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -167,7 +176,7 @@ EMAIL_USE_TLS= True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Celery Configuration
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis broker URL
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
