@@ -1,132 +1,196 @@
-.hero-section{
-    text-align: center;
-   
-    background-color: #F2F2F2 !important;
-    height: 170vh;
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 60px 20px;
+}
+
+.hero-content {
+  max-width: 1140px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.learn-more-btn {
+  font-size: 16px;
+  padding: 10px 25px;
+}
+
+/* RESPONSIVE NAVBAR */
+.logo {
+  width: 120px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column !important;
+    gap: 10px;
   }
-   .seal {
+
+  .auth-buttons {
+    margin-top: 10px;
+  }
+
+  .logo {
+    width: 90px;
+  }
+
+  .learn-more-btn {
+    font-size: 14px;
+  }
+
+  .hero-content {
+    max-width: 90%;
+  }
+}
+
+/* SEAL TITLE */
+.seal {
   font-size: 3rem;
   font-weight: 700;
   color: #0c2340;
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
   margin-bottom: 0.5rem;
-  display: inline-block; 
-  position: relative;
-  }
-  /**/
-  .custombutton{
+  display: inline-block;
+}
+
+/* CUSTOM BUTTONS */
+.custombutton {
   display: flex;
-  }
-  .custom-btn {
-  /* background-color: #FFB22C; */
-  background-color: #c1093d;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.custom-btn {
+  background: #033043;
+
   color: #fff;
-  border: 1px solid red;
+  border: 1px solid     #033043;
+  ;
   padding: 10px 20px;
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(255, 178, 44, 0.3);
   width: 100%;
-  margin: 5px;
-  }
-  .custom-btn:hover{
+  max-width: 250px;
+}
+
+.custom-btn:hover {
   background-color: #c1093d;
   color: white;
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(207, 15, 71, 0.3);
-  }
-  
-  
-  .card {
-    background: #f8f9fa;
-    padding: 60px 15px;
-    min-height: 70vh;
-    text-align: center;
-    margin-top: 30PX;
-    transition: transform 0.3s ease;
-   
-  }
-  
-  .card:hover {
+}
+
+/* CARD STYLING */
+.card {
+  background: #f8f9fa;
+  padding: 60px 20px;
+  min-height: 60vh;
+  text-align: center;
+  margin-top: 30px;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.card:hover {
   background-color: whitesmoke;
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(207, 15, 71, 0.3);
-  }
-  .text-custom {
+}
+
+.text-custom {
   color: #cf0f47 !important;
   font-weight: 600;
-  }
-  .card input{
-    padding: 10px;
-    border-radius: 20px;
-  }
-  .card label{
-    margin-right: 300px;
-    font-size: 20px;
-    font-weight: bold;
-  }
+}
 
-  /**/
-  .about-banner {
+.card input {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.card label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* ABOUT BANNER */
+.about-banner {
   position: relative;
-  height: 300px;
-  background-image: url("/static/img/website-page-contact-us-email-600nw-1958537320.webp");
+  height: 100px;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  }
-  
-  .banner-overlay {
+  color: #0c2340;
+}
+
+.banner-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .banner-text {
+}
+
+.banner-text {
   position: relative;
   z-index: 1;
-  }
-  
-  .banner-heading {
-  font-size: 48px;
+  text-align: center;
+}
+
+.banner-heading {
+  font-size: 2.5rem;
   margin-bottom: 10px;
-  }
-  
-  .breadcrumb {
+  font-weight: 700;
+}
+
+.breadcrumb {
   list-style: none;
   padding: 0;
   margin: 0;
   font-size: 16px;
-  }
-  
-  .breadcrumb-item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
   display: inline;
-  }
-  
-  .breadcrumb-link {
+}
+
+.breadcrumb-link {
   color: #fda521;
   text-decoration: none;
-  }
-  
-  .breadcrumb-separator {
+}
+
+.breadcrumb-separator {
   color: white;
   margin: 0 5px;
-  }
-  
-  .subtitle {
+}
+
+/* SUBTITLE */
+.subtitle {
   font-size: 18px;
   color: #333;
   max-width: 800px;
   margin: 0 auto 20px;
-  }
-  @keyframes slideInDown {
+  text-align: center;
+}
+
+/* ANIMATIONS */
+@keyframes slideInDown {
   from {
     transform: translateY(-30px);
     opacity: 0;
@@ -135,9 +199,9 @@
     transform: translateY(0);
     opacity: 1;
   }
-  }
-  
-  @keyframes fadeInUp {
+}
+
+@keyframes fadeInUp {
   from {
     transform: translateY(30px);
     opacity: 0;
@@ -146,9 +210,9 @@
     transform: translateY(0);
     opacity: 1;
   }
-  }
-  
-  @keyframes fadeInRight {
+}
+
+@keyframes fadeInRight {
   from {
     transform: translateX(30px);
     opacity: 0;
@@ -157,4 +221,4 @@
     transform: translateX(0);
     opacity: 1;
   }
-  }
+}
