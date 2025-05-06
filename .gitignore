@@ -13,7 +13,7 @@ darshan_env/
 **/migrations/__pycache__/
 
 # Django Secret Filesde
-.env
+# .env
 
 # SQLite Database (optional, if used only for testing)
 *.sqlite3
