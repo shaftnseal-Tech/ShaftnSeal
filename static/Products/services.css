@@ -1,80 +1,10 @@
 .hero-section {
   text-align: center;
   background-color: #f2f2f2;
-  height: auto;
-  padding: 80px 20px;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-.search-icon-container {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-#search-input {
-  width: 100%;
-  padding: 18px 24px;
-  border: 2px solid #ddd;
-  border-radius: 40px;
-  outline: none;
-  margin-top: 20px;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-  box-sizing: border-box;
-}
-
-#search-input:focus {
-  border-color: #fda521;
-  box-shadow: 0 0 12px rgb(226, 250, 89);
-}
-
-.search-icon {
-  position: absolute;
-  right: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #666;
-  font-size: 1.4em;
-}
-
-.seal {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #0c2340;
-  letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-  position: relative;
-}
-
-.custombutton {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.custom-btn {
-  background-color: #c1093d;
-  color: #fff;
-  border: 1px solid red;
-  padding: 10px 20px;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 178, 44, 0.3);
-  text-decoration: none;
-}
-
-.custom-btn:hover {
-  background-color: #c1093d;
-  color: white;
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(207, 15, 71, 0.3);
-}
 
 .card {
   background-color: #fff;
