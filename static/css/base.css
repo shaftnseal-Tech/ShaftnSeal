@@ -39,28 +39,6 @@ body {
   color: #fda521;
 }
 
-/* .nav-item a:hover,
-.nav-item a:focus {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-} */
-
-.logout-btn {
-  position: absolute;
-  right: 15px;
-  border: none;
-  border-radius: 10px;
-  background-color: #fda521;
-  color: white;
-  padding: 10px 20px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.logout-btn:hover {
-  background-color: #fda521;
-  color: white;
-}
-
 .navbar-toggler {
   border: none;
   padding: 0.5rem;

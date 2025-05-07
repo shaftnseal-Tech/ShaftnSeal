@@ -22,26 +22,26 @@ class EnergyEfficiencyForm(forms.ModelForm):
         ]
         
         labels = {
-            'height1': 'Height between Suction tank and center of the pump (h1)',
-            'height2': 'Height between Discharge tank and center of the pump (h2)',
-            'suction_pressure': 'Suction tank pressure (kg/cm²)',
-            'discharge_pressure': 'Discharge tank pressure (kg/cm²)',
-            'fluid_temperature': 'Fluid Temperature (°C)',
+            'height1': 'Height between Suction tank and center of the pump (H1)',
+            'height2': 'Height between Discharge tank and center of the pump (H2)',
+            'suction_pressure': 'Suction tank pressure (P1) (kg/cm²)',
+            'discharge_pressure': 'Discharge tank pressure (P2) (kg/cm²)',
+            'fluid_temperature': 'Fluid Temperature (t)(°C)',
             
-            'nominal_flow_rate': 'Pump name plate flow (m³/hr)',
-            'nominal_head': 'Pump name plate head (m)',
-            'pump_efficiency': 'Pump Efficiency (%)',
-            'pump_speed': 'Pump speed (rpm)',
+            'nominal_flow_rate': 'Pump name plate flow (Qnp) (m³/hr)',
+            'nominal_head': 'Pump name plate head (Hnp)(m)',
+            'pump_efficiency': 'Pump Efficiency (ηnp)(%)',
+            'pump_speed': 'Pump speed (N1)(rpm)',
             
             'motor_voltage': 'Motor Voltage (volts)',
             'motor_current':'Motor Current (amp)',
             'motor_power_factor': 'Motor Power Factor (pf)',
-            'motor_power': 'Motor Power output (kWh)',
+            'motor_power': 'Motor Power output (KWH1)',
             'N1': 'Speed (N1) in (rpm)',
            
-            'actual_flow_rate': 'Total Flow Rate in 24hrs (m³/hr)',
-            'pump_discharge_pressure': 'Pump Discharge Pressure (kg/cm²)',
-            'pump_suction_pressure': 'Pump Suction Pressure (kg/cm²)',
+            'actual_flow_rate': 'Total Flow Rate in 24hrs (Q24hr)(m³/hr)',
+            'pump_discharge_pressure': 'Pump Discharge Pressure (Pd)(kg/cm²)',
+            'pump_suction_pressure': 'Pump Suction Pressure (Ps)(kg/cm²)',
             
             'text_curve_data': 'Upload Test Data',
            
@@ -49,7 +49,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             'actual_current':'Actual Current (amp)',
             'actual_power_factor': 'Actual Power Factor (pf)',
             'actual_power': 'Actual Power (kWh)',
-            'actual_efficiency': 'Actual Efficiency (%)',
+            'actual_efficiency': 'Actual Efficiency (ηact)(%)',
             'N2': 'Actual Speed (N2) in (rpm)',
            
             'no_hrs_pumprun': 'Number of hours pump in operation per year',
