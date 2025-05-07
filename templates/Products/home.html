@@ -13,24 +13,11 @@
 
 <section class="hero-section bg-white">
   <div class="hero-content">
-    <h1 class="seal">Shaft & Seal</h1>
+    <h1 class="seal" style="margin-top:-35px">Shaft & Seal</h1>
     <p class="subheading">
-      One Stop solution for Pumping Needs
+      One Stop Pumping Solutions
     </p>
-    <div>
-      {% comment %} <p>  Welcome to Shaft and Seal </p> {% endcomment %}
-        
-        {% comment %} {% if user %} {% endcomment %}
-        {% comment %} <strong
-        >{{ user.first_name }}  {{ user.last_name }}</strong> {% endcomment %}
-        {% comment %} {% endif %} {% endcomment %}
-          
-       
-     
-       {% comment %}
-      <p>Authenticated: {{ user.is_authenticated }}</p>
-      {% endcomment %}
-    </div>
+
     <div class="search-icon-container">
       <input
         type="text"
@@ -69,12 +56,6 @@
       </div>
     </div>
     <div class="hero-image mt-5" id="lottie-container">
-      {% comment %}
-      <img
-        src="{% static 'img/homeheroimg.svg' %}"
-        alt="Industrial Solutions"
-      />
-      {% endcomment %}
       <img
         src="{% static 'img/2.svg' %}"
         alt="Industrial Solutions"
@@ -84,7 +65,8 @@
   </div>
 </section>
 
-{% endblock %} {% block js %}
+{% endblock %} 
+{% block js %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.13/lottie.min.js"></script>
 

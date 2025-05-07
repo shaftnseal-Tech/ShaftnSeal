@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'Energy_efficiency/ef.css' %}" />
 {% endblock css %} 
 {% block content %}
+
 <section class="hero-section py-5 bg-light">
   <div class="container text-center mb-5">
     <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Energy Efficiency</h1>
@@ -23,7 +24,7 @@
             </div>
             <h5 class="card-title fw-semibold">Boiler Feed Pump</h5>
             <p class="card-text text-muted small">High-pressure pumps ideal for boiler feeding.</p>
-            <a href="{% url 'boiler_feedpump' %}" class="btn custom-btn mt-2">Click Here</a>
+            <a href="{% url 'boiler_feedpump' %}" class="btn custom-btn mt-2"   style="background-color:#EB3678; color: #fff; border: none; padding: 8px 20px; font-weight: 500; border-radius: 6px; transition: background-color 0.3s ease; text-decoration: none;"> Click Here</a>
           </div>
         </div>
       </div>
@@ -36,7 +37,7 @@
             </div>
             <h5 class="card-title fw-semibold">Condensate Extraction Pump</h5>
             <p class="card-text text-muted small">Efficient removal of condensed steam from condensers.</p>
-            <a href="#" class="btn custom-btn mt-2">Click Here</a>
+            <a href="#" class="btn custom-btn mt-2" style="background-color:#EB3678; color: #fff; border: none; padding: 8px 20px; font-weight: 500; border-radius: 6px; transition: background-color 0.3s ease; text-decoration: none;">Click Here</a>
           </div>
         </div>
       </div>
@@ -49,7 +50,7 @@
             </div>
             <h5 class="card-title fw-semibold">Cooling Tower Pump (ACW/MCW)</h5>
             <p class="card-text text-muted small">Reliable performa in cooling water.</p>
-            <a href="#" class="btn custom-btn  mt-2">Click Here</a>
+            <a href="#" class="btn custom-btn  mt-2" style="background-color:#EB3678; color: #fff; border: none; padding: 8px 20px; font-weight: 500; border-radius: 6px; transition: background-color 0.3s ease; text-decoration: none;">Click Here</a>
           </div>
         </div>
       </div>
@@ -62,11 +63,16 @@
             </div>
             <h5 class="card-title fw-semibold">DM Water Pump</h5>
             <p class="card-text text-muted small">Specially designed for demineralized water systems.</p>
-            <a href="#" class="btn custom-btn mt-2">Click Here</a>
+            <a href="#" class="btn custom-btn mt-2" style="background-color:#EB3678; color: #fff; border: none; padding: 8px 20px; font-weight: 500; border-radius: 6px; transition: background-color 0.3s ease; text-decoration: none;">Click Here</a>
           </div>
         </div>
       </div>
 
+    </div>
+    <div class="container text-start mb-3" style="margin-top: 20px;">
+      <a href="{% url 'home' %}" class="btn btn-outline-secondary" style="background-color:#FCC737; color: #fff; border: none; padding: 8px 20px; font-weight: 500; border-radius: 6px; transition: background-color 0.3s ease; text-decoration: none;">
+        ← Back
+      </a>
     </div>
   </div>
 </section>

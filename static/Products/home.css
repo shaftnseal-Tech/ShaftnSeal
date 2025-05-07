@@ -115,23 +115,18 @@
   flex: 1;
 }
 
-
 /* Hero Section */
 .hero-section {
   padding: 60px 20px;
   text-align: center;
-  height: 100vh;
-
-  background-color: #F2F2F2 !important;
 }
 
 .seal {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #0c2340;
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 0.5rem;
   display: inline-block; 
   position: relative;
 }
@@ -160,7 +155,7 @@
 /* Search Input */
 .search-icon-container {
   position: relative;
-  max-width: 900px;
+  max-width: 750px;
   margin: 0 auto;
 }
 
@@ -190,7 +185,10 @@
   cursor: pointer;
   color: #666;
   font-size: 1.4em;
-  
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
 }
 
 /* homepage image */
@@ -213,28 +211,25 @@
   top: 110%;
   left: 0;
   right: 0;
-  background: #ffffff;
+  background: #fff;
   border-radius: 20px;
   padding: 30px;
   display: none;
-  /*box-shadow: 0 20px 40px #e5a84c;
-  */animation: dropdownFade 0.5s ease-in-out forwards;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: dropdownFade 0.4s ease-in-out forwards;
   transform-origin: top center;
   z-index: 999;
-  -webkit-animation: dropdownFade 0.4s ease-in-out forwards;
 }
 
 @keyframes dropdownFade {
   0% {
     opacity: 0;
-    transform: scaleY(1);
-  
-}
+    transform: scaleY(0.9);
+  }
   100% {
     opacity: 1;
     transform: scaleY(1);
-  
-}
+  }
 }
 
 /* Cards Container */
@@ -254,7 +249,7 @@
   width: 160px;
   padding: 10px 15px;
   text-align: center;
-  background: #F2F2F2;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   color: #333;
@@ -264,9 +259,8 @@
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(240, 144, 144, 0.15);
- 
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card:hover {
@@ -317,7 +311,7 @@
 
 .hero-image img {
   width: 100%;
-  max-width: 500px;
+  max-width: 350px;
   border-radius: 20px;
   height: auto;
 }
