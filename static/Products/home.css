@@ -122,12 +122,12 @@
 }
 
 .seal {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 5vw, 3rem); 
   font-weight: 700;
-  color: #0c2340;
+  color: #FEBA17;
   letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
-  display: inline-block; 
+  display: inline-block;
   position: relative;
 }
 
