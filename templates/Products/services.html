@@ -14,7 +14,7 @@
 
 {% block content %}
 
-<section class="hero-section">
+{% comment %} <section class="hero-section">
   <div class="about-banner">
     <div class="banner-overlay"></div>
     <div class="banner-text text-center text-white">
@@ -23,6 +23,63 @@
   </div>
 
   <div class="container ">
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-bolt fa-2x text-primary mb-3"></i>
+            <h4 class="card-title">Energy-Efficient Pumping</h4>
+            <p class="text-black">Precision-engineered solutions for high-pressure applications.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-fire fa-2x text-danger mb-3"></i>
+            <h4 class="card-title">Boiler Feed Pumps</h4>
+            <p class="text-black">High-performance pumps designed for demanding environments.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-cogs fa-2x text-warning mb-3"></i>
+            <h4 class="card-title">Drive Shafts</h4>
+            <p class="text-black">Robust shafts for pump systems and industrial machinery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-shield-alt fa-2x text-success mb-3"></i>
+            <h4 class="card-title">Mechanical Seals</h4>
+            <p class="text-black">Custom seals to enhance equipment reliability and lifespan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+<section class="hero-sections">
+  <div class="about-banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-text text-center text-white">
+      <h1 class="banner-heading">SERVICE</h1>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
     <div class="row g-4">
       <!-- Card 1 -->
       <div class="col-12 col-sm-6 col-lg-3">

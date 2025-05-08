@@ -5,6 +5,15 @@
   margin-bottom: 0 !important;
 }
 
+.hero-section .container {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hero-section .row {
+  margin-bottom: 0 !important;
+}
+
 
 .card {
   background-color: #fff;
