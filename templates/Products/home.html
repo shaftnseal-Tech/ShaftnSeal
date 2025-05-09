@@ -19,18 +19,19 @@
     </p>
 
     <div class="search-icon-container">
-      <form action="{% url 'home' %}" method="get">
-      <input
-        type="text"
-        id="search-input"
-        placeholder="What are you looking for..."
-        aria-label="Search"
-        name="q"
-      />
-    </form>
-      <i class="fas fa-search search-icon"></i>
-     
+      <form id="search-form" action="{% url 'home' %}" method="get">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="What are you looking for..."
+          aria-label="Search"
+          name="q"
+        />
+      </form>
+      <i class="fas fa-search search-icon" onclick="document.getElementById('search-form').submit();"></i>
     </div>
+    
+
     <div class="hero-image mt-5" id="lottie-container">
       <img
         src="{% static 'img/2.svg' %}"

@@ -22,11 +22,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
-    # "Customers",
     "Spares",
     "Products",
     "Energy_efficiency",
     "service_app",
+    "pump",
 ]
 
 MIDDLEWARE = [
