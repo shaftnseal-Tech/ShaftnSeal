@@ -1,152 +1,6 @@
-/* .breadcrumb img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-} */
-
-/* Hero Section */
-/* .hero-section {
-  background: #f2f2f2;
-  color: white;
-  padding: 60px 20px;
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.hero-content .subtitle {
-  font-size: 1.3rem;
-  max-width: 800px;
-  margin: auto;
-  padding: 10px;
-  color: black;
-  text-align: center;
-}
-
-.learnmorebtn {
-  background-color: #ff7f50;
-  border: none;
-  color: white;
-  padding: 12px 24px;
-  margin-top: 20px;
-  font-size: 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-} */
-
-/* .hero-content .subtitle {
-    font-size: 1.3rem;
-    max-width: 800px;
-    margin: auto;
-    padding: 10px;
-    text-align: center;
-
-    background-color: #F2F2F2 !important;
-} */
-/* .breadcrumb {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .breadcrumb img {
-    width: 100%;
-    height: 50px;
-  }
-
-  nav[aria-label="breadcrumb"] {
-    text-align: center;
-    margin-top: 20px;
-  } */
-
-/* .breadcrumb {
-    display: inline-flex;
-    justify-content: center;
-    font-size: 1.1rem;
-    background-color: #f8f9fa;
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-  }
-
-  .breadcrumb-item + .breadcrumb-item::before {
-    color: #6c757d;
-  } */
-
-/*card effect*/
-/* .card {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    padding: 1rem;
-    z-index: 0;
-    background:white;
-    color:white;
-  }
-
-
-.learnmorebtn:hover {
-  background-color: #ff5722;
-  transform: scale(1.05);
-} */
-
-/* Cards */
-/* .card {
-  border: none;
-  background: linear-gradient(to right, #004d7a, #008793);
-
-  .card::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    background: linear-gradient(135deg, #95a5a6, #5d8aa8);
-
-    z-index: -1;
-    border-radius: 14px;
-  }
-
-  @keyframes glow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .card h4 {
-    font-weight: 600;
-  }
-
-  .card p {
-    color:rgb(255, 249, 249);
-  }
-  .subtitle{
-    font-size: 20px;
-  }
-  .learnmorebtn {
-    background-color: #ff7f50;
-    border: none;
-    width: 200px;
-    height: 30px;
-    font-size: 18px;
-    border-radius: 10px;
-  }
-
-  } */
-
-/* extra my css */
 .about-banner {
   position: relative;
-  height: 300px;
+  height: 50px !important;
   background-image: url("/static/img/website-page-contact-us-email-600nw-1958537320.webp");
   background-size: cover;
   background-position: center;
@@ -154,6 +8,7 @@
   align-items: center;
   justify-content: center;
 }
+
 
 .banner-overlay {
   position: absolute;
@@ -172,27 +27,6 @@
 .banner-heading {
   font-size: 48px;
   margin-bottom: 10px;
-}
-
-.breadcrumb {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-}
-
-.breadcrumb-item {
-  display: inline;
-}
-
-.breadcrumb-link {
-  color: #fda521;
-  text-decoration: none;
-}
-
-.breadcrumb-separator {
-  color: white;
-  margin: 0 5px;
 }
 
 .subtitle {
