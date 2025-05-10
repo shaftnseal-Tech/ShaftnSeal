@@ -89,8 +89,8 @@ def activate(request, uidb64, token):
 # User Login
 def login(request):
     if request.method == 'POST':
-        email = request.POST.get['email']
-        password = request.POST.get['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
         next_url = request.POST.get('next')
 
         user = auth.authenticate(request, username=email, password=password)
