@@ -10,88 +10,111 @@
 {% block content %}
 <!-- Chatbot Section -->
 
-
-<section class="hero-section">
-    <div >
-        <h1 class="spareshead">Spares Details</h1>
-        <p>Explore our high-quality spare parts for enhanced reliability and extended equipment lifespan</p>
-
-        <!-- Search Maker Section -->
-        <div class="search-container">
-            <input type="text" class="search-box" id="search" placeholder="Search Maker..." onkeyup="filterDropdown()" onfocus="showDropdown()">
-            <div class="dropdown-content" id="dropdown-container" style="display: none;">
-              {% for maker in makers %}
-              <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')">{{ maker.name }}</a>
-             {% endfor %}
-          
-            </div>
-            
+<section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-content">
+        <div class="hero-content">
+         
         </div>
-        <div class="hero-image mt-5" id="lottie-container">
-           
-            <img
-              src="{% static 'img/6.svg' %}"
-              alt="Industrial Solutions"
-              class="animated-svg"
-            />
-          </div>
-
-        <!-- Spares Form Modal -->
-        <div  class="modal-container" id="search-form" style="display: none;">
-            <div class="modal-box">
-                <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
-                <div class="form-container">
-                    <h2>Spares Form</h2>
-                    <form onsubmit="searchParts(); return false;">
-                        <select id="ModelName" class="modaloption" onchange="fetchVariants()">
-                            <option value="">Select Model</option>
-                        </select>
-
-                        <select id="Variant" class="modaloption">
-                            <option value="">Select Variant</option>
-                        </select>
-
-                        <button type="submit" class="search-btn">Search Parts</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Parts Display Section -->
-    <div class="parts-container">
-        <div class="parts-display" id="parts-display" >
-            <div id="chatbot-container" >
-    <h3>Parts Chat Assistant</h3>
-    <div id="chat-window" >
-        <div class="chatbot-message">Hello! Enter a part name or number to search for it.</div>
-    </div>
-    <div style="display: flex;">
-        <input type="text" id="user-input" placeholder="Type part name or number..." >
-        <button onclick="sendMessage()" >Send</button>
-    </div>
-   
-    
-            <h2>Parts List</h2>
-            <table class="parts-table">
-                <thead>
-                    <tr>
-                        <th>Part No</th>
-                        <th>Name</th>
-                        <th>Material</th>
-                        <th>Technical Details</th>
-                        <th>Drawing</th>
-                        <th>CAD File</th>
-                        <th>Mapping</th>
-                    </tr>
-                </thead>
-                <tbody id="all-parts-list">
-                    <!-- JS will populate this -->
-                </tbody>
-            </table>
+       <div class="container py-5">
+          <div class="row">
+            <div >
+                <h1 class="spareshead">Spares Details</h1>
+                <p>Explore our high-quality spare parts for enhanced reliability and extended equipment lifespan</p>
         
+                <!-- Search Maker Section -->
+                <div class="search-container">
+                    <input type="text" class="search-box" id="search" placeholder="Search Maker..." onkeyup="filterDropdown()" onfocus="showDropdown()">
+                    <div class="dropdown-content" id="dropdown-container" style="display: none;">
+                      {% for maker in makers %}
+                      <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')">{{ maker.name }}</a>
+                     {% endfor %}
+                  
+                    </div>
+                    
+                </div>
+                <div class="hero-image mt-5" id="lottie-container">
+           
+                    <img
+                      src="{% static 'img/6.svg' %}"
+                      alt="Industrial Solutions"
+                      class="animated-svg"
+                    />
+                  </div>
+        
+                <!-- Spares Form Modal -->
+                <div  class="modal-container" id="search-form" style="display: none;">
+                    <div class="modal-box">
+                        <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
+                        <div class="form-container">
+                            <h2>Spares Form</h2>
+                            <form onsubmit="searchParts(); return false;" >
+                                <select id="ModelName" class="modaloption" onchange="fetchVariants()">
+                                    <option value="">Select Model</option>
+                                </select>
+        
+                                <select id="Variant" class="modaloption">
+                                    <option value="">Select Variant</option>
+                                </select>
+        
+                                <button type="submit" class="search-btn">Search Parts</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Parts Display Section -->
+             <section class="parts-container">
+  <div  id="parts-display"   class="parts-display animated fadeIn" style="display:none">
+    <div id="chatbot-container" class="animated fadeInUp" >
+      <h3 class="chatbot-title">Parts Chat Assistant</h3>
+      
+      <!-- Chat Window -->
+      <div id="chat-window" class="chatbox">
+        <div class="chatbot-message fade-in">👋 Hello! Enter a part name or number to search for it.</div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="input-row">
+        <input type="text" id="user-input" placeholder="Type part name or number..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- Parts List -->
+    <div class="parts-table-wrapper animated fadeInUp">
+      <h2>Parts List</h2>
+      <div class="table-responsive">
+        <table class="parts-table">
+          <thead>
+            <tr>
+              <th>Part No</th>
+              <th>Name</th>
+              <th>Material</th>
+              <th>Technical Details</th>
+              <th>Drawing</th>
+              <th>CAD File</th>
+              <th>Mapping</th>
+            </tr>
+          </thead>
+          <tbody id="all-parts-list">
+            <!-- JS will populate this -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+                
+        </div>
+          </div>
+          <!-- Google Maps -->
+        </div>
+      </div>
     </div>
 </div>
-</section>
+  </section>
 {% endblock  %}
 
 {% block js %}

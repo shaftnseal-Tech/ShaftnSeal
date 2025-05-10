@@ -1,8 +1,6 @@
 .hero-section{
-  text-align: center;
- 
-  background-color: #F2F2F2 !important;
-  height: 170vh;
+  background-color: #F2F2F2;
+  
 }
 
 
@@ -165,6 +163,7 @@ color: #333;
 max-width: 800px;
 margin: 0 auto 20px;
 }
+
 @keyframes slideInDown {
 from {
   transform: translateY(-30px);

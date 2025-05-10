@@ -17,11 +17,11 @@ from ShaftSeal_Website.settings import BASE_DIR  # Adjust if your settings.py pa
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    # path('Customer/', include('Customers.urls')),
     path('Spares/', include('Spares.urls')),
     path('', include('Products.urls')),
     path("Energy_efficiency/", include("Energy_efficiency.urls")),
     path('service_app/', include('service_app.urls')),
+    path('pump/', include('pump.urls')),
 ]
 
 if settings.DEBUG:

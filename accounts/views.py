@@ -1,34 +1,20 @@
-from django.shortcuts import render, redirect, HttpResponse
-from .forms import RegistrationForm, UserProfileUpdateForm, UserUpdateForm
-from .models import Account, UserProfile
-from django.contrib import messages, auth
+from django.shortcuts import render,redirect,HttpResponse
+from .forms import RegistrationForm
+from .models import Account
+from django.contrib import messages,auth
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+
+#verification email
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 
 
-from django.contrib import messages, auth
-from django.contrib.auth.decorators import login_required
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMessage
-from django.utils import timezone
-
-from .models import Account, UserProfile
-from .forms import RegistrationForm, UserProfileUpdateForm, UserUpdateForm
-from .tasks import send_password_reset_email,send_activation_email_task
-
-
-    
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -59,147 +45,140 @@ def register(request):
             user.department = department
             user.save()
 
-            # USER ACTIVATION - Using Celery Task
+            #USER ACTIVATION
             current_site = get_current_site(request)
-            send_activation_email_task.delay(user.id, current_site.domain)
+            mail_subject="Activate your account"
+            message = render_to_string('accounts/account_verification_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+            })
 
-            return redirect('/accounts/login/?command=verification&email=' + email)
+            to_email=email
+            send_email=EmailMessage(
+                mail_subject,
+                message,
+                to=[to_email]
+            )
+            send_email.send()
+
+            # messages.success(request, 'Thank you for registering with us, we have sent you verification email to your email address. please verify it and then you can login!')
+            
+            # Optional: redirect after successful registration
+            return redirect('/accounts/login/?command=verification&email='+email) 
     else:
         form = RegistrationForm()
-    
-    return render(request, 'accounts/register.html', {'form': form})
 
-# User Activation View
-def activate(request, uidb64, token):
-    try:
-        uid = urlsafe_base64_decode(uidb64).decode()
-        user = Account._default_manager.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
-        user = None
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/register.html', context)
 
-    if user is not None and default_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
-        messages.success(request, 'Congratulations! Your account is activated!')
-        return redirect('login')
-    else:
-        messages.error(request, 'Activation link is invalid!')
-        return redirect('register')
 
-# User Login
+
 def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
         next_url = request.POST.get('next')
 
+        # Correct usage since USERNAME_FIELD = 'email'
         user = auth.authenticate(request, username=email, password=password)
 
         if user is not None:
             auth.login(request, user)
+            # print("User logged in successfully")
             messages.success(request, 'Login successful!')
-            return redirect(next_url if next_url else 'dashboard')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid email or password.')
             return redirect('login')
 
-    next_url = request.GET.get('next', '')
-    return render(request, 'accounts/login.html', {'next': next_url})
+    return render(request, 'accounts/login.html')
 
-# User Logout
+
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
     messages.success(request, 'Logged out successfully!')
     return redirect('login')
 
+def activate(request,uidb64,token):
+    try:
+        uid=urlsafe_base64_decode(uidb64).decode()
+        user=Account._default_manager.get(pk=uid)
+    except(TypeError,ValueError,OverflowError,Account.DoesNotExist):
+        user=None
+    if user is not None and default_token_generator.check_token(user,token):
+        user.is_active=True
+        user.save()
+        messages.success(request,'Congratulations! your Account activated successfully!')
+        return redirect('login')
+    else:
+        messages.error(request,'Activation link is invalid!')
+        return redirect('register')
 
-# Dashboard
 @login_required(login_url='login')
 def dashboard(request):
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        if u_form.is_valid():
-            u_form.save()
-            messages.success(request, 'Profile updated successfully!')
-            return redirect('dashboard')
-        else:
-            messages.error(request, 'Error in updating profile.')
-            return redirect('dashboard')
-    else:
-        u_form = UserUpdateForm(instance=request.user)
+    return render(request, 'accounts/dashboard.html')
 
-    context = {
-        'u_form': u_form,
-        'user': request.user,
-    }
-    return render(request, 'accounts/dashboard.html', context)
 
-# Password reset request# Password reset request
 def forgotPassword(request):
     if request.method == "POST":
-        email = request.POST['email']
-        
+        email=request.POST['email']
         if Account.objects.filter(email=email).exists():
-            user = Account.objects.get(email__exact=email)
-            
+            user=Account.objects.get(email__exact=email)
+            #RESET PASSWORD EMAIL
             current_site = get_current_site(request)
-            uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-            token = default_token_generator.make_token(user)
-            reset_link = f"http://{current_site.domain}/accounts/resetpassword_validate/{uidb64}/{token}"
-            
-            send_password_reset_email.delay(user.email, reset_link)
-            
-            messages.success(request, 'Password reset email has been sent to your email address!')
+            mail_subject="Please reset your password"
+            message = render_to_string('accounts/reset_password_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+            })
+            to_email=email
+            send_email=EmailMessage(
+                mail_subject,
+                message,
+                to=[to_email]
+            )
+            send_email.send()
+            messages.success(request,'Password reset email has been sent to your email address!')
             return redirect('login')
         else:
             messages.error(request, 'Account does not exist!')
             return redirect('forgotPassword')
-    
     return render(request, 'accounts/forgotPassword.html')
 
-
-# Reset password validation
-
-# Validate Reset Password Token
-def resetpassword_validate(request, uidb64, token):
+def resetpassword_validate(request,uidb64,token):
     try:
-        uid = urlsafe_base64_decode(uidb64).decode()
-        user = Account._default_manager.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
-        user = None
-
-    if user is not None and default_token_generator.check_token(user, token):
-        request.session['uid'] = uid
-        messages.success(request, 'Please reset your password.')
+        uid=urlsafe_base64_decode(uidb64).decode()
+        user=Account._default_manager.get(pk=uid)
+    except(TypeError,ValueError,OverflowError,Account.DoesNotExist):
+        user=None
+    if user is not None and default_token_generator.check_token(user,token):
+        request.session['uid']=uid
+        messages.success(request,'Please reset your password')
         return redirect('resetPassword')
     else:
-        messages.error(request, 'This link is invalid or expired.')
-        return redirect('forgotPassword')
-
-# Reset Password
+        messages.error(request,'This link has been expired!')
+        return redirect('login')
+        
 def resetPassword(request):
-    if request.method == 'POST':
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-
-        if password == confirm_password:
-            uid = request.session.get('uid')
-            if uid:
-                try:
-                    user = Account.objects.get(pk=uid)
-                    user.set_password(password)
-                    user.save()
-                    messages.success(request, 'Password reset successfully!')
-                    return redirect('login')
-                except Account.DoesNotExist:
-                    messages.error(request, 'Something went wrong. Please try again.')
-                    return redirect('forgotPassword')
-            else:
-                messages.error(request, 'Session expired. Please try again.')
-                return redirect('forgotPassword')
+    if request.method=='POST':
+        password=request.POST['password']
+        confirm_password=request.POST['confirm_password']
+        if password==confirm_password:
+            uid=request.session.get('uid')
+            user=Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            messages.success(request,'Password reset successfully!')
+            return redirect('login')
         else:
-            messages.error(request, 'Passwords do not match.')
+            messages.error(request,'Password do not match!')
             return redirect('resetPassword')
-
-    return render(request, 'accounts/resetPassword.html')
+    else:
+        return render(request,'accounts/resetPassword.html')

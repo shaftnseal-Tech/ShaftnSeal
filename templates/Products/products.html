@@ -11,57 +11,52 @@
 
 {% cache 600 home_content %}
 {% block content %}
-   <section class="hero-section">
-    <div class="hero-content">
-      <div class="about-banner">
-        <div class="banner-overlay"></div>
-        <!-- Banner Text -->
-        <div class="banner-text text-center text-white">
-          <h1 class="banner-heading">PRODUCT</h1>
-  
-          <!-- Breadcrumb -->
-          {% comment %} <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center">
-              <li class="breadcrumb-item">
-                <a href="{% url 'home' %}" class="breadcrumb-link">Home</a>
-              </li>
-              <li class="breadcrumb-separator">/</li>
-              <li class="breadcrumb-item active text-white" aria-current="page">
-                Product
-              </li>
-            </ol>
-          </nav> {% endcomment %}
+
+<section class="hero-section bg-light ">
+  <div >
+    
+    <div class="about-banner">
+      <div class="banner-overlay"></div>
+      <!-- Banner Text -->
+      <div class="banner-text text-center text-white">
+        <h1 class="banner-heading">PRODUCT</h1>
+        <h2 class="banner-subheading">Explore Our Products</h2>
       </div>
     </div>
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        
-        <!-- Card Template -->
-        {% comment %} <div class="col">
-          <div class="card h-100 text-center">
-            <div class="card-body">
-              <img src="/static/img/pumpimg.png">
-              <h1>Product</h1>
-              <p>Havells 2 HP Single Phase Centrifugal Monoblock Pump, CMS20-W</p>
-              <h3>Rs. 8,500.00</h3>
-              <div class="custombutton">
-                <a class="custom-btn">Addtocart</a>
-                <a class="custom-btn">Details</a>
+    <!-- Product Cards Section -->
+    <div class="container mb-5 mt-5">
+      <!-- Card Grid -->
+      <div class="row g-4 justify-content-center">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="card-box text-center" style="background-color:#033043; height: 100px; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
+                <a href="#"   class= "btn btn-custom w-100" style="font-size: 16px; padding: 14px; border-radius: 6px; color: #fff;">Product1</a>
               </div>
             </div>
-          </div>
-        </div> {% endcomment %}
-        <h2 class="text-centre">Coming soon</h2>
-        
-        <!-- Repeat similar card structures here -->
-        
+         
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="card-box text-center" style="background-color:#033043; height: 100px; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
+                <a href=""   class= "btn btn-custom w-100" style="font-size: 16px; padding: 14px; border-radius: 6px; color: #fff;">Product2</a>
+              </div>
+            </div>
+         
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="card-box text-center" style="background-color:#033043; height: 100px; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
+                <a href=""   class= "btn btn-custom w-100" style="font-size: 16px; padding: 14px; border-radius: 6px; color: #fff;">Product3</a>
+              </div>
+            </div>
+         
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="card-box text-center" style="background-color:#033043; height: 100px; padding: 40px 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
+                <a href=""   class= "btn btn-custom w-100" style="font-size: 16px; padding: 14px; border-radius: 6px; color: #fff;">Product4</a>
+              </div>
+            </div>  
       </div>
-    </div>
-  </section>
+     </div>
+</section>
+
+
 {% endblock %}
-
 {% endcache %}
-
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock js %}

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "Products",
     "Energy_efficiency",
     "service_app",
+    "pump",
 ]
 
 MIDDLEWARE = [
