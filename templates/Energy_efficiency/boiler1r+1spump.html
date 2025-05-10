@@ -204,10 +204,10 @@
 
 
 <!-- Hero Section -->
-<section class="hero-section bg-light py-5">
-  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-center gap-5">
+<section class="hero-sections  py-5">
+  <div class="container d-flex flex-column align-items-center text-center text-md-start gap-4">
     
-    <!-- Image on the left -->
+    <!-- Image first -->
     <div class="flex-shrink-0">
       <img
         src="{% static '../static/img/1R+1SB.png' %}"
@@ -217,17 +217,19 @@
       />
     </div>
 
-    <!-- Text and Buttons on the right -->
-    <div class="text-center text-md-start" style="max-width: 500px;">
-      <h2 class="seal mb-3">1 Running + 1 StandBy</h2>
-      <div class="d-flex justify-content-center justify-content-md-start gap-3 frm-btnn">
-        <button class=" custom-btn" id="backbtn"><i class="bi bi-arrow-left"></i></button>
-        <a href="{% url 'form-page' %}" class="custom-btn" >How your pump running</a>
-      </div>
+    <!-- Text and Buttons after image -->
+    <div class="d-flex flex-column flex-md-row gap-4 justify-content-center ">
+    <h2>1 Running + 1 StandBy</h2>  
+    <a href="{% url 'home' %}" class="custom-btn" id="backbtn">
+    <i class="bi bi-arrow-left"></i></a>
+    <a href="{% url 'form-page' %}" class="custom-btn" style="text-decoration:none">How your pump running</a>
     </div>
+   </div>
+
 
   </div>
 </section>
+
 
 
 
