@@ -1,17 +1,22 @@
 from pathlib import Path
 import os
-from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
+from django.contrib.messages import constants as messages
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = True
+# Load environment variables
+load_dotenv(BASE_DIR / '.env')
 
-ALLOWED_HOSTS = ['*']
-  # Add your server's IP or domain here
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY', '071192')
+
+# Debug mode
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+# Allowed hosts
+ALLOWED_HOSTS = ['*']  # Update with your domain or IP in production
 
 # Application definition
 INSTALLED_APPS = [
@@ -59,67 +64,34 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "ShaftSeal_Website.wsgi.application"
 
-# Database
-
-
-
-
-
-
-# Load environment variables from .env
-""" BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / '.env')  # makes it platform independent
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'OPTIONS': {
-            'sql_mode': 'STRICT_TRANS_TABLES',
-        },
-    }
-} """
-
+# Database configuration
 
 # Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-         'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'NAME': os.getenv("DB_NAME", "shaftseal_db"),
+        'USER': os.getenv("DB_USER", "shaftseal_user"),
+        'PASSWORD': os.getenv("DB_PASSWORD", "shaftseal@12345"),
+        'HOST': os.getenv("DB_HOST", "localhost"),
+        'PORT': os.getenv("DB_PORT", "3306"),
     }
 }
 
-
-
-SECRET_KEY = 5456 
-
+# Caching (Redis)
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Make sure it's pointing to Redis
+        'LOCATION': 'redis://127.0.0.1:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
 }
 
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
-        
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
@@ -139,53 +111,39 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-import os
-
-# Static files (CSS, JavaScript, Images)
+# Static files
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# Local development: Serve static from your 'static' folder
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-
-
-
-# Media files (user uploads)
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#
+# Custom User Model and Authentication
 AUTH_USER_MODEL = 'accounts.Account'
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
-    ]
+]
 
-# AUTH_USER_MODEL = "Customers.CustomUser"
-# LOGIN_URL = '/Customer/login/'
-
-# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
+# Message tags
 MESSAGE_TAGS = {
     messages.ERROR: "danger",
 }
 
-#SMTP Configuration
-EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_PORT= 587
-EMAIL_HOST_USER= 'pandapritirekha2@gmail.com'
-EMAIL_HOST_PASSWORD= 'ykns inoe vvll wdwj'
-EMAIL_USE_TLS= True
+# Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
 
-# Celery Configuration
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

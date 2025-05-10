@@ -79,8 +79,9 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        next_url = request.POST.get('next')
 
         # Correct usage since USERNAME_FIELD = 'email'
         user = auth.authenticate(request, username=email, password=password)
