@@ -1,0 +1,135 @@
+.about-banner {
+    position: relative;
+    height: 100px !important;
+    background-image: url("/static/img/website-page-contact-us-email-600nw-1958537320.webp");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .banner-text {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .banner-heading {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+ 
+  
+  .card {
+    background-color: #fff;
+    border-radius: 5px ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 2px solid #cf0f47;
+  }
+ 
+  
+  
+  
+  @keyframes slideInDown {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+  }
+  .contact-form {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+  }
+  .custom-btn  {
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background: #0056b3;
+  }
+  .contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.contact-info {
+    flex: 1 1 35%;
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 6px;
+  }
+  
+  .contact-info h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .contact-info p {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+    }
+  
+    .contact-form,
+    .contact-info {
+      width: 100%;
+    }
+  }

@@ -1,16 +1,8 @@
-{% extends 'base.html' %} 
-{% load static %} 
-
-
-{% block title %}
-    Shaft & Seal | Contact
-{% endblock %}
-
-{% block css %} 
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
 {{block.super}}
-
-<link rel="stylesheet" href="{% static 'Products/contact.css' %}" />
-
+<link rel="stylesheet" href="{% static 'Products/contactus.css' %}" />
 {% endblock css %} 
 {% block content %}
 
@@ -30,7 +22,7 @@
         <div class="row">
           <div class="col-12 col-md-6 col-lg-5">
             <div class="card p-4 shadow custom-card">
-              <form style="margin-bottom: 50px">
+              <form style="margin-bottom: 50px" class="contact-form">
                 <div class="mb-3">
                   <label class="form-label">Full Name</label>
                   <input
@@ -93,51 +85,6 @@
     </div>
   </div>
 </section>
+
+
 {% endblock %}
-
-<!-- Contact Section -->
-
-{% block footer %}
-<footer class="bg-dark text-white text-center py-3">
-  <div class="footer-content">
-    <div class="row">
-      <!-- Contact Info -->
-      <div class="col-md-4">
-        <p>&copy; 2025 Sharft And Seal. All Rights Reserveds.</p>
-        <ul class="social-links">
-          <li>
-            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-          </li>
-        </ul>
-      </div>
-      <!-- Contact Form -->
-      <div class="col-md-7">
-        <div class="col-md-5">
-          <h4>Get in Touch</h4>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Plot No.44, Sahaianand Ind
-            Park,<br />
-            Chandial, Ahmedabad, Dascroi, Gujarat,
-          </p>
-          <p><i class="fas fa-envelope"></i> seals@shaftseals.com</p>
-          <p>
-            <i class="fas fa-phone"></i> 8279673706<br />
-            9873498924
-          </p>
-          <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-{% endblock footer %} {% block js %}
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{% endblock js %}

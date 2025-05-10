@@ -8,12 +8,11 @@ body {
 }
 
 .contact-section {
-  padding: 2rem 1rem;
   background-color: #f9f9f9;
 }
 
 .spareshead {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   color: #333;
@@ -75,12 +74,7 @@ body {
 }
 
 /* Hero Image */
-.hero-image img {
-  width: 100%;
-  max-width: 500px;
-  margin: 2rem auto;
-  display: block;
-}
+
 
 /* Modal */
 .modal-container {
