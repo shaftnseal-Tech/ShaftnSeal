@@ -1,10 +1,7 @@
-from django.http import JsonResponse
+from django.http import JsonResponse,Http404
 from django.shortcuts import render, get_object_or_404
-from .models import Maker, PumpModel, ModelVariant, ModelPart, ModelVariantPart 
+from .models import PumpMaker, PumpModel, PumpModelVariant, ModelPart, ModelVariantPart,PartMaterials
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
-from django.templatetags.static import static
-
 
 def get_pumpmodels(request, id):
     pumpmodels = PumpModel.objects.filter(maker_id=id)
@@ -12,51 +9,87 @@ def get_pumpmodels(request, id):
     return JsonResponse(data, safe=False)
 
 def get_model_varient(request, id):
-    variants = ModelVariant.objects.filter(model_id=id)
+    variants = PumpModelVariant.objects.filter(model_id=id)
     data = list(variants.values('id', 'discharge_diameter', 'stages'))
     return JsonResponse(data, safe=False)
 
+
 def get_parts(request, model_id, variant_id):
-    # Fetch common parts (for model)
-    common_parts = ModelPart.objects.filter(model_id=model_id).select_related('part')
-    common_parts_data = [
-        {
-            'id': mp.part.id,
-            'part_no': mp.part.part_no,
-            'name': mp.part.name,
-            'material': mp.part.material,
-            'technical_details':mp.part. technical_details,
-            'drawing_file': mp.part.drawing_file.url if mp.part.drawing_file else '',
-            'cad_file': mp.part.cad_file.url if mp.part.cad_file else '',
-            'mapping': mp.part.mapping.url if mp.part.mapping else '',
-        }
-        for mp in common_parts
-    ]
+    try:
+        model = PumpModel.objects.get(id=model_id)
+        variant = PumpModelVariant.objects.get(id=variant_id)
 
-    # Fetch variant parts (specific to variant)
-    variant_parts = ModelVariantPart.objects.filter(variant_id=variant_id).select_related('part')
-    variant_parts_data = [
-        {
-            'id': vp.part.id,
-            'part_no': vp.part.part_no,
-            'name': vp.part.name,
-            'material': vp.part.material,
-            'technical_details':vp.part. technical_details,
-            'drawing_file': vp.part.drawing_file.url if vp.part.drawing_file else '',
-            'cad_file': vp.part.cad_file.url if vp.part.cad_file else '',
-            'mapping': vp.part.mapping.url if vp.part.mapping else '',
-        }
-        for vp in variant_parts
-    ]
+        common_parts = ModelPart.objects.filter(model=model)
+        variant_parts = ModelVariantPart.objects.filter(variant=variant)
 
-    return JsonResponse({
-        'common_parts': common_parts_data,
-        'variant_parts': variant_parts_data,
-    })
+        parts_data = []
+
+        # Process common model-level parts
+        for part_wrapper in common_parts:
+            pm = part_wrapper.part_materials
+            part = pm.part
+            materials = PartMaterials.objects.filter(part=part)
+            material_data = []
+            for material in materials:
+                material_data.append({
+                    'material_name': material.materials.material_name,
+                    'price': str(material.price),
+                    'available': material.available
+                })
+
+            parts_data.append({
+                'part_no': part.part_no,
+                'name': part.name,
+                'materials': material_data,  # Add materials with price and availability
+                'technical_details': part.technical_details.url if part.technical_details else '',
+                'drawing': part.drawing_file.url if part.drawing_file else '',
+                'cad_file': part.cad_file.url if part.cad_file else '',
+                'mapping': part.mapping.url if part.mapping else ''
+            })
+
+        # Process variant-specific parts
+        for part_wrapper in variant_parts:
+            pm = part_wrapper.variant_part_materials
+            part = pm.part
+            materials = PartMaterials.objects.filter(part=part)
+            material_data = []
+            for material in materials:
+                material_data.append({
+                    'material_name': material.materials.material_name,
+                    'price': str(material.price),
+                    'available': material.available
+                })
+
+            parts_data.append({
+                'part_no': part.part_no,
+                'name': part.name,
+                'materials': material_data,  # Add materials with price and availability
+                'technical_details': part.technical_details.url if part.technical_details else '',
+                'drawing': part.drawing_file.url if part.drawing_file else '',
+                'cad_file': part.cad_file.url if part.cad_file else '',
+                'mapping': part.mapping.url if part.mapping else ''
+            })
+
+        # Render the HTML template with the parts data and model/variant details
+        return render(request, 'Spares/Sparesparts.html', {
+            'model': model,
+            'variant': variant,
+            'parts_data': parts_data
+        })
+
+    except PumpModel.DoesNotExist:
+        raise Http404("Model not found")
+    except PumpModelVariant.DoesNotExist:
+        raise Http404("Variant not found")
+    except Exception as e:
+        raise Http404(f"Internal server error: {str(e)}")
+
+
 @login_required
 def maker_model(request):
-    makers = Maker.objects.all()
+    makers = PumpMaker.objects.all()
     return render(request, 'Spares/MakerModel.html', {'makers': makers})
+
 @login_required
 def spareparts(request):
     return render(request, 'Spares/Chatbotpart.html')

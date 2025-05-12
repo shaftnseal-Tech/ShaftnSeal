@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Maker, PumpModel, ModelVariant, Part, ModelVariantPart, ModelPart
+from .models import (
+    PumpMaker, PumpModel, PumpModelVariant,
+    PumpParts, PartMaterials, ModelVariantPart, ModelPart,Materials
+)
 
 
-@admin.register(Maker)
-class MakerAdmin(admin.ModelAdmin):
+@admin.register(PumpMaker)
+class PumpMakerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     search_fields = ('name',)
 
@@ -16,22 +19,23 @@ class PumpModelAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-@admin.register(ModelVariant)
-class ModelVariantAdmin(admin.ModelAdmin):
+@admin.register(PumpModelVariant)
+class PumpModelVariantAdmin(admin.ModelAdmin):
     list_display = ('id', 'model', 'discharge_diameter', 'stages')
     list_filter = ('model',)
     search_fields = ('model__name',)
 
 
-@admin.register(Part)
-class PartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'part_no', 'name', 'material', 'created_at', 'updated_at',
-                    )
-    list_filter = ('material',)
-    search_fields = ('part_no', 'name', 'material')
+@admin.register(PumpParts)
+class PumpPartsAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'part_no', 'name', 'created_at', 'updated_at',
+        'drawing_file_link', 'cad_file_link', 'mapping_file_link',
+    )
+    search_fields = ('part_no', 'name')
     readonly_fields = ('created_at', 'updated_at')
+    ordering = ('-updated_at',)
 
-    # ➡️ Moved methods here!
     def drawing_file_link(self, obj):
         if obj.drawing_file:
             return format_html('<a href="{}" download>Download</a>', obj.drawing_file.url)
@@ -53,12 +57,51 @@ class PartAdmin(admin.ModelAdmin):
 
 @admin.register(ModelPart)
 class ModelPartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'model', 'part')
+    list_display = ('id', 'model', 'get_part', 'get_material', 'get_price')
     list_filter = ('model',)
+    search_fields = ('model__name', 'part_materials__part__name')
+
+    def get_part(self, obj):
+        return obj.part_materials.part.name
+    get_part.short_description = "Part"
+
+    def get_material(self, obj):
+        return obj.part_materials.materials.material_name
+    get_material.short_description = "Material"
+
+    def get_price(self, obj):
+        return obj.part_materials.price
+    get_price.short_description = "Price"
 
 
 @admin.register(ModelVariantPart)
 class ModelVariantPartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'variant', 'part')
-    search_fields = ('variant__model__name', 'part__name')
+    list_display = ('id', 'variant', 'get_part', 'get_material', 'get_price')
     list_filter = ('variant__model',)
+    search_fields = ('variant__model__name', 'variant_part_materials__part__name')
+
+    def get_part(self, obj):
+        return obj.variant_part_materials.part.name
+    get_part.short_description = "Part"
+
+    def get_material(self, obj):
+        return obj.variant_part_materials.materials.material_name
+    get_material.short_description = "Material"
+
+    def get_price(self, obj):
+        return obj.variant_part_materials.price
+    get_price.short_description = "Price"
+
+
+
+@admin.register(Materials)
+class MaterialsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'material_name',)
+    search_fields = ('material_name',)
+
+
+@admin.register(PartMaterials)
+class PartMaterialsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'part', 'materials', 'price','available')
+    list_filter = ('materials',)
+    search_fields = ('part__name', 'materials__material_name')

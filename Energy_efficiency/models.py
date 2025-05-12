@@ -14,14 +14,13 @@ class Energy_Efficiency_Parameters(models.Model):
     nominal_flow_rate = models.FloatField(verbose_name='Qnp')
     nominal_head = models.FloatField(verbose_name='Hnp')
     pump_efficiency = models.FloatField(verbose_name='Pump Efficiency')
-    pump_speed = models.FloatField(verbose_name='Pump Speed')
+    pump_speed = models.FloatField(verbose_name='Pump Speed N1')
 
     motor_voltage = models.FloatField(verbose_name='Motor Voltage')
     motor_current = models.FloatField(verbose_name='Motor Current')
     motor_power_factor = models.FloatField(verbose_name='Motor Power Factor')
     motor_power = models.FloatField(verbose_name='Power')
 
-    N1 = models.FloatField(verbose_name='N1')
     N2 = models.FloatField(verbose_name='N2')
 
     actual_flow_rate = models.FloatField(verbose_name='Actual Flow Rate')

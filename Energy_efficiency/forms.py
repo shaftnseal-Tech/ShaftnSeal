@@ -10,7 +10,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             # Pump Name Plate Fields
             'nominal_flow_rate', 'nominal_head', 'pump_efficiency', 'pump_speed',
             # Motor Name Plate Fields
-            'motor_voltage', 'motor_power_factor', 'motor_power', 'N1','motor_current',
+            'motor_voltage', 'motor_power_factor', 'motor_power','motor_current',
             # Actual Pump Data Fields
             'actual_flow_rate', 'pump_discharge_pressure', 'pump_suction_pressure',
             # Test Data Fields
@@ -37,7 +37,7 @@ class EnergyEfficiencyForm(forms.ModelForm):
             'motor_current':'Motor Current (amp)',
             'motor_power_factor': 'Motor Power Factor (pf)',
             'motor_power': 'Motor Power output (KWH1)',
-            'N1': 'Speed (N1) in (rpm)',
+            
            
             'actual_flow_rate': 'Total Flow Rate in 24hrs (Q24hr)(m³/hr)',
             'pump_discharge_pressure': 'Pump Discharge Pressure (Pd)(kg/cm²)',
