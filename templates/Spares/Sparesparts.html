@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+ 
 {% block content %}
 <h4>Parts for   {{ model }} , {{ variant.discharge_diameter }}mm - {{variant.stages}} stages</h4>
-
+ 
 <form method="POST">
     {% csrf_token %}
     <table class="table table-bordered">
@@ -71,19 +71,19 @@
         </tbody>
     </table>
 </form>
-
+ 
 <!-- JavaScript to handle dynamic updates -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const materialSelects = document.querySelectorAll('.material-select');
-
+ 
         materialSelects.forEach(select => {
             select.addEventListener('change', function () {
                 const partNo = this.getAttribute('data-part-no');
                 const selectedOption = this.options[this.selectedIndex];
                 const price = selectedOption.getAttribute('data-price') || '';
                 const available = selectedOption.getAttribute('data-available') || '';
-
+ 
                 // Update price and available quantity dynamically
                 document.getElementById(`price_${partNo}`).textContent = price;
                 document.getElementById(`available_${partNo}`).textContent = available;
@@ -92,3 +92,5 @@
     });
 </script>
 {% endblock %}
+ 
+ 

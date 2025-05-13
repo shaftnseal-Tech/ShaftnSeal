@@ -18,6 +18,7 @@ def get_parts(request, model_id, variant_id):
     try:
         model = PumpModel.objects.get(id=model_id)
         variant = PumpModelVariant.objects.get(id=variant_id)
+    
 
         common_parts = ModelPart.objects.filter(model=model)
         variant_parts = ModelVariantPart.objects.filter(variant=variant)

@@ -86,6 +86,8 @@ function searchParts() {
     window.location.href = `${SPARES_BASE_URL}/get_parts/${model_Id}/${variant_Id}/`;
 }
 
+
+
 // Close modal
 function closeModal(id) {
     document.getElementById(id).style.display = 'none';
