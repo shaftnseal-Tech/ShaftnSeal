@@ -13,6 +13,9 @@
 <section class="contact-section">
     <div class="contact-container">
       <div class="contact-content">
+        <div class="hero-content">
+         
+        </div>
        <div class="container py-5">
           <div class="row">
             <div >
@@ -22,7 +25,7 @@
                 <!-- Search Maker Section -->
                 <div class="search-container">
                     <input type="text" class="search-box" id="search" placeholder="Search Maker..." onkeyup="filterDropdown()" onfocus="showDropdown()">
-                    <div class="dropdown-content" id="dropdown-container" style="display: none;">
+                    <div class="dropdown-content" id="dropdown-container" style="display: none;" data-bs-toggle="modal" data-bs-target="#searchModal">
                       {% for maker in makers %}
                       <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')">{{ maker.name }}</a>
                      {% endfor %}
@@ -41,36 +44,89 @@
                 </div>
         
                 <!-- Spares Form Modal -->
-                <div  class="modal-container" id="search-form" style="display: none;">
-                    <div class="modal-box">
-                        <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
-                        <div class="form-container">
-                            <h2>Spares Form</h2>
-                            <form onsubmit="searchParts(); return false;" >
-                                <select id="ModelName" class="modaloption" onchange="fetchVariants()">
-                                    <option value="">Select Model</option>
-                                </select>
-        
-                                <select id="Variant" class="modaloption">
-                                    <option value="">Select Variant</option>
-                                </select>
-        
-                                <button type="submit" class="search-btn">Search Parts</button>
-                            </form>
+                 <div>
+                  <div class="modal" id="searchModal" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="searchModalLabel">Spares Form</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form onsubmit="searchParts(); return false;">
+                                    <div class="mb-3">
+                                        <select id="ModelName" class="form-select" onchange="fetchVariants()">
+                                            <option value="">Select Model</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <select id="Variant" class="form-select">
+                                            <option value="">Select Variant</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Search Parts</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-        
-      
                 
-    
+              
+        
+                <!-- Parts Display Section -->
+                
+               
+                {% comment %}
+  <section class="parts-container">
+  <div  id="parts-display"   class="parts-display animated fadeIn" style="display:none">
+    <div id="chatbot-container" class="animated fadeInUp" >
+      <h3 class="chatbot-title">Parts Chat Assistant</h3>
+      
+      <!-- Chat Window -->
+      <div id="chat-window" class="chatbox">
+        <div class="chatbot-message fade-in">👋 Hello! Enter a part name or number to search for it.</div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="input-row">
+        <input type="text" id="user-input" placeholder="Type part name or number..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- Parts List -->
+    <div class="parts-table-wrapper animated fadeInUp">
+      <h2>Parts List</h2>
+      <div class="table-responsive">
+        <table class="parts-table">
+          <thead>
+            <tr>
+              <th>Part No</th>
+              <th>Name</th>
+              <th>Material</th>
+              <th>Technical Details</th>
+              <th>Drawing</th>
+              <th>CAD File</th>
+              <th>Mapping</th>
+            </tr>
+          </thead>
+          <tbody id="all-parts-list">
+            <!-- JS will populate this -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomment %}
                 
         </div>
           </div>
+          <!-- Google Maps -->
         </div>
       </div>
     </div>
-   </div>
+</div>
   </section>
 {% endblock  %}
 

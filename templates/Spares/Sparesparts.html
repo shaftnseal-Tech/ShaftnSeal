@@ -1,76 +1,88 @@
 {% extends 'base.html' %}
- 
+{% load static %}
+
+{% block css %} 
+{{block.super}}
+
+<link rel="stylesheet" href="{% static 'Spares/css/search.css' %}" />
+
+{% endblock css %} 
 {% block content %}
 <h4>Parts for   {{ model }} , {{ variant.discharge_diameter }}mm - {{variant.stages}} stages</h4>
  
 <form method="POST">
     {% csrf_token %}
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Part No</th>
-                <th>Name</th>
-                <th>Material</th>
-                <th>Technical Details</th>
-                <th>Drawing</th>
-                <th>CAD File</th>
-                <th>Mapping</th>
-                <th>Price</th>
-                <th>Available</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for part in parts_data %}
-            <tr>
-                <td>{{ part.part_no }}</td>
-                <td>{{ part.name }}</td>
-                <td>
-                    <select name="material_{{ part.part_no }}" class="material-select" data-part-no="{{ part.part_no }}">
-                        <option value="" selected>Select material</option>
-                        {% for material in part.materials %}
-                            <option value="{{ material.material_name }}"
-                                    data-price="{{ material.price }}"
-                                    data-available="{{ material.available }}">
-                                {{ material.material_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </td>
-                <td>
-                    {% if part.technical_details %}
-                        <a href="{{ part.technical_details }}" download>Download</a>
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-                <td>
-                    {% if part.drawing %}
-                        <a href="{{ part.drawing }}" download>Download</a>
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-                <td>
-                    {% if part.cad_file %}
-                        <a href="{{ part.cad_file }}" download>Download</a>
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-                <td>
-                    {% if part.mapping %}
-                        <a href="{{ part.mapping }}" download>Download</a>
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-                <td><span class="price" id="price_{{ part.part_no }}"></span></td>
-                <td><span class="available" id="available_{{ part.part_no }}"></span></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <!-- Table content stays the same -->
+            <thead>
+                <tr>
+                    <th>Part No</th>
+                    <th>Name</th>
+                    <th>Material</th>
+                    <th>Technical Details</th>
+                    <th>Drawing</th>
+                    <th>CAD File</th>
+                    <th>Mapping</th>
+                    <th>Price</th>
+                    <th>Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for part in parts_data %}
+                <tr>
+                    <td>{{ part.part_no }}</td>
+                    <td>{{ part.name }}</td>
+                    <td>
+                        <select name="material_{{ part.part_no }}" class="material-select" data-part-no="{{ part.part_no }}">
+                            <option value="" selected>Select material</option>
+                            {% for material in part.materials %}
+                                <option value="{{ material.material_name }}"
+                                        data-price="{{ material.price }}"
+                                        data-available="{{ material.available }}">
+                                    {{ material.material_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        {% if part.technical_details %}
+                            <a href="{{ part.technical_details }}" download>Download</a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if part.drawing %}
+                            <a href="{{ part.drawing }}" download>Download</a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if part.cad_file %}
+                            <a href="{{ part.cad_file }}" download>Download</a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if part.mapping %}
+                            <a href="{{ part.mapping }}" download>Download</a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td><span class="price" id="price_{{ part.part_no }}"></span></td>
+                    <td><span class="available" id="available_{{ part.part_no }}"></span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    
+        </table>
+    </div>
 </form>
+
  
 <!-- JavaScript to handle dynamic updates -->
 <script>
