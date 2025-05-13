@@ -1,12 +1,18 @@
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  /* background-color: #d5d7d7 !important; */
-  /* background-color: #f4f4f4; */
 }
 
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
 .navbar-cust {
   background-color: #033043 !important;
   padding: 12px 0;

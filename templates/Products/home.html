@@ -17,7 +17,7 @@
     <p class="subheading">
       One Stop Pumping Solutions
     </p>
-
+    
     <div class="search-icon-container">
       <form id="search-form" action="{% url 'home' %}" method="get">
         <input
@@ -31,7 +31,6 @@
       <i class="fas fa-search search-icon" onclick="document.getElementById('search-form').submit();"></i>
     </div>
     
-
     <div class="hero-image mt-5" id="lottie-container">
       <img
         src="{% static 'img/2.svg' %}"
@@ -44,9 +43,7 @@
 
 {% endblock %} 
 {% block js %}
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.13/lottie.min.js"></script>
-
 <script src=" {% static 'Products/home.js' %} "></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock js %}
