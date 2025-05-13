@@ -64,24 +64,6 @@
   border-bottom: 1px solid #201f1f;
 }
 
-/* Button */
-.btnfind {
-  background: #fda521;
-  height: 40px;
-  width: 100%;
-  max-width: 250px;
-  border: none;
-  color: white;
-  font-size: 15px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(255, 251, 251, 0.1);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  margin-top: 40px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
 
 /* Modal Content */
 .modalcontent {
@@ -116,21 +98,9 @@
   transform: translateY(-2px);
 }
 
-/* Select Button */
-.selectbtn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  color: #000;
-  font-weight: bold;
-}
 
-.selectbtn:hover,
-.submitbtn:hover {
-  background-color: #044d64;
-  color: #ffffff;
-}
+
+
 
 /* Modal Alignment Fix */
 .modal {
