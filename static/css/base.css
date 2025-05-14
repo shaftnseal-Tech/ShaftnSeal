@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ html, body {
 
 main {
   flex: 1;
-}
+} */
 .navbar-cust {
   background-color: #033043 !important;
   padding: 12px 0;

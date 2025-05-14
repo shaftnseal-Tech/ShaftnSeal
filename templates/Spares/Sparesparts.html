@@ -2,7 +2,25 @@
  
 {% block content %}
 <h4>Parts for   {{ model }} , {{ variant.discharge_diameter }}mm - {{variant.stages}} stages</h4>
- 
+
+ <!-- Modal Structure -->
+{% comment %} <div id="viewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+  
+  <div style="position:relative; width:80%; height:90%; background:white; padding:20px;">
+    
+    <!-- Close Button -->
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; 
+        background:none; border:none; font-size:24px; cursor:pointer;">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Iframe for Viewing -->
+    <iframe id="modalIframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+</div> {% endcomment %}
+
+
 <form method="POST">
     {% csrf_token %}
     <table class="table table-bordered">
@@ -38,28 +56,45 @@
                 </td>
                 <td>
                     {% if part.technical_details %}
-                        <a href="{{ part.technical_details }}" download>Download</a>
+                        <a href="{{ part.technical_details }}" download title="Download">
+                        <i class="fas fa-download"></i></a>
+                        {% comment %} <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View">
+                                         <i class="fas fa-eye"></i>
+                        </a> {% endcomment %}
+                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <i class="fas fa-eye"></i> 
+                        </a>
+
                     {% else %}
                         -
                     {% endif %}
                 </td>
                 <td>
                     {% if part.drawing %}
-                        <a href="{{ part.drawing }}" download>Download</a>
+                        <a href="{{ part.drawing }}" download title="Download"> <i class="fas fa-download"></i></a>
+                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <i class="fas fa-eye"></i> 
+                        </a>
                     {% else %}
                         -
                     {% endif %}
                 </td>
                 <td>
                     {% if part.cad_file %}
-                        <a href="{{ part.cad_file }}" download>Download</a>
+                        <a href="{{ part.cad_file }}" download title="Download"> <i class="fas fa-download"></i></a>
+                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <i class="fas fa-eye"></i> 
+                        </a>
                     {% else %}
                         -
                     {% endif %}
                 </td>
                 <td>
                     {% if part.mapping %}
-                        <a href="{{ part.mapping }}" download>Download</a>
+                        <a href="{{ part.mapping }}" download title="Download"><i class="fas fa-download"></i></a></a>
+                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <i class="fas fa-eye"></i> 
+                        </a>
                     {% else %}
                         -
                     {% endif %}
@@ -90,6 +125,28 @@
             });
         });
     });
+{% comment %} function openModal(url) {
+    if (url.toLowerCase().endsWith('.pdf') || url.toLowerCase().endsWith('.jpg') || url.toLowerCase().endsWith('.png')) {
+        document.getElementById('modalIframe').src = url;
+        document.getElementById('viewModal').style.display = 'flex';
+    } else {
+        alert("Preview not available. Please download the file instead.");
+    }
+}
+function closeModal() {
+    document.getElementById('modalIframe').src = '';
+    document.getElementById('viewModal').style.display = 'none';
+} {% endcomment %}
+
+function viewAndClose(pdfUrl) {
+        const newTab = window.open(pdfUrl, '_blank');
+
+        setTimeout(() => {
+            if (newTab) {
+                newTab.close();
+            }
+        }, 10000); 
+    }
 </script>
 {% endblock %}
  
