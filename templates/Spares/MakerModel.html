@@ -1,28 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block css %} 
+ 
+{% block css %}
 {{block.super}}
-
+ 
 <link rel="stylesheet" href="{% static 'Spares/css/search.css' %}" />
-  
-
-{% endblock css %} 
+ 
+ 
+{% endblock css %}
 {% block content %}
 <!-- Chatbot Section -->
-
+ 
 <section class="contact-section">
     <div class="contact-container">
       <div class="contact-content">
-        <div class="hero-content">
-         
-        </div>
        <div class="container py-5">
           <div class="row">
             <div >
                 <h1 class="spareshead">Spares Details</h1>
                 <p>Explore our high-quality spare parts for enhanced reliability and extended equipment lifespan</p>
-        
+       
                 <!-- Search Maker Section -->
                 <div class="search-container">
                     <input type="text" class="search-box" id="search" placeholder="Search Maker..." onkeyup="filterDropdown()" onfocus="showDropdown()">
@@ -30,9 +27,9 @@
                       {% for maker in makers %}
                       <a href="#" onclick="selectMaker('{{ maker.id }}', '{{ maker.name }}')">{{ maker.name }}</a>
                      {% endfor %}
-                  
+                 
                     </div>
-                    
+                   
                 </div>
                 <div class="hero-image mt-5" id="lottie-container">
            
@@ -43,7 +40,7 @@
                   style="max-width: 350px; height: auto;"
                 />
                 </div>
-        
+       
                 <!-- Spares Form Modal -->
                  <div>
                   <!-- Modal HTML -->
@@ -56,67 +53,17 @@
                                 <select id="ModelName" class="modaloption" onchange="fetchVariants()">
                                     <option value="">Select Model</option>
                                 </select>
-                
+               
                                 <select id="Variant" class="modaloption">
                                     <option value="">Select Variant</option>
                                 </select>
-                
+               
                                 <button type="submit" class="search-btn">Search Parts</button>
                             </form>
                         </div>
                     </div>
                 <div>
                 </div>
-                
-              
-        
-                <!-- Parts Display Section -->
-                
-               
-                {% comment %}
-  <section class="parts-container">
-  <div  id="parts-display"   class="parts-display animated fadeIn" style="display:none">
-    <div id="chatbot-container" class="animated fadeInUp" >
-      <h3 class="chatbot-title">Parts Chat Assistant</h3>
-      
-      <!-- Chat Window -->
-      <div id="chat-window" class="chatbox">
-        <div class="chatbot-message fade-in">👋 Hello! Enter a part name or number to search for it.</div>
-      </div>
-
-      <!-- Chat Input -->
-      <div class="input-row">
-        <input type="text" id="user-input" placeholder="Type part name or number..." />
-        <button onclick="sendMessage()">Send</button>
-      </div>
-    </div>
-
-    <!-- Parts List -->
-    <div class="parts-table-wrapper animated fadeInUp">
-      <h2>Parts List</h2>
-      <div class="table-responsive">
-        <table class="parts-table">
-          <thead>
-            <tr>
-              <th>Part No</th>
-              <th>Name</th>
-              <th>Material</th>
-              <th>Technical Details</th>
-              <th>Drawing</th>
-              <th>CAD File</th>
-              <th>Mapping</th>
-            </tr>
-          </thead>
-          <tbody id="all-parts-list">
-            <!-- JS will populate this -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-{% endcomment %}
-                
         </div>
           </div>
           <!-- Google Maps -->
@@ -126,7 +73,7 @@
 </div>
   </section>
 {% endblock  %}
-
+ 
 {% block js %}
 {{ block.super }}
 <script src=" {% static 'Spares/js/makermodel.js' %} "></script>

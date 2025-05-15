@@ -102,11 +102,11 @@
   align-items: center;
   justify-content: center;
 }
- 
+
 .modal-container.active {
   display: flex; /* only show when active */
 }
- 
+
 .modal-box {
   position: relative;
   background-color: #fff;
@@ -116,7 +116,6 @@
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
- 
 .close-btn {
   position: absolute;
   top: 10px;
@@ -126,11 +125,11 @@
   cursor: pointer;
   font-weight: bold;
 }
- 
+
 .close-btn:hover {
   color: #000;
 }
- 
+
 .modaloption {
   width: 100%;
   margin-top: 20px;
@@ -141,7 +140,6 @@
   padding: 10px;
   font-size: 16px;
 }
- 
 .search-btn{
   background-color: #0e410c;
 }
@@ -400,7 +398,6 @@
   from { opacity: 0; transform: translateY(20px) }
   to { opacity: 1; transform: translateY(0) }
 }
- 
 select,option{
   width: 100%;
   margin-top: 20px;
@@ -431,5 +428,4 @@ select,option{
 .table-hover tbody tr:hover {
     background-color: #f1f1f1;
 }
- 
  
