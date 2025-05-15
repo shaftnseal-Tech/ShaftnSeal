@@ -1,30 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
-
-body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f6f8;
-}
-
+ 
 .contact-section {
   background-color: #f9f9f9;
 }
-
+ 
 .spareshead {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   color: #333;
 }
-
+ 
 .contact-section p {
   text-align: center;
   max-width: 600px;
   margin: 10px auto 30px;
   color: #555;
 }
-
+ 
 /* Search Box */
 .search-container {
   max-width: 400px;
@@ -32,7 +28,7 @@ body {
   position: relative;
   animation: fadeInUp 0.6s ease;
 }
-
+ 
 .search-box {
   width: 100%;
   padding: 18px 24px;
@@ -43,12 +39,12 @@ body {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
-
+ 
 .search-box:focus {
   border-color: #033043;
   box-shadow: 0 0 10px rgba(3, 48, 67, 0.3);
 }
-
+ 
 /* Dropdown */
 .dropdown-content {
   position: absolute;
@@ -61,36 +57,32 @@ body {
   z-index: 10;
   animation: fadeIn 0.4s ease;
 }
-
+ 
 .dropdown-content a {
   padding: 10px;
   display: block;
   color: #000;
   text-decoration: none;
 }
-
+ 
 .dropdown-content a:hover {
   background-color: #f0f0f0;
 }
-
-
-.modal-container {
+ 
+ 
+/* .modal-container {
   position: relative;
   top: 0;
   left: 0;
   z-index: 1050;
   display: none;
-  width: 50px;
-  height: 50px;
+  width: 50%;
+  height: 50%;
   background-color:white;
   align-items: center;
   justify-content: center;
 }
-
-
-
-
-/* Modal Content Box */
+ 
 .modal-box {
   position: relative;
   background-color: #fff;
@@ -98,14 +90,66 @@ body {
   border-radius: 0.3rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   outline: 0;
-
+ 
   width: 50%;
+} */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* hidden by default */
+  align-items: center;
+  justify-content: center;
 }
+ 
+.modal-container.active {
+  display: flex; /* only show when active */
+}
+ 
+.modal-box {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+ 
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+  font-weight: bold;
+}
+ 
+.close-btn:hover {
+  color: #000;
+}
+ 
+.modaloption {
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(218, 245, 236);
+  height: 50px;
+  padding: 10px;
+  font-size: 16px;
+}
+ 
 .search-btn{
   background-color: #0e410c;
 }
 /* Modal Header */
-
+ 
 /* Close Button */
 .btn-close {
   padding: 0.5rem;
@@ -116,13 +160,13 @@ body {
   opacity: 0.5;
   cursor: pointer;
 }
-
+ 
 .btn-close:hover {
   opacity: 0.75;
 }
-
-
-
+ 
+ 
+ 
 /* Form Select */
 .form-select {
   display: block;
@@ -136,7 +180,7 @@ body {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
-
+ 
 /* Buttons */
 .btn-primary {
   background-color: #0e410c;
@@ -147,16 +191,16 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
+ 
 .btn-primary:hover {
   background-color: #101113;
 }
-
+ 
 /* Full Width Button */
 .w-100 {
   width: 100% !important;
 }
-
+ 
 /* Responsive Adjustments */
 @media (min-width: 576px) {
   .modal-dialog {
@@ -164,8 +208,8 @@ body {
       margin: 1.75rem auto;
   }
 }
-
-
+ 
+ 
 /* Optional fade-in animation */
 @keyframes fadeInUp {
   from {
@@ -177,7 +221,7 @@ body {
     transform: translateY(0);
   }
 }
-
+ 
 /* Search Button */
 .search-btn {
   width: 100%;
@@ -191,11 +235,11 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
+ 
 .search-btn:hover {
   background: #05506e;
 }
-
+ 
 /* Parts Display */
 .parts-display {
   background-color: #fff;
@@ -204,7 +248,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   animation: fadeIn 0.8s ease-in-out;
 }
-
+ 
 #chatbot-container {
   background: #fff;
   border: 1px solid #e0e0e0;
@@ -214,7 +258,7 @@ body {
   animation: fadeInUp 0.6s ease-in-out;
   margin-bottom: 30px;
 }
-
+ 
 .chatbot-title {
   font-size: 1.4rem;
   margin-bottom: 15px;
@@ -222,7 +266,7 @@ body {
   font-weight: 600;
   text-align: center;
 }
-
+ 
 .chatbox {
   height: 150px;
   overflow-y: auto;
@@ -232,7 +276,7 @@ body {
   margin-bottom: 15px;
   animation: fadeInUp 0.6s ease;
 }
-
+ 
 .chatbot-message {
   background: #e3f2fd;
   padding: 10px;
@@ -241,20 +285,20 @@ body {
   font-size: 0.95rem;
   animation: fadeInUp 0.6s ease;
 }
-
+ 
 .input-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
+ 
 .input-row input {
   flex: 1;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
-
+ 
 .input-row button {
   padding: 10px 16px;
   background: #033043;
@@ -265,11 +309,11 @@ body {
   font-weight: bold;
   transition: background 0.3s ease;
 }
-
+ 
 .input-row button:hover {
   background: #05506e;
 }
-
+ 
 /* Parts Table */
 .parts-table-wrapper {
   background: #fff;
@@ -279,7 +323,7 @@ body {
   margin-top: 40px;
   animation: fadeInUp 0.8s ease;
 }
-
+ 
 .parts-title {
   font-size: 1.6rem;
   margin-bottom: 20px;
@@ -287,25 +331,25 @@ body {
   font-weight: 600;
   text-align: center;
 }
-
+ 
 .table-responsive {
   overflow-x: auto;
 }
-
+ 
 .parts-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
   background-color: #fafafa;
 }
-
+ 
 .parts-table th,
 .parts-table td {
   padding: 14px 18px;
   text-align: center;
   border-bottom: 1px solid #e2e2e2;
 }
-
+ 
 .parts-table th {
   background-color: #007bff;
   color: #fff;
@@ -313,54 +357,53 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
+ 
 .parts-table tr:nth-child(even) {
   background-color: #f0f8ff;
 }
-
+ 
 .parts-table tr:hover {
   background-color: #e6f2ff;
   transition: background-color 0.3s ease;
 }
-
+ 
 /* Animation */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
-
+ 
+ 
 /* Responsive Adjustments */
 @media (min-width: 768px) {
   .input-row {
     flex-direction: row;
   }
-
+ 
   .input-row input {
     flex: 1;
   }
-
+ 
   .input-row button {
     width: auto;
   }
-
+ 
   .search-container {
     max-width: 600px;
   }
 }
-
+ 
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0 }
   to { opacity: 1 }
 }
-
+ 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px) }
   to { opacity: 1; transform: translateY(0) }
 }
-form{
-}
+ 
 select,option{
   width: 100%;
   margin-top: 20px;
@@ -378,16 +421,18 @@ select,option{
     padding: 12px;
     border-bottom: 2px solid #dee2e6;
 }
-
+ 
 .table-bordered th, .table-bordered td {
     border: 1px solid #dee2e6;
 }
-
+ 
 .table tbody td {
     text-align: center;
     vertical-align: middle;
 }
-
+ 
 .table-hover tbody tr:hover {
     background-color: #f1f1f1;
 }
+ 
+ 
