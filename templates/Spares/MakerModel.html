@@ -45,30 +45,26 @@
         
                 <!-- Spares Form Modal -->
                  <div>
-                  <div class="modal" id="searchModal" >
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="searchModalLabel">Spares Form</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form onsubmit="searchParts(); return false;">
-                                    <div class="mb-3">
-                                        <select id="ModelName" class="form-select" onchange="fetchVariants()">
-                                            <option value="">Select Model</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <select id="Variant" class="form-select">
-                                            <option value="">Select Variant</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary w-100">Search Parts</button>
-                                </form>
-                            </div>
+                  <!-- Modal HTML -->
+                  <div class="modal-container" id="search-form" style="display:none">
+                    <div class="modal-box">
+                        <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
+                        <div class="form-container">
+                            <h2>Spares Form</h2>
+                            <form onsubmit="searchParts(); return false;">
+                                <select id="ModelName" class="modaloption" onchange="fetchVariants()">
+                                    <option value="">Select Model</option>
+                                </select>
+                
+                                <select id="Variant" class="modaloption">
+                                    <option value="">Select Variant</option>
+                                </select>
+                
+                                <button type="submit" class="search-btn">Search Parts</button>
+                            </form>
                         </div>
                     </div>
+                <div>
                 </div>
                 
               

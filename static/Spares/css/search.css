@@ -78,7 +78,7 @@ body {
 
 /* Modal */
 /* Modal Background Overlay */
-.modal {
+.modal-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -118,7 +118,7 @@ body {
 }
 
 /* Modal Content Box */
-.modal-content {
+.modal-box {
   position: relative;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -129,15 +129,6 @@ body {
 }
 
 /* Modal Header */
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #dee2e6;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
-}
 
 /* Modal Title */
 .modal-title {
