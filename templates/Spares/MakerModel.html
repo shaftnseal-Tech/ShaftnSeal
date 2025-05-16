@@ -41,28 +41,28 @@
                 />
                 </div>
        
-                <!-- Spares Form Modal -->
                  <div>
-                  <!-- Modal HTML -->
-                  <div class="modal-container" id="search-form" style="display:none">
-                    <div class="modal-box">
-                        <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
-                        <div class="form-container">
-                            <h2>Spares Form</h2>
-                            <form onsubmit="searchParts(); return false;">
-                                <select id="ModelName" class="modaloption" onchange="fetchVariants()">
-                                    <option value="">Select Model</option>
-                                </select>
-               
-                                <select id="Variant" class="modaloption">
-                                    <option value="">Select Variant</option>
-                                </select>
-               
-                                <button type="submit" class="search-btn">Search Parts</button>
-                            </form>
-                        </div>
-                    </div>
-                <div>
+                  
+<div class="modal-container" id="search-form">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closeModal('search-form')">&times;</span>
+    <div class="form-container">
+      <h2>Spares Form</h2>
+      <form onsubmit="searchParts(); return false;">
+        <select id="ModelName" class="modaloption" onchange="fetchVariants()">
+          <option value="">Select Model</option>
+        </select>
+
+        <select id="Variant" class="modaloption">
+          <option value="">Select Variant</option>
+        </select>
+
+        <button type="submit" class="search-btn">Search Parts</button>
+      </form>
+    </div>
+  </div>
+</div>
+
                 </div>
         </div>
           </div>
