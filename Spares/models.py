@@ -48,7 +48,7 @@ class PumpParts(models.Model):
 
     def __str__(self):
         return f"{self.part_no} - {self.name}"
-
+    
 
 
 class Materials(models.Model):
