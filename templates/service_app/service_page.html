@@ -9,14 +9,14 @@
 
 {% endblock css %} 
 {% block content %}
-<!-- Chatbot Section -->
-
-    <div class="hero-section">
-        <div class=" modal-dialog">
-            <div class="modalbox">
-            
-    <h2 class="seal">Find Your Detail</h2>
-    <form id="customerForm">
+<section class="service-section">
+  <div class="service-container">
+    <div class="service-content">
+     
+     <div class="container py-5">
+        <div class="col">
+          <div class=" col-lg-5">
+            <form id="customerForm">
         <label>Customer Code:</label>
         <input
         type="text"
@@ -63,10 +63,16 @@
         <textarea id="remark" rows="5" cols="40"></textarea>
         <button type="submit" class="btnsave">Submit</button>
     </form>
-    </div>
+          </div>
+          
         </div>
-</div>
-   
+       
+      </div>
+    </div>
+    
+  </div>
+</section>
+    
 {% endblock content  %}
 
 {% block js %}
