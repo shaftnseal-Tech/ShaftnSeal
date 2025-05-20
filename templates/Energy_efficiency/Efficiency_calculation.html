@@ -1,14 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <p>{{form_data}}</p>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'Energy_efficiency/ef_calculation.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<section class="hero-sections py-5">
+    <div class="container text-center">
+        <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Performance Curve</h1>
+        <p class="text-muted">Explore the results of your input parameters and review the energy efficiency performance of your selected pump. You can download the graph or view your data in PDF format below.</p>
+        
     </div>
-    <a href="{{ Graph_url }}" download="">Theoritical_src</a>
-</body>
-</html>
+
+    <!-- Section: Graph -->
+    <div class="pdf-section">
+        {% comment %} <h2 class="section-title">Performance Curve</h2> {% endcomment %}
+        {% if Graph_url %}
+        <div class="pdf-buttons">
+            <a href="{{ Graph_url }}" target="_blank" class="btn-custom">📊 View Graph PDF</a>
+            <a href="{{ Graph_url }}" download class="btn-custom">⬇️ Download Graph PDF</a>
+        </div>
+        {% else %}
+        <p class="text-center text-danger">Graph not available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Section: Back to Form -->
+    <div class="pdf-section text-center">
+        <h2 class="section-title">Want to Test Again?</h2>
+        <p class="text-muted mb-4">Click the button below to go back and input new parameters for another efficiency test.</p>
+        <div class="pdf-buttons">
+            <a href="{% url 'form-page' %}" class="btn-custom">🔁 Back to Efficiency Form</a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
