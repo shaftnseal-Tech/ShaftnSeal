@@ -133,6 +133,8 @@ def pump_efficiency_calculater(request):
         })
 
 
+
+
 @login_required
 def finalize_submission(request):
     """Handle the final submission of the draft data."""
