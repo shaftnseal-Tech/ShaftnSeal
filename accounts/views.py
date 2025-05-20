@@ -90,7 +90,7 @@ def login(request):
             auth.login(request, user)
             # print("User logged in successfully")
             messages.success(request, 'Login successful!')
-            return redirect('dashboard')
+            return redirect('home')
         else:
             messages.error(request, 'Invalid email or password.')
             return redirect('login')

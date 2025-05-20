@@ -1,1 +1,3 @@
-pip install xhtml2pdf
+
+to start celery:
+celery -A ShaftSeal_Website worker --loglevel=info --pool=solo
