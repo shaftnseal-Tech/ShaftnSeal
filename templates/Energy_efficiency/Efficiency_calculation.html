@@ -5,16 +5,18 @@
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'Energy_efficiency/ef_calculation.css' %}" />
 {% endblock css %}
+
 {% block content %}
 <section class="hero-sections py-5">
-    <div class="container text-center mb-5">
-        <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Your Output is Here</h1>
+    <div class="container text-center">
+        <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Performance Curve</h1>
         <p class="text-muted">Explore the results of your input parameters and review the energy efficiency performance of your selected pump. You can download the graph or view your data in PDF format below.</p>
+        
     </div>
 
     <!-- Section: Graph -->
     <div class="pdf-section">
-        <h2 class="section-title">Performance Curve</h2>
+        {% comment %} <h2 class="section-title">Performance Curve</h2> {% endcomment %}
         {% if Graph_url %}
         <div class="pdf-buttons">
             <a href="{{ Graph_url }}" target="_blank" class="btn-custom">📊 View Graph PDF</a>
@@ -25,46 +27,13 @@
         {% endif %}
     </div>
 
-    <!-- Section: Data Output -->
-    {% comment %} <div class="pdf-section">
-        <h2 class="section-title">Input Parameters & Calculated Data</h2>
-        {% if form_data %}
-        <table class="data-table">
-            <thead>
-                <tr>
-                    {% for key in form_data.keys %}
-                        <th>{{ key|title }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {% for value in form_data.values %}
-                        <td>{{ value }}</td>
-                    {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-
-        {% if data_pdf_url %}
-        <div class="pdf-buttons">
-            <a href="{{ data_pdf_url }}" target="_blank" class="btn-custom">📄 View Data PDF</a>
-            <a href="{{ data_pdf_url }}" download class="btn-custom">⬇️ Download Data PDF</a>
-        </div>
-        <iframe src="{{ data_pdf_url }}"></iframe>
-        {% else %}
-        <p class="text-center text-danger">Data PDF not available.</p>
-        {% endif %}
-        {% else %}
-        <p class="text-center text-danger">No form data available.</p>
-        {% endif %}
-    </div> {% endcomment %}
-
     <!-- Section: Back to Form -->
-    <div class="pdf-section mt-2 text-center ">
+    <div class="pdf-section text-center">
         <h2 class="section-title">Want to Test Again?</h2>
         <p class="text-muted mb-4">Click the button below to go back and input new parameters for another efficiency test.</p>
-        <a href="{% url 'form-page' %}" class="btn-custom">🔁 Back to Efficiency Form</a>
+        <div class="pdf-buttons">
+            <a href="{% url 'form-page' %}" class="btn-custom">🔁 Back to Efficiency Form</a>
+        </div>
     </div>
 </section>
 {% endblock content %}
