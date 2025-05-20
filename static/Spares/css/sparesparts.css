@@ -116,3 +116,9 @@ section.tabledatasec h4 {
   width: 100%;
 }
 
+ #modalImage {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* Or use 'cover' if you want to crop */
+      display: block;
+    }

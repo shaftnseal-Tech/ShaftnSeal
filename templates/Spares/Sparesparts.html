@@ -13,23 +13,24 @@
 <h4>Parts for   {{ model }} , {{ variant.discharge_diameter }}mm - {{variant.stages}} stages</h4>
 
  <!-- Modal Structure -->
-{% comment %} <div id="viewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+  <!-- Modal Structure -->
+ <div id="viewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
     background-color: rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
-  
+ 
   <div style="position:relative; width:80%; height:90%; background:white; padding:20px;">
-    
+   
     <!-- Close Button -->
-    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; 
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px;
         background:none; border:none; font-size:24px; cursor:pointer;">
       <i class="fas fa-times"></i>
     </button>
-
+ 
     <!-- Iframe for Viewing -->
-    <iframe id="modalIframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+    <img id="modalImage" style="max-width: 100%; max-height: 90%;" />
+
   </div>
-</div> {% endcomment %}
-
-
+</div>
+ 
 <form method="POST">
     {% csrf_token %}
     <div class="table-responsive">
@@ -72,7 +73,7 @@
                         {% comment %} <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View">
                                          <i class="fas fa-eye"></i>
                         </a> {% endcomment %}
-                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <a href="javascript:void(0);"  onclick="openModal('{{ part.drawing }}')"  title="View">
                         <i class="fas fa-eye"></i> 
                         </a>
 
@@ -83,7 +84,7 @@
                     <td>
                         {% if part.drawing %}
                             <a href="{{ part.drawing }}" download title="Download"> <i class="fas fa-download"></i></a>
-                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <a href="javascript:void(0);"  onclick="openModal('{{ part.drawing }}')"  title="View">
                         <i class="fas fa-eye"></i> 
                         </a>
                         {% else %}
@@ -93,7 +94,7 @@
                     <td>
                         {% if part.cad_file %}
                             <a href="{{ part.cad_file }}" download title="Download"> <i class="fas fa-download"></i></a>
-                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <a href="javascript:void(0);"  onclick="openModal('{{ part.drawing }}')"  title="View">
                         <i class="fas fa-eye"></i> 
                         </a>
                         {% else %}
@@ -103,7 +104,10 @@
                     <td>
                         {% if part.mapping %}
                             <a href="{{ part.mapping }}" download title="Download"><i class="fas fa-download"></i></a></a>
-                        <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        {% comment %} <a href="javascript:void(0);" onclick="viewAndClose('{{ part.drawing  }}')" title="View">
+                        <i class="fas fa-eye"></i> 
+                        </a> {% endcomment %}
+                         <a href="javascript:void(0);"  onclick="openModal('{{ part.drawing }}')"  title="View">
                         <i class="fas fa-eye"></i> 
                         </a>
                         {% else %}
@@ -141,18 +145,48 @@
             });
         });
     });
-{% comment %} function openModal(url) {
-    if (url.toLowerCase().endsWith('.pdf') || url.toLowerCase().endsWith('.jpg') || url.toLowerCase().endsWith('.png')) {
-        document.getElementById('modalIframe').src = url;
-        document.getElementById('viewModal').style.display = 'flex';
+
+// modal img show//
+    function openModal(url) {
+    const modal = document.getElementById('viewModal');
+    const image = document.getElementById('modalImage');
+
+    const lowerUrl = url.toLowerCase();
+    if (lowerUrl.endsWith('.jpg') || lowerUrl.endsWith('.jpeg') || lowerUrl.endsWith('.png')) {
+        // Fetch and display
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                image.src = blobUrl;
+
+                // Trigger download
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = url.split('/').pop();
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                modal.style.display = 'flex';
+            })
+            .catch(() => {
+                alert("Failed to load image.");
+            });
+    } else if (lowerUrl.endsWith('.pdf')) {
+        // For PDFs, fallback to iframe
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = url;
+        modal.style.display = 'flex';
     } else {
         alert("Preview not available. Please download the file instead.");
     }
 }
 function closeModal() {
-    document.getElementById('modalIframe').src = '';
-    document.getElementById('viewModal').style.display = 'none';
-} {% endcomment %}
+  document.getElementById('viewModal').style.display = 'none';
+}
+
+
 
 function viewAndClose(pdfUrl) {
         const newTab = window.open(pdfUrl, '_blank');
@@ -163,6 +197,7 @@ function viewAndClose(pdfUrl) {
             }
         }, 10000); 
     }
+
 </script>
 {% endblock %}
  
