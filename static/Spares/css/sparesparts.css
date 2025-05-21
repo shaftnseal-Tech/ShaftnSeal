@@ -239,6 +239,68 @@ body {
   color: #b20c3c; /* Slightly darker hover color */
 }
 
+/* User message and bot message styles */
+.chatbox {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.user-message, .bot-message {
+  max-width: 80%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  clear: both;
+}
+
+.user-message {
+  background-color: #e0f7ff;
+  color: #004080;
+  margin-left: auto;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #ffffff;
+  color: #333;
+  margin-right: auto;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card inside bot message */
+.part-details-card {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.materials-list {
+  padding-left: 20px;
+  margin: 5px 0 10px;
+}
+
+.card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.chatbox-input {
+  padding-right: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
 
 /* Responsive for small screens */
 @media (max-width: 600px) {

@@ -21,7 +21,7 @@
       <input
         type="text"
         class="form-control chatbox-input pe-5"
-        placeholder="Search your part number here to get data... "
+        placeholder="Search your part number here to get data .."
         id="user-input"
       />
       <button class="send-icon-button" onclick="sendMessage()">
@@ -182,22 +182,31 @@ function sendMessage() {
   botMsgDiv.classList.add('bot-message');
 
   if (part) {
-    const materialsList = part.materials.map(mat => 
-      `${mat.material_name} (Price: ₹${mat.price}, Available: ${mat.available})`
-    ).join('<br>');
+  const materialsList = part.materials.map(mat => `
+    <li>
+      <strong>${mat.material_name}</strong><br>
+      Price: ₹${mat.price}<br>
+      Available: ${mat.available}
+    </li>
+  `).join('');
 
-    botMsgDiv.innerHTML = `
-      <strong>Part No:</strong> ${part.part_no}<br>
-      <strong>Name:</strong> ${part.name}<br>
-      <strong>Materials:</strong><br>${materialsList}<br>
-      <strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}<br>
-      <strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}<br>
-      <strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}<br>
-      <strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}
-    `;
-  } else {
-    botMsgDiv.textContent = "Sorry, I couldn't find any part with that part number.";
-  }
+  botMsgDiv.innerHTML = `
+    <div class="card part-details-card">
+      <div class="card-body">
+        <h5 class="card-title mb-2"><strong>Part No:</strong> ${part.part_no}</h5>
+        <p class="card-text mb-1"><strong>Name:</strong> ${part.name}</p>
+        <p class="card-text mb-1"><strong>Materials:</strong></p>
+        <ul class="materials-list">${materialsList}</ul>
+        <p class="card-text mb-1"><strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}</p>
+        <p class="card-text mb-1"><strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}</p>
+        <p class="card-text mb-1"><strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}</p>
+        <p class="card-text"><strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}</p>
+      </div>
+    </div>
+  `;
+}
+
+chatBox.scrollTop = chatBox.scrollHeight;
 
   chatBox.appendChild(botMsgDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
