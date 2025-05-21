@@ -148,9 +148,10 @@ body {
   z-index: 1;
 }
 .table-scroll {
-  min-width: 1000px; /* Allows horizontal scroll on small screens */
+  min-width: 1000px; 
 }
-@media screen and (max-width: 768px) {
+
+/* @media screen and (max-width: 768px) {
   .table-scroll {
     overflow-x: auto;
   }
@@ -162,7 +163,7 @@ body {
   }
 
   .table thead {
-    display: none; /* Hide table header on small screens */
+    display: none; 
   }
 
   .table tbody,
@@ -203,8 +204,9 @@ body {
   .table td:last-child {
     border-bottom: 0;
   }
-}
-@media screen and (max-width: 768px) {
+} */
+
+/* @media screen and (max-width: 768px) {
   #viewModal > div {
     width: 95%;
     height: 80%;
@@ -218,4 +220,4 @@ body {
   .material-select {
     font-size: 13px;
   }
-}
+} */
