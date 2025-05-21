@@ -12,29 +12,25 @@
 
 <div class="container">
   <div class="row d-flex flex-wrap">
-    <!-- ✅ Chatbox First on Mobile -->
-   <div class="col-lg-6 col-md-12 mb-3 order-1 order-lg-2">
-  <div class="chat-container">
-    <div class="chat-header">SPARES DETAILS</div>
-    <div class="chatbox" id="chat-box"></div>
-    <div class="chat-input mt-2 position-relative">
-      <input
-        type="text"
-        class="form-control chatbox-input pe-5"
-        placeholder="Search your part number here to get data .."
-        id="user-input"
-      />
-      <button class="send-icon-button" onclick="sendMessage()">
-        <i class="fa-solid fa-paper-plane"></i>
-      </button>
+    
+    <!-- ✅ Chatbox Section -->
+    <div class="col-lg-6 col-md-12 mb-3 order-1 order-lg-2">
+      <div class="chat-container">
+        <div class="chat-header">SPARES DETAILS</div>
+        <div class="chatbox">
+          <div id="chat-box" class="chat-messages"></div>
+          <div class="chat-input">
+            <input type="text" class="form-control chatbox-input" placeholder="Search your part number here..." id="user-input" />
+            <button class="send-icon-button" onclick="sendMessage()">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-    <!-- Table Section -->
+    <!-- ✅ Table Section -->
     <div class="col-lg-6 col-md-12 mb-3 order-2 order-lg-1">
-      <!-- Modal Structure -->
       <div id="viewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
           background-color: rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
         <div style="position:relative; width:80%; height:90%; background:white; padding:20px;">
@@ -140,12 +136,6 @@ function openModal(url) {
     fetch(url).then(response => response.blob()).then(blob => {
       const blobUrl = URL.createObjectURL(blob);
       image.src = blobUrl;
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = url.split('/').pop();
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
       modal.style.display = 'flex';
     }).catch(() => {
       alert("Failed to load image.");
@@ -168,13 +158,11 @@ function sendMessage() {
 
   const chatBox = document.getElementById('chat-box');
 
-  // Append user message
   const userMsgDiv = document.createElement('div');
   userMsgDiv.classList.add('user-message');
   userMsgDiv.textContent = message;
   chatBox.appendChild(userMsgDiv);
 
-  // Check if input is a part number
   const partData = {{ parts_data|safe }};
   const part = partData.find(p => p.part_no.toLowerCase() === message.toLowerCase());
 
@@ -182,31 +170,31 @@ function sendMessage() {
   botMsgDiv.classList.add('bot-message');
 
   if (part) {
-  const materialsList = part.materials.map(mat => `
-    <li>
-      <strong>${mat.material_name}</strong><br>
-      Price: ₹${mat.price}<br>
-      Available: ${mat.available}
-    </li>
-  `).join('');
+    const materialsList = part.materials.map(mat => `
+      <li>
+        <strong>${mat.material_name}</strong><br>
+        Price: ₹${mat.price}<br>
+        Available: ${mat.available}
+      </li>
+    `).join('');
 
-  botMsgDiv.innerHTML = `
-    <div class="card part-details-card">
-      <div class="card-body">
-        <h5 class="card-title mb-2"><strong>Part No:</strong> ${part.part_no}</h5>
-        <p class="card-text mb-1"><strong>Name:</strong> ${part.name}</p>
-        <p class="card-text mb-1"><strong>Materials:</strong></p>
-        <ul class="materials-list">${materialsList}</ul>
-        <p class="card-text mb-1"><strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}</p>
-        <p class="card-text mb-1"><strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}</p>
-        <p class="card-text mb-1"><strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}</p>
-        <p class="card-text"><strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}</p>
+    botMsgDiv.innerHTML = `
+      <div class="card part-details-card">
+        <div class="card-body">
+          <h5 class="card-title mb-2"><strong>Part No:</strong> ${part.part_no}</h5>
+          <p class="card-text mb-1"><strong>Name:</strong> ${part.name}</p>
+          <p class="card-text mb-1"><strong>Materials:</strong></p>
+          <ul class="materials-list">${materialsList}</ul>
+          <p class="card-text mb-1"><strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p class="card-text mb-1"><strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p class="card-text mb-1"><strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p class="card-text"><strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}</p>
+        </div>
       </div>
-    </div>
-  `;
-}
-
-chatBox.scrollTop = chatBox.scrollHeight;
+    `;
+  } else {
+    botMsgDiv.innerHTML = `<div class="bot-message">Part not found.</div>`;
+  }
 
   chatBox.appendChild(botMsgDiv);
   chatBox.scrollTop = chatBox.scrollHeight;
