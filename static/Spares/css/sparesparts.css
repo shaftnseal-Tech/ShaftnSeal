@@ -150,6 +150,25 @@ body {
 .table-scroll {
   min-width: 1000px; 
 }
+.user-message {
+  text-align: right;
+  background-color: #cfe2ff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  max-width: 75%;
+  margin-left: auto;
+}
+
+.bot-message {
+  text-align: left;
+  background-color: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  max-width: 75%;
+  margin-right: auto;
+}
 
 /* @media screen and (max-width: 768px) {
   .table-scroll {
