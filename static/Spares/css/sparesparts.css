@@ -151,6 +151,48 @@ body {
   min-width: 1000px; 
 }
 
+/* Base button styles */
+.btn-custom {
+        background-color: #CF0F47;
+  color: white;
+  border: none;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+  margin: 2px;
+  padding: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+        background-color: #CF0F47;
+}
+
+/* Container with flex layout */
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+ 
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-custom {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+
 /* @media screen and (max-width: 768px) {
   .table-scroll {
     overflow-x: auto;
