@@ -7,41 +7,26 @@
     {% include 'includes/alerts.html' %}
     
     <div class="container">
-        <div class="row">
-            <aside class="col-md-3">
-                <!-- SIDEBAR -->
-                <ul class="list-group">
-                    <a class="list-group-item active" href="#"> My order history </a>
-                    <a class="list-group-item" href="#"> Transactions </a>
-                    <a class="list-group-item" href="#"> Return and refunds </a>
-                    <a class="list-group-item" href="#"> Settings </a>
-                    <a class="list-group-item" href="#"> My Selling Items </a>
-                    <a class="list-group-item" href="#"> Received orders </a>
-                </ul>
-                <br>
-                <a class="btn btn-light btn-block" href="{% url 'logout' %}">
-                    <i class="fa fa-power-off"></i> <span class="text">Log out</span>
-                </a> 
-                <!-- SIDEBAR .//END -->
-            </aside>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center mb-4">
+                    <h4 class="text-primary">Welcome to ShaftnSeal</h4>
+                    <p class="text-muted">Here are your profile details</p>
+                </div>
 
-            <main class="col-md-9">
-                <article class="card">
-                    <h4 class="card-header">Update Profile</h4>
+                <div class="card shadow-sm rounded">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">User Details</h5>
+                    </div>
                     <div class="card-body">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <fieldset class="form-group">
-                                <legend>Personal Details</legend>
-                                {{ u_form.as_p }}
-                            </fieldset>
-                            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
-                        </form>
-                    </div> <!-- card-body -->
-                </article> <!-- order-group.// --> 
-            </main>
+                        <p><strong>Username:</strong> {{ request.user.username }}</p>
+                        <p><strong>Full Name:</strong> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ request.user.email }}</p>
+                        <p><strong>Phone Number:</strong> {{ request.user.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- row.// -->
     </div>
 
 </section>
