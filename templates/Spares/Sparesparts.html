@@ -13,23 +13,24 @@
 <div class="container">
   <div class="row d-flex flex-wrap">
     <!-- ✅ Chatbox First on Mobile -->
-    <div class="col-lg-6 col-md-12 mb-3 order-1 order-lg-2">
-      <div class="chat-container">
-        <div class="chat-header">SPARES DETAILS</div>
-        <div class="chatbox" id="chat-box"></div>
-        <div class="chat-input d-flex mt-2">
-          <input
-            type="text"
-            class="form-control chatbox-input"
-            placeholder="Type message here..."
-            id="user-input"
-          />
-          <button class="btn btnchatbox ms-2" onclick="sendMessage()">
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
+   <div class="col-lg-6 col-md-12 mb-3 order-1 order-lg-2">
+  <div class="chat-container">
+    <div class="chat-header">SPARES DETAILS</div>
+    <div class="chatbox" id="chat-box"></div>
+    <div class="chat-input mt-2 position-relative">
+      <input
+        type="text"
+        class="form-control chatbox-input pe-5"
+        placeholder="Search your part number here to get data... "
+        id="user-input"
+      />
+      <button class="send-icon-button" onclick="sendMessage()">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
     </div>
+  </div>
+</div>
+
 
     <!-- Table Section -->
     <div class="col-lg-6 col-md-12 mb-3 order-2 order-lg-1">

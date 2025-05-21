@@ -144,7 +144,8 @@ body {
 .table thead th {
   position: sticky;
   top: 0;
-  background-color: #4A4A4A;
+  background-color: #CF0F47;
+  color:#ffff;
   z-index: 1;
 }
 .table-scroll {
@@ -200,6 +201,44 @@ body {
 
 
 /* chart part */
+/* chart part */
+.chat-header {
+  background-color: #CF0F47;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.chat-input {
+  position: relative;
+  /* Remove incorrect border syntax */
+  margin-top: 10px;
+}
+
+.chatbox-input {
+  padding-right: 40px;
+  border: 2px solid rgb(246, 170, 185);  
+  border-radius: 5px;       
+  outline: none;
+}
+
+.send-icon-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #CF0F47;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.send-icon-button:hover {
+  color: #b20c3c; /* Slightly darker hover color */
+}
+
 
 /* Responsive for small screens */
 @media (max-width: 600px) {
