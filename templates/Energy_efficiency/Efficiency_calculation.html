@@ -7,6 +7,22 @@
 {% endblock css %}
 
 {% block content %}
+<div id="viewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background-color: rgba(39, 37, 37, 0.8); z-index:1000; justify-content:center; align-items:center;">
+ 
+  <div style="position:relative; width:80%; height:90%; background:white; padding:20px;">
+   
+    <!-- Close Button -->
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px;
+        background:none; border:none; font-size:24px; cursor:pointer;">
+      <i class="fas fa-times"></i>
+    </button>
+ 
+    <!-- Iframe for Viewing -->
+    <img id="modalImage" style="max-width: 100%; max-height: 90%;" />
+
+  </div>
+</div>
 <section class="hero-sections py-5">
     <div class="container text-center">
         <h1 class="seal display-4 fw-bold" data-text="EnergyEfficiency">Performance Curve</h1>
@@ -19,7 +35,7 @@
         {% comment %} <h2 class="section-title">Performance Curve</h2> {% endcomment %}
         {% if Graph_url %}
        <div class="pdf-buttons">
-       <a href="{{ Graph_url }}" class="btn-custom">📊 View Graph PDF</a>  <!-- Opens in same tab -->
+       <a  onclick="openModal('{{ Graph_url }}')"  class="btn-custom">📊 View Graph PDF</a>  <!-- Opens in same tab -->
        <a href="{{ Graph_url }}" download class="btn-custom">⬇️ Download Graph PDF</a>
        </div>
 
@@ -37,4 +53,48 @@
         </div>
     </div>
 </section>
+
+<script>
+     function openModal(url) {
+    const modal = document.getElementById('viewModal');
+    const image = document.getElementById('modalImage');
+
+    const lowerUrl = url.toLowerCase();
+    if (lowerUrl.endsWith('.jpg') || lowerUrl.endsWith('.jpeg') || lowerUrl.endsWith('.png')) {
+        // Fetch and display
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                image.src = blobUrl;
+
+                // Trigger download
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = url.split('/').pop();
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                modal.style.display = 'flex';
+            })
+            .catch(() => {
+                alert("Failed to load image.");
+            });
+    } else if (lowerUrl.endsWith('.pdf')) {
+        // For PDFs, fallback to iframe
+        const iframe = document.getElementById('modalIframe');
+        iframe.src = url;
+        modal.style.display = 'flex';
+    } else {
+        alert("Preview not available. Please download the file instead.");
+    }
+}
+function closeModal() {
+  document.getElementById('viewModal').style.display = 'none';
+}
+
+
+
+</script>
 {% endblock content %}

@@ -48,3 +48,9 @@
             min-width: 150px;
         }
     }
+    #modalImage {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* Or use 'cover' if you want to crop */
+      display: block;
+    }
