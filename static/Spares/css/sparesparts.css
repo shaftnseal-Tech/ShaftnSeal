@@ -211,6 +211,19 @@ body {
   }
 }
 
+@media (max-width: 992px) {
+  .tabledatasec .row {
+    flex-direction: column !important;
+  }
+
+  .tabledatasec .col-lg-6:first-child {
+    order: 1 !important;
+  }
+
+  .tabledatasec .col-lg-6:last-child {
+    order: 2 !important;
+  }
+}
 
 /* @media screen and (max-width: 768px) {
   .table-scroll {
