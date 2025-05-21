@@ -87,10 +87,11 @@
     const toggleIcon = document.querySelector('.toggle-password');
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
-      toggleIcon.textContent = '🙈'; 
+      toggleIcon.textContent = '🙈'; // Icon changes to "hide"
     } else {
       passwordInput.type = 'password';
-      toggleIcon.textContent = '👁️'; 
+      toggleIcon.textContent = '👁️'; // Icon changes to "show"
+    }
   }
 </script>
 
