@@ -21,6 +21,7 @@
     <!-- Iframe for Viewing -->
     <img id="modalImage" style="max-width: 100%; max-height: 90%;" />
 
+    <button class="btn-custom" onclick="goToNextPage()">Back</button>
   </div>
 </div>
 <section class="hero-sections py-5">
@@ -92,7 +93,9 @@
 function closeModal() {
   document.getElementById('viewModal').style.display = 'none';
 }
-
+function goToNextPage() {
+  window.location.href = "finalize_submission.html";
+}
 
 
 </script>

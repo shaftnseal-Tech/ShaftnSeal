@@ -71,13 +71,13 @@
 }
 
 .forgot-link {
-  font-size: 16px;
-  color: #007bff;
-  margin-left: 60%;
+  font-size: 15px;
+  color: #2378cc;
+  margin-left: 50%;
   
 }
 .forgot-link a {
-  color: #007bff;
+  color: #2579ce;
   text-decoration: none;
 }
 .forgot-link a:hover {
@@ -137,7 +137,7 @@
   .link-text {
     font-size: 16px;
     color: #007bff;
-    margin-left: 56%;
+    margin-left: 38%;
   }
 
   .link-text:hover {
