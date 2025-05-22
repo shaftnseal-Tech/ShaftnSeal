@@ -101,7 +101,7 @@ def pump_efficiency_calculater(request):
               pump_philosophy]
             )
 
-        # If you want to wait for the result synchronously (blocking)
+      
         try:
             output_pdf_path = result.get(timeout=300)
             media_url = output_pdf_path.replace(settings.MEDIA_ROOT, settings.MEDIA_URL).replace("\\", "/")
