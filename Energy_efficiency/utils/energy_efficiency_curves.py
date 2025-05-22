@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from django.conf import settings
 
 @dataclass 
-class SystemResistenceCurve:
+class PumpSystemCurve:
     h1: float
     h2: float
     p1: float
@@ -20,6 +20,8 @@ class SystemResistenceCurve:
     temp: float
     psp: float
     pdp: float
+    N1: float
+    N2: float
     test_file: Optional[str] = None
     pump_philosophy: str = "1R + 1S"
 
@@ -56,54 +58,78 @@ class SystemResistenceCurve:
         if 'Q' not in df.columns or 'H' not in df.columns:
             raise ValueError("Test file must contain 'Q' and 'H' columns.")
 
-        return df['Q'].values, df['H'].values
+        return df
 
-    def plot_combined_src(self) -> str:
+    def plot_pumpsystem_graph(self) -> str:
         SG = self.get_specific_gravity()
         static_head = self.get_static_head()
+
+        fig, ax = plt.subplots(figsize=(12, 7))
 
         # Theoretical SRC
         k1 = (self.Hnp - static_head) / (self.Qnp ** 2)
         Qi = np.linspace(0, max(self.Qnp, self.Qact) * 1.5, 100)
-        static_line = np.full_like(Qi, static_head)
         src_theoretical = k1 * (Qi ** 2) + static_head
+        static_line = np.full_like(Qi, static_head)
+
+        ax.plot(Qi, src_theoretical, label='Theoretical SRC', color='blue')
+        ax.plot(Qi, static_line, label='Static Head', color='green')
 
         # Actual SRC
         H_actual = (self.pdp - self.psp) * 10 / SG
         k2 = (H_actual - static_head) / (self.Qact ** 2)
         src_actual = k2 * (Qi ** 2) + static_head
-
-        plt.figure(figsize=(8, 5))
-        plt.plot(Qi, src_theoretical, label='Theoretical SRC', color='blue')
-        plt.plot(Qi, src_actual, label='Actual SRC', color='red', linestyle='--')
-        plt.plot(Qi, static_line, label='Static Head', color='green')
+        ax.plot(Qi, src_actual, label='Actual SRC', color='red', linestyle='--')
 
         if self.test_file:
             try:
-                Q_exp, H_exp = self.read_test_data()
-                if self.pump_philosophy == "1R + 1S":
-                    plt.plot(Q_exp, H_exp, label='Experimental Data (1R + 1S)', color='purple')
-                elif self.pump_philosophy == "2R + 1S":
-                    Q_exp2 = Q_exp * 2
-                    plt.plot(Q_exp, H_exp, label='Experimental Data (1R + 1S)', color='purple')
-                    plt.plot(Q_exp2, H_exp, label='Experimental Data (2R + 1S)', color='grey')
+                df = self.read_test_data()
+                Q = df['Q'].astype(float)
+                H = df['H'].astype(float)
+
+                # Pump test curve
+                ax.plot(Q, H, label='Pump Test Curve (Q,H)', marker='o', linestyle='-', color='purple')
+
+                # VM Curve
+                k3 = self.N2 / self.N1
+                k4 = (self.N2 ** 2) / (self.N1 ** 2)
+                Qvm = Q * k3
+                Hvm = H * k4
+                ax.plot(Qvm, Hvm, label='VM Curve (Qvm,Hvm)', marker='x', linestyle='-', color='orange')
+
+                # Experimental data based on pump philosophy
+                if self.pump_philosophy == "2R + 1S":
+                    Q_exp2 = Q * 2
+                    ax.plot(Q_exp2, H, label='Experimental (2R + 1S)', linestyle='--', color='grey')
+
+                # Nameplate point
+                ax.scatter(self.Qnp, self.Hnp, color='red', label='Nameplate Point (Qnp, Hnp)', zorder=5)
+
             except Exception as e:
-                print(f"Warning: Could not load experimental data: {e}")
+                print(f"Warning: Could not load test data: {e}")
 
-        plt.xlim(left=0)
-        plt.ylim(bottom=700)
-        plt.axhline(0, color='black', linewidth=0.8)
+        # Set limits
+        y_min = 550
+        y_max = max(static_head, H_actual, self.Hnp) + 300
+        ax.set_ylim(y_min, y_max)
+        ax.set_yticks(np.arange(y_min, y_max + 1, 100))
 
-        plt.xlabel('Flow Rate (Q)')
-        plt.ylabel('Total Head (H)')
-        plt.title('Theoretical vs Actual System Resistance Curve')
-        plt.grid(True)
-        plt.legend()
+        x_max = max(self.Qnp, self.Qact) * 2 + 10
+        ax.set_xlim(0, x_max)
+        ax.set_xticks(np.arange(0, x_max + 1, 10))
+
+        # Labels and legend
+        ax.set_title('Combined System Resistance & Pump Test Curve')
+        ax.set_xlabel('Flow Rate (Q)')
+        ax.set_ylabel('Total Head (H)')
+        ax.grid(True)
+        ax.legend(loc='best')
+
         plt.tight_layout()
 
         # Save plot
-        src_plot_path = os.path.join(settings.MEDIA_ROOT, 'system_resistance_curve.png')
-        plt.savefig(src_plot_path)
+        combined_path = os.path.join(settings.MEDIA_ROOT, 'combined_pump_system_curve.png')
+        plt.savefig(combined_path)
         plt.close()
 
-        return src_plot_path
+        return combined_path

@@ -37,10 +37,10 @@
     <!-- Section: Graph -->
     <div class="pdf-section">
         {% comment %} <h2 class="section-title">Performance Curve</h2> {% endcomment %}
-        {% if Graph_url %}
+        {% if pdf_url %}
        <div class="pdf-buttons">
-       <a  onclick="openModal('{{ Graph_url }}')"  class="btn-custom">📊 View Graph PDF</a>  <!-- Opens in same tab -->
-       <a href="{{ Graph_url }}" download class="btn-custom">⬇️ Download Graph PDF</a>
+       <a  onclick="openModal('{{ pdf_url }}')"  class="btn-custom">📊 View Graph PDF</a>  <!-- Opens in same tab -->
+       <a href="{{ pdf_url }}" download class="btn-custom">⬇️ Download Graph PDF</a>
        </div>
 
         {% else %}
