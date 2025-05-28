@@ -1,0 +1,109 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     
+
+}
+
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Labels */
+form label {
+  font-weight: 600;
+}
+
+form input[type="number"],
+form input[type="file"],
+form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Button */
+.btnsave {
+  background-color: #feba17;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px auto; /* This centers the button horizontally */
+  text-align: center;
+  width: 50%;
+  display: block; /* Ensures margin auto works */
+}
+
+
+.btnsave:hover {
+  background-color: #cf0f47;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  form input,
+  form select {
+    font-size: 15px;
+  }
+
+  .btnsave {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  form label {
+    font-size: 14px;
+  }
+
+  .btnsave {
+    font-size: 14px;
+  }
+}

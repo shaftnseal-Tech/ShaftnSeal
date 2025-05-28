@@ -172,7 +172,8 @@ body {
 }
 
 /* Base button styles */
-.btn-custom {
+
+   .btn-custom {
         background-color: #CF0F47;
   color: white;
   border: none;
@@ -187,7 +188,7 @@ body {
 }
 
 .btn-custom:hover {
-  background-color: #CF0F47;
+        background-color: #CF0F47;
 }
 
 /* Container with flex layout */
@@ -197,6 +198,19 @@ body {
   justify-content: center;
   flex-wrap: wrap;
  
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-custom {
+    width: 90%;
+    max-width: none;
+  }
 }
 
 
