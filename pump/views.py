@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-
-
 def pump_page(request):
     return render(request, 'pump/pump.html')
 
@@ -11,3 +9,6 @@ def error_page(request):
 
 def new_pump(request):
     return render(request, 'pump/newpump.html')
+
+def gain_knowledge(request):
+    return render(request, 'pump/gain_knowledge.html')

@@ -6,4 +6,5 @@ urlpatterns = [
     path('pump/',views.pump_page,name = 'pump'),
     path('error_page/',views.error_page,name = 'error_page'),
     path('new_pump/',views.new_pump,name = 'new_pump'),
+    path('gain_knowledge/',views.gain_knowledge,name = 'gain_knowledge'),
 ]
