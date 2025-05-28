@@ -9,4 +9,5 @@ def pump_page(request):
 def error_page(request):
     return render(request, 'pump/error_page.html')
 
-
+def new_pump(request):
+    return render(request, 'pump/newpump.html')

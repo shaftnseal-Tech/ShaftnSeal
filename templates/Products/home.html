@@ -3,20 +3,17 @@
 {% block title %}
     Shaft & Seal | Home
 {% endblock %}
+
 {% block css %} 
 {{ block.super }}
-
 <link rel="stylesheet" href="{% static 'Products/home.css' %}" />
-
 {% endblock css %} 
-{% block content %}
 
+{% block content %}
 <section class="hero-section bg-white">
   <div class="hero-content">
     <h1 class="seal" style="margin-top:-35px">Shaft & Seal</h1>
-    <p class="subheading">
-      One Stop Pumping Solutions
-    </p>
+    <p class="subheading">One Stop Pumping Solutions</p>
     
     <div class="search-icon-container">
       <form id="search-form" action="{% url 'home' %}" method="get">
@@ -27,23 +24,51 @@
           aria-label="Search"
           name="q"
         />
+        <div class="dropdown" id="dropdown-container">
+          <div class="cards-container" id="cards-container">
+            <a href="EnergyEffy.html" class="card">Service Offer</a>
+            <a href="{% url 'spares_page' %}" class="card">Spares for Pump</a>
+            <a href="pumppage.html" class="card">Gain Knowledge</a>
+            <a href="{% url 'form-page' %}" class="card">Energy Saving in Pumping System</a>
+            <a href="{% url 'new_pump' %}" class="card">New Pump</a>
+          </div>
+        </div>
       </form>
       <i class="fas fa-search search-icon" onclick="document.getElementById('search-form').submit();"></i>
     </div>
     
     <div class="hero-image mt-5" id="lottie-container">
-      <img
-        src="{% static 'img/2.svg' %}"
-        alt="Industrial Solutions"
-        class="animated-svg"
-      />
+      <img src="{% static 'img/2.svg' %}" alt="Industrial Solutions" class="animated-svg" />
     </div>
   </div>
 </section>
+{% endblock content %}  
 
-{% endblock %} 
 {% block js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.13/lottie.min.js"></script>
-<script src=" {% static 'Products/home.js' %} "></script>
+<script src="{% static 'Products/home.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("search-input");
+    const dropdown = document.getElementById("dropdown-container");
+
+    // Show dropdown when input is focused or typed in
+    searchInput.addEventListener("focus", () => {
+      dropdown.style.display = "block";
+    });
+
+    searchInput.addEventListener("input", () => {
+      dropdown.style.display = "block";
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!dropdown.contains(event.target) && event.target !== searchInput) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+</script>
 {% endblock js %}
