@@ -50,8 +50,12 @@
     <div class="form-container">
       <h2>Spares Form</h2>
       <form onsubmit="searchParts(); return false;">
-        <select id="ModelName" class="modaloption" onchange="fetchVariants()">
+        <select id="ModelName" class="modaloption" onchange="fetchVariants(); fetchModelDesigns();">
           <option value="">Select Model</option>
+        </select>
+        
+        <select id="ModelDesign" class="modaloption" >
+          <option value="">Select Model Design</option>
         </select>
 
         <select id="Variant" class="modaloption">

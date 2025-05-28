@@ -34,6 +34,13 @@ class PumpModelVariant(models.Model):
         return f"{self.model.name} - {self.discharge_diameter}mm - {self.stages} stages"
 
 
+class PumpModelDesign(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    model_design = models.CharField(max_length=100, verbose_name="Model Design")
+    model = models.ForeignKey(PumpModel, on_delete=models.CASCADE, related_name='designs')
+    
+    def __str__(self):
+        return f"{self.model.name} - {self.model_design}"
 # Parts Table
 class PumpParts(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -53,6 +60,8 @@ class PumpParts(models.Model):
 
 class Materials(models.Model):
     material_name = models.CharField(max_length=100, verbose_name="Material Name")
+    material_description = models.FileField(upload_to='material_descriptions/', blank=True, null=True, verbose_name="Material Description")
+
     
     def __str__(self):
         return self.material_name

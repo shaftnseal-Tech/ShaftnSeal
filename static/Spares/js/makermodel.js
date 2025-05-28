@@ -73,6 +73,26 @@ function fetchVariants() {
         });
 }
 
+function fetchModelDesigns() {
+    const modelId = document.getElementById('ModelName').value;
+    if (!modelId) return;
+
+    fetch(`${SPARES_BASE_URL}/get_model_design/${modelId}/`)
+        .then(response => response.json())
+        .then(data => {
+            const ModelDesignSelect = document.getElementById('ModelDesign');
+            ModelDesignSelect.innerHTML = '<option value="">Select Model Design</option>';
+            data.forEach(design => {
+                const option = document.createElement('option');
+                option.value = design.id;
+                option.text = `${design.model_design}`;
+                ModelDesignSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error in fetching model designs:', error);
+        });
+}
 // Redirect to parts page with selected model and variant UUIDs
 function searchParts() {
     const model_Id = document.getElementById('ModelName').value;

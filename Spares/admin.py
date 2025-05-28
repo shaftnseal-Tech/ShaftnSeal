@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     PumpMaker, PumpModel, PumpModelVariant,
-    PumpParts, PartMaterials, ModelVariantPart, ModelPart,Materials
+    PumpParts, PartMaterials, ModelVariantPart, ModelPart,Materials,PumpModelDesign
 )
 
 
@@ -24,6 +24,12 @@ class PumpModelVariantAdmin(admin.ModelAdmin):
     list_display = ('id', 'model', 'discharge_diameter', 'stages')
     list_filter = ('model',)
     search_fields = ('model__name',)
+
+@admin.register(PumpModelDesign)
+class PumpModelDesignAdmin(admin.ModelAdmin):
+    list_display = ('id', 'model', 'model_design')
+    list_filter= ('model',)
+    search_fields = ('model__name', 'model_design')
 
 
 @admin.register(PumpParts)
@@ -96,7 +102,7 @@ class ModelVariantPartAdmin(admin.ModelAdmin):
 
 @admin.register(Materials)
 class MaterialsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'material_name',)
+    list_display = ('id', 'material_name','material_description')
     search_fields = ('material_name',)
 
 
@@ -105,3 +111,4 @@ class PartMaterialsAdmin(admin.ModelAdmin):
     list_display = ('id', 'part', 'materials', 'price','available')
     list_filter = ('materials',)
     search_fields = ('part__name', 'materials__material_name')
+

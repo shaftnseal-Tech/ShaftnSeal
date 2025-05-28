@@ -49,13 +49,18 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
+                  <th>Pump Maker</th>
+                  <th>Pump Model</th>
+                  <th>size</th>
+                  <th>stages</th>
                   <th>Part No</th>
                   <th>Name</th>
-                  <th>Material</th>
                   <th>Technical Details</th>
                   <th>Drawing</th>
                   <th>CAD File</th>
                   <th>Mapping</th>
+                  <th>Material</th>
+                  <th>Material Description</th>
                   <th>Price</th>
                   <th>Available</th>
                 </tr>
@@ -63,42 +68,50 @@
               <tbody>
                 {% for part in parts_data %}
                 <tr>
+                  <td>{{ model.maker.name }}</td>
+                  <td>{{ model.name }}</td>
+                  <td>{{ variant.discharge_diameter }}</td>
+                  <td>{{ variant.stages }}</td>
                   <td>{{ part.part_no }}</td>
                   <td>{{ part.name }}</td>
                   <td>
-                    <select name="material_{{ part.part_no }}" class="material-select" data-part-no="{{ part.part_no }}">
-                      <option value="" selected>Select material</option>
-                      {% for material in part.materials %}
-                      <option value="{{ material.material_name }}" data-price="{{ material.price }}" data-available="{{ material.available }}">
-                        {{ material.material_name }}
-                      </option>
-                      {% endfor %}
-                    </select>
-                  </td>
-                  <td>
                     {% if part.technical_details %}
-                      <a href="{{ part.technical_details }}" download title="Download"><i class="fas fa-download"></i></a>
-                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View"><i class="fas fa-eye"></i></a>
+                      <a href="{{ part.technical_details }}" download><i class="fas fa-download"></i></a>
+                      <a href="javascript:void(0);" onclick="openModal('{{ part.technical_details }}')"><i class="fas fa-eye"></i></a>
                     {% else %} - {% endif %}
                   </td>
                   <td>
                     {% if part.drawing %}
-                      <a href="{{ part.drawing }}" download title="Download"><i class="fas fa-download"></i></a>
-                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View"><i class="fas fa-eye"></i></a>
+                      <a href="{{ part.drawing }}" download><i class="fas fa-download"></i></a>
+                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')"><i class="fas fa-eye"></i></a>
                     {% else %} - {% endif %}
                   </td>
                   <td>
                     {% if part.cad_file %}
-                      <a href="{{ part.cad_file }}" download title="Download"><i class="fas fa-download"></i></a>
-                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View"><i class="fas fa-eye"></i></a>
+                      <a href="{{ part.cad_file }}" download><i class="fas fa-download"></i></a>
+                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')"><i class="fas fa-eye"></i></a>
                     {% else %} - {% endif %}
                   </td>
                   <td>
                     {% if part.mapping %}
-                      <a href="{{ part.mapping }}" download title="Download"><i class="fas fa-download"></i></a>
-                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')" title="View"><i class="fas fa-eye"></i></a>
+                      <a href="{{ part.mapping }}" download><i class="fas fa-download"></i></a>
+                      <a href="javascript:void(0);" onclick="openModal('{{ part.drawing }}')"><i class="fas fa-eye"></i></a>
                     {% else %} - {% endif %}
                   </td>
+                  <td>
+                    <select name="material_{{ part.part_no }}" class="material-select" data-part-no="{{ part.part_no }}">
+                      <option value="" selected>Select material</option>
+                      {% for material in part.materials %}
+                        <option value="{{ material.material_name }}" 
+                                data-price="{{ material.price }}" 
+                                data-available="{{ material.available }}"
+                                data-description="{{ material.material_description }}">
+                          {{ material.material_name }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                  <td><span id="description_{{ part.part_no }}">-</span></td>
                   <td><span class="price" id="price_{{ part.part_no }}"></span></td>
                   <td><span class="available" id="available_{{ part.part_no }}"></span></td>
                 </tr>
@@ -113,6 +126,7 @@
 </div>
 </section>
 
+<!-- ✅ Script Section -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const materialSelects = document.querySelectorAll('.material-select');
@@ -120,10 +134,14 @@ document.addEventListener("DOMContentLoaded", function () {
     select.addEventListener('change', function () {
       const partNo = this.getAttribute('data-part-no');
       const selectedOption = this.options[this.selectedIndex];
+
       const price = selectedOption.getAttribute('data-price') || '';
       const available = selectedOption.getAttribute('data-available') || '';
+      const description = selectedOption.getAttribute('data-description') || '';
+
       document.getElementById(`price_${partNo}`).textContent = price;
       document.getElementById(`available_${partNo}`).textContent = available;
+      document.getElementById(`description_${partNo}`).textContent = description || '-';
     });
   });
 });
@@ -170,30 +188,38 @@ function sendMessage() {
   botMsgDiv.classList.add('bot-message');
 
   if (part) {
-    const materialsList = part.materials.map(mat => `
-      <li>
-        <strong>${mat.material_name}</strong><br>
-        Price: ₹${mat.price}<br>
-        Available: ${mat.available}
-      </li>
-    `).join('');
+    const materialsList = part.materials.map(mat => {
+      const descriptionHTML = mat.description_file
+        ? `<a href="${mat.description_file}" download><i class="fas fa-download"></i></a>
+           <a href="javascript:void(0);" onclick="openModal('${mat.description_file}')"><i class="fas fa-eye"></i></a>`
+        : '-';
+      return `
+        <li>
+          <strong>${mat.material_name}</strong><br>
+          Price: ₹${mat.price}<br>
+          Available: ${mat.available}<br>
+          ${descriptionHTML}
+        </li>`;
+    }).join('');
+
+    // Update material description in the table
+    document.getElementById(`description_${part.part_no}`).innerHTML = materialsList;
 
     botMsgDiv.innerHTML = `
       <div class="card part-details-card">
         <div class="card-body">
-          <h5 class="card-title mb-2"><strong>Part No:</strong> ${part.part_no}</h5>
-          <p class="card-text mb-1"><strong>Name:</strong> ${part.name}</p>
-          <p class="card-text mb-1"><strong>Materials:</strong></p>
-          <ul class="materials-list">${materialsList}</ul>
-          <p class="card-text mb-1"><strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}</p>
-          <p class="card-text mb-1"><strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}</p>
-          <p class="card-text mb-1"><strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}</p>
-          <p class="card-text"><strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}</p>
+          <h5 class="card-title"><strong>Part No:</strong> ${part.part_no}</h5>
+          <p><strong>Name:</strong> ${part.name}</p>
+          <p><strong>Materials:</strong></p>
+          <ul>${materialsList}</ul>
+          <p><strong>Technical:</strong> ${part.technical_details ? `<a href="${part.technical_details}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p><strong>Drawing:</strong> ${part.drawing ? `<a href="${part.drawing}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p><strong>CAD File:</strong> ${part.cad_file ? `<a href="${part.cad_file}" target="_blank">Download</a>` : 'N/A'}</p>
+          <p><strong>Mapping:</strong> ${part.mapping ? `<a href="${part.mapping}" target="_blank">Download</a>` : 'N/A'}</p>
         </div>
-      </div>
-    `;
+      </div>`;
   } else {
-    botMsgDiv.innerHTML = `<div class="bot-message">Part not found.</div>`;
+    botMsgDiv.textContent = "Part not found.";
   }
 
   chatBox.appendChild(botMsgDiv);
