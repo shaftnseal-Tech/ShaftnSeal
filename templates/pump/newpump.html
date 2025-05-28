@@ -7,23 +7,51 @@
 {% block content %}
 
 <section class="hero-section">
-  <h1>design here</h1>
-  <p>
-    			
-	Form For New Pump		
-			
-	Flow Required in m3/hr	35	
-	Head required in meter	910	
-	Temperature	130	
-	Existing Pump Make	ksb	Drop Down
-	Existing Pump Model	hda65/15	Drop Down
-	Design	Shell Bearin+LOD	Drop Down
-	Pic of DE		UpLoad Pic
-	Pic of NDE		UpLoad Pic
-			
-		Sumit	
+  <div class="form-container">
+    <h2>Form For New Pump</h2>
+    <form >
+      
+      <label for="flow">Flow Required (m³/hr):</label>
+      <input type="number"  name="flow" required />
 
-  </p>
+      <label for="head">Head Required (meter):</label>
+      <input type="number"  name="head" required />
+
+      <label for="temperature">Temperature (°C):</label>
+      <input type="number"  name="temperature" required />
+
+      <label for="pumpMake">Existing Pump Make:</label>
+      <select name="pumpMake" required>
+        <option value="">Select Make</option>
+        <option value="ksb">KSB</option>
+        <option value="grundfos">Grundfos</option>
+        <option value="kirloskar">Kirloskar</option>
+      </select>
+
+      <label for="pumpModel">Existing Pump Model:</label>
+      <select  name="pumpModel" required>
+        <option value="">Select Model</option>
+        <option value="hda65/15">HDA65/15</option>
+        <option value="hda80/18">HDA80/18</option>
+      </select>
+
+      <label for="design">Design:</label>
+      <select  name="design" required>
+        <option value="">Select Design</option>
+        <option value="shellBearingLOD">Shell Bearing + LOD</option>
+        <option value="bracketMount">Bracket Mount</option>
+      </select>
+
+      <label for="picDE">Pic of DE:</label>
+      <input type="file" name="picDE" accept="image/*" required />
+
+      <label for="picNDE">Pic of NDE:</label>
+      <input type="file"  name="picNDE" accept="image/*" required />
+
+      <button type="submit" class="btnsave">Submit</button>
+    </form>
+  </div>
 </section>
+
 
 {% endblock %}
