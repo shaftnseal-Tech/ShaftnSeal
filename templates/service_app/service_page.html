@@ -4,75 +4,76 @@
 {% block css %} 
 {{block.super}}
 
-<link rel="stylesheet" href="{% static 'service_app/css/serviceapp.css' %}" />
+<link rel="stylesheet" href="{% static 'Products/Serviceapp.css' %}" /> 
 
 
 {% endblock css %} 
 {% block content %}
-<section class="service-section">
-  <div class="service-container">
-    <div class="service-content">
-     
-     <div class="container py-5">
-        <div class="col">
-          <div class=" col-lg-5">
-            <form id="customerForm">
-        <label>Customer Code:</label>
-        <input
-        type="text"
-     required
-        autofocus
-      />
-        <label>Contact Person:</label>
-        <input
-        type="text"
-         required
-        autofocus
-      />
-        <label>Email:</label>
-        <input
-        type="Email"
-         required
-        autofocus
-      />
-        <label>Phone Number:</label>
-        <input
-        type="Number"
-         required
-        autofocus
-      />
-        <label>Pump Model:</label>
-        <input
-        type="text"
-         required
-        autofocus
-      />
-      
-        <label class="naturelbl">Nature of Service:</label>
-        <select id="serviceType">
-            <option value="OverHauling Service">OverHauling Service</option>
-            <option value="Break Down Service">Break Down Service</option>
-            <option value="Consultancy On Energy Saving"> Consultancy On Energy Saving</option>
-            <option value=" Engineering Consultancy On Pump Selection"> Engineering Consultancy On Pump Selection</option>
- <option value="Consultancy On Energy Saving"> Consultancy On Energy Saving</option>
- <option value=" Site Visit On PerDay Basis"> Site Visit On PerDay Basis</option>
 
-        </select><br><br>
+   <section class="service-page">
 
-        <label >Remark</label>
-        <textarea id="remark" rows="5" cols="40"></textarea>
-        <button type="submit" class="btnsave">Submit</button>
+  <!-- 1. Customer Information Form -->
+  <div class="form-section">
+    <h2>1. Customer Information</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" placeholder="Customer Code" required />
+      <input type="text" placeholder="Contact Person" required />
+      <input type="email" placeholder="Email" required />
+      <input type="number" placeholder="Phone Number" required />
+      <button type="submit" class="btnsave">Submit</button>
     </form>
-          </div>
-          
-        </div>
-       
-      </div>
-    </div>
-    
+  </div>
+
+  <!-- 2. New Pump Request Form -->
+   <div class="form-section">
+    <h2>2. Service Feedback</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Feedback..." rows="4" required></textarea>
+      <button type="submit" class="btnsave">Submit</button>
+    </form>
+  </div>
+
+  <!-- 3. Service Feedback Form -->
+  <div class="form-section">
+    <h2>3. Service Feedback</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Feedback..." rows="4" required></textarea>
+      <button type="submit" class="btnsave">Submit</button>
+    </form>
+  </div>
+
+  <!-- 4. Breakdown Report Form -->
+   <div class="form-section">
+    <h2>4. Service Feedback</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Feedback..." rows="4" required></textarea>
+      <button type="submit" class="btnsave">Submit</button>
+    </form>
+  </div>
+
+  <!-- 5. Site Visit Request Form -->
+  <div class="form-section">
+    <h2>5. Service Feedback</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Feedback..." rows="4" required></textarea>
+      <button type="submit" class="btnsave">Submit</button>
+    </form>
   </div>
 </section>
-    
+
 {% endblock content  %}
 
 {% block js %}
