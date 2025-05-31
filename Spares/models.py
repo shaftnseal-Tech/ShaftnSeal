@@ -37,10 +37,10 @@ class PumpModelVariant(models.Model):
 class PumpModelDesign(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     model_design = models.CharField(max_length=100, verbose_name="Model Design")
-    model = models.ForeignKey(PumpModel, on_delete=models.CASCADE, related_name='designs')
+    varient = models.ForeignKey(PumpModelVariant, on_delete=models.CASCADE, related_name='designs')
     
     def __str__(self):
-        return f"{self.model.name} - {self.model_design}"
+        return f"{self.varient.model.name} - {self.model_design}"
 # Parts Table
 class PumpParts(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -96,7 +96,17 @@ class ModelVariantPart(models.Model):
             f"{self.variant_part_materials.materials.material_name}"
         )
 
+class ModelVarientDesignParts(models.Model):
+    design = models.ForeignKey(PumpModelDesign, on_delete=models.CASCADE, related_name='design_parts')
+    design_parts_materials = models.ForeignKey(PartMaterials, on_delete=models.CASCADE , related_name='design_parts')
     
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['design', 'design_parts_materials'], name='unique_design_part')
+        ]
+    def __str__(self):
+        return f"Design {self.design} -> Part {self.design_parts_materials.part.part_no} - {self.design_parts_materials.part.name} - {self.design_parts_materials.materials.material_name}"
+
 class ModelPart(models.Model):
     model = models.ForeignKey(PumpModel, on_delete=models.CASCADE, related_name='common_parts')
     part_materials = models.ForeignKey(PartMaterials, on_delete=models.CASCADE)

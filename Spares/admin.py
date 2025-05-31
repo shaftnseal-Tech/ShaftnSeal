@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     PumpMaker, PumpModel, PumpModelVariant,
-    PumpParts, PartMaterials, ModelVariantPart, ModelPart,Materials,PumpModelDesign
+    PumpParts, PartMaterials, ModelVariantPart, 
+    ModelPart,Materials,PumpModelDesign,ModelVarientDesignParts
 )
 
 
@@ -27,9 +28,9 @@ class PumpModelVariantAdmin(admin.ModelAdmin):
 
 @admin.register(PumpModelDesign)
 class PumpModelDesignAdmin(admin.ModelAdmin):
-    list_display = ('id', 'model', 'model_design')
-    list_filter= ('model',)
-    search_fields = ('model__name', 'model_design')
+    list_display = ('id', 'varient', 'model_design')
+    list_filter= ('varient',)
+    search_fields = ('varient__model__name', 'model_design')
 
 
 @admin.register(PumpParts)
@@ -98,7 +99,20 @@ class ModelVariantPartAdmin(admin.ModelAdmin):
         return obj.variant_part_materials.price
     get_price.short_description = "Price"
 
-
+@admin.register(ModelVarientDesignParts)
+class ModelVarientDesignPartsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'design', 'get_part', 'get_material', 'get_price')
+    list_filter = ('design__varient__model',)
+    search_fields = ('design__varient__model__name', 'design_parts_materials__part__name')
+    def get_part(self, obj):
+        return obj.design_parts_materials.part.name
+    get_part.short_description = "Part"
+    def get_material(self, obj):
+        return obj.design_parts_materials.materials.material_name
+    get_material.short_description = "Material"
+    def get_price(self, obj):
+        return obj.design_parts_materials.price
+    get_price.short_description = "Price"
 
 @admin.register(Materials)
 class MaterialsAdmin(admin.ModelAdmin):

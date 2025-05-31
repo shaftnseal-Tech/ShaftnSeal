@@ -74,10 +74,10 @@ function fetchVariants() {
 }
 
 function fetchModelDesigns() {
-    const modelId = document.getElementById('ModelName').value;
-    if (!modelId) return;
+    const variantId = document.getElementById('Variant').value;
+    if (!variantId) return;
 
-    fetch(`${SPARES_BASE_URL}/get_model_design/${modelId}/`)
+    fetch(`${SPARES_BASE_URL}/get_model_design/${variantId}/`)
         .then(response => response.json())
         .then(data => {
             const ModelDesignSelect = document.getElementById('ModelDesign');
@@ -97,13 +97,14 @@ function fetchModelDesigns() {
 function searchParts() {
     const model_Id = document.getElementById('ModelName').value;
     const variant_Id = document.getElementById('Variant').value;
+    const ModelDesign_Id = document.getElementById('ModelDesign').value;
 
-    if (!model_Id || !variant_Id) {
-        alert('Please select both Model and Variant.');
+    if (!model_Id || !variant_Id || !ModelDesign_Id) {
+        alert('Please select all Model and Variant and ModelDesign.');
         return;
     }
 
-    window.location.href = `${SPARES_BASE_URL}/get_parts/${model_Id}/${variant_Id}/`;
+    window.location.href = `${SPARES_BASE_URL}/get_parts/${model_Id}/${variant_Id}/${ModelDesign_Id}`;
 }
 
 
