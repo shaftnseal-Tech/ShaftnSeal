@@ -15,14 +15,14 @@ class PumpMakerAdmin(admin.ModelAdmin):
 
 @admin.register(PumpModel)
 class PumpModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'maker')
+    list_display = ('id','maker','name','discharge_diameter',)
     list_filter = ('maker',)
     search_fields = ('name',)
 
 
 @admin.register(PumpModelVariant)
 class PumpModelVariantAdmin(admin.ModelAdmin):
-    list_display = ('id', 'model', 'discharge_diameter', 'stages')
+    list_display = ('id', 'model','stages')
     list_filter = ('model',)
     search_fields = ('model__name',)
 

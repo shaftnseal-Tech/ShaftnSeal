@@ -38,8 +38,10 @@ function selectMaker(makerId, makerName) {
             modelSelect.innerHTML = '<option value="">Select Model</option>';
             data.forEach(model => {
                 const option = document.createElement('option');
+                console.log(model)
                 option.value = model.id;
-                option.text = escapeHTML(model.name);
+                option.text =option.text = `${escapeHTML(model.name)} - ${model.discharge_diameter ?? 'N/A'}`;
+
                 modelSelect.appendChild(option);
             });
 
@@ -60,11 +62,11 @@ function fetchVariants() {
         .then(response => response.json())
         .then(data => {
             const variantSelect = document.getElementById('Variant');
-            variantSelect.innerHTML = '<option value="">Select Variant</option>';
+            variantSelect.innerHTML = '<option value="">Select Stages</option>';
             data.forEach(variant => {
                 const option = document.createElement('option');
                 option.value = variant.id;
-                option.text = `${variant.discharge_diameter}mm - ${variant.stages} stages`;
+                option.text = `${variant.stages} stages`;
                 variantSelect.appendChild(option);
             });
         })

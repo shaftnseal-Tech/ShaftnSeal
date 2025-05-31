@@ -18,20 +18,19 @@ class PumpModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     maker = models.ForeignKey(PumpMaker, on_delete=models.CASCADE, related_name='pump_models')
     name = models.CharField(max_length=100, verbose_name="Model Name")
-
+    discharge_diameter = models.IntegerField(verbose_name="Size")
     def __str__(self):
-        return f"{self.maker.name} - {self.name}"
+        return f"{self.name}-{self.discharge_diameter}"
 
 
 # Variant Table
 class PumpModelVariant(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     model = models.ForeignKey(PumpModel, on_delete=models.CASCADE, related_name='variants')
-    discharge_diameter = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="Discharge Diameter (mm)")
     stages = models.IntegerField(verbose_name="Number of Stages")
 
     def __str__(self):
-        return f"{self.model.name} - {self.discharge_diameter}mm - {self.stages} stages"
+        return f"{self.model.maker.name}{self.model.name}{self.model.discharge_diameter}  -  {self.stages} stages"
 
 
 class PumpModelDesign(models.Model):
@@ -40,7 +39,7 @@ class PumpModelDesign(models.Model):
     varient = models.ForeignKey(PumpModelVariant, on_delete=models.CASCADE, related_name='designs')
     
     def __str__(self):
-        return f"{self.varient.model.name} - {self.model_design}"
+        return f"{self.varient.model.name}-{self.varient.model.discharge_diameter}-{self.varient.stages} - {self.model_design}"
 # Parts Table
 class PumpParts(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

@@ -5,12 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 def get_pumpmodels(request,id):
     pumpmodels = PumpModel.objects.filter(maker_id=id)
-    data = list(pumpmodels.values('id', 'name'))
+    data = list(pumpmodels.values('id','discharge_diameter','name'))
     return JsonResponse(data, safe=False)
 
 def get_model_varient(request,id):
     variants = PumpModelVariant.objects.filter(model_id=id)
-    data = list(variants.values('id', 'discharge_diameter', 'stages'))
+    data = list(variants.values('id','stages'))
     return JsonResponse(data, safe=False)
 
 def get_model_design(request,id):
