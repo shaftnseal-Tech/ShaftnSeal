@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "Energy_efficiency",
     "service_app",
     "pump",
+   
 ]
 JAZZMIN_SETTINGS = {
     "site_title": "Shaft&Seal Administration",

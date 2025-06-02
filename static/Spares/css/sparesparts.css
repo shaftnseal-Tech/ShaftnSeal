@@ -52,6 +52,29 @@ section.tabledatasec h4 {
   background-color: #155724;
   color: white;
 }
+i.fas.fa-download {
+  color: green;
+}
+
+i.fas.fa-eye {
+  color: #856404; 
+}
+
+.send-icon-button i {
+  color: #28a745;
+}
+
+.user-message {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.bot-message {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
 
 /* Table wrapper */
 .table-responsive {
