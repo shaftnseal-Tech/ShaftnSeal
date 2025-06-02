@@ -1,0 +1,74 @@
+.login-logo img {
+    max-height: 100px !important;
+    width: auto !important;
+}
+
+
+body.jazzmin-login-page{
+    background-color: #f0f4f8;
+
+}
+
+.login-box, .card-body {
+    background-color: #ffffffa7;
+    border: 1px solid #dbe2ef;
+    box-shadow: 0 0 10px rgba(63, 114, 175, 0.2);
+}
+
+
+.login-box .btn-primary {
+    background-color: #3f72af;
+    border-color: #3f72af;
+    color: white;
+}
+
+.login-box label, .login-box input {
+    color: #112d4e;
+}
+
+
+
+.nav-header {
+    background-color: #1F2A40 !important;
+    color: #FFFFFF !important;
+}
+
+.nav-icon.fa-cogs {
+    color: #4B5563 !important; /* gray-700 */
+}
+
+.nav-icon.fa-tools {
+    color: #1D4ED8 !important; /* blue-700 */
+}
+
+.nav-icon.fa-industry {
+    color: #3730A3 !important; /* indigo-800 */
+}
+
+.nav-icon.fa-cubes {
+    color: #0D9488 !important; /* teal-600 */
+}
+
+.nav-icon.fa-toolbox {
+    color: #EA580C !important; /* orange-600 */
+}
+
+.nav-icon.fa-drafting-compass {
+    color: #6B21A8 !important; /* purple-700 */
+}
+
+.nav-icon.fa-sliders-h {
+    color: #DB2777 !important; /* pink-600 */
+}
+
+.nav-icon.fa-user-circle {
+    color: #047857 !important; /* emerald-700 */
+}
+
+.nav-icon.fa-link {
+    color: #7F6C33 !important;
+}
+.nav-link.active {
+    color: #20c997;  /* Teal */
+    background-color: #e6f7f1; /* light teal background, optional */
+}

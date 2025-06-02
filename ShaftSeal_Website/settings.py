@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ['*']  # Update with your domain or IP in production
 
 # Application definition
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -33,6 +34,34 @@ INSTALLED_APPS = [
     "service_app",
     "pump",
 ]
+JAZZMIN_SETTINGS = {
+    "site_title": "Shaft&Seal Administration",
+    "site_header": "Shaft&Seal Admin",
+    "site_brand": "Shaft&Seal",
+    "site_logo": "img/Logo.jpeg",
+    "welcome_sign": "Welcome to the Shaft&Seal Admin Panel",
+    "copyright": "Shaft&Seal pvt ltd",
+    "custom_css": "css/custom_admin.css",
+    "icons": {
+    "Spares": "fas fa-cogs",
+    "Spares.PumpParts": "fas fa-tools",
+    "Spares.PumpMaker": "fas fa-industry",
+    "Spares.PumpModel": "fas fa-cubes",
+    "Spares.Materials": "fas fa-toolbox",
+    "Spares.PumpModelDesign": "fas fa-drafting-compass",
+    "Spares.PumpModelVariant": "fas fa-sliders-h",
+    "Spares.PartMaterials": "fas fa-link",
+    "Spares.ModelVariantPart": "fas fa-link",
+    "Spares.ModelVarientDesignParts": "fas fa-link",
+    "Spares.ModelPart": "fas fa-link",
+    "accounts.Account": "fas fa-user-circle",
+},
+
+    "order_with_respect_to": ["accounts","accounts.Account","accounts.UserProfile","Spares", "Spares.PumpMaker","Spares.PumpModel",
+    "Spares.PumpModelVariant","Spares.PumpModelDesign","Spares.PumpParts","Spares.Materials","Spares.PartMaterials","Spares.ModelPart",
+    "Spares.ModelVariantPart","Spares.ModelVarientDesignParts"],
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -151,3 +180,5 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 CELERY_TIMEZONE = 'UTC'
+
+#django custom admin panel configuration using jazzmin library
